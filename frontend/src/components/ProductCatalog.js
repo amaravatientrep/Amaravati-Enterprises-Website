@@ -22,26 +22,25 @@ const ProductCatalog = () => {
           title: "Dry Amenities",
           packaging: [
             { name: "Laminated Paper Board Boxes", image: "/images/laminated-board-boxes.jpg" },
-            { name: "Textured Card Boxes", image: "/images/laminated-board-boxes.jpg" },
+            { name: "Textured Card Boxes", image: "/images/textured-card-boxes.jpg" },
             { name: "Kraft Board Boxes", image: "/images/kraft-board-boxes.jpg" },
             { name: "Butter Paper Pouches", image: "/images/butter-paper-pouches.jpg" },
             { name: "Kraft Paper Pouches", image: "/images/kraft-paper-pouches.jpg" },
             { name: "Imported Kraft Paper Pouches", image: "/images/imported-kraft-pouches.jpg" }
           ],
           items: [
-            "Dental Kit",
-            "Shaving Kit",
-            "Handle Comb",
-            "Shower Cap",
-            "For Your Care Kit",
-            "Sewing Kit",
-            "Disposable Bag",
-            "Shoe Shiner",
-            "Laundry Bag",
-            "Slippers",
-            "Patient Admission Kit",
-            "DND Card",
-            "Toiletries Kit"
+            { name: "Dental Kit", image: "/images/dental-kit.jpg" },
+            { name: "Shaving Kit", image: "/images/shaving-kit.jpg" },
+            { name: "Handle Comb", image: "/images/comb.jpg" },
+            { name: "Shower Cap", image: "/images/shower-cap.jpg" },
+            { name: "For Your Care Kit", image: "" },
+            { name: "Sewing Kit", image: "" },
+            { name: "Shoe Shiner", image: "" },
+            { name: "Laundry Bag", image: "" },
+            { name: "Slippers", image: "" },
+            { name: "Patient Admission Kit", image: "" },
+            { name: "DND Card", image: "" },
+            { name: "Toiletries Kit", image: "" }
           ]
         },
         wetAmenities: {
@@ -324,10 +323,18 @@ const ProductCatalog = () => {
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3">
                       {productData.hotelAmenities.subCategories.dryAmenities.items.map((item, idx) => (
                         <div key={idx} className="bg-white p-3 rounded-lg border border-gray-200 hover:shadow-md transition-all">
-                          <div className="h-32 bg-gray-200 rounded mb-2 flex items-center justify-center text-xs text-gray-500">
-                            Image placeholder
+                          <div className="h-32 bg-gray-200 rounded mb-2 overflow-hidden flex items-center justify-center">
+                            {item.image ? (
+                              <img 
+                                src={item.image} 
+                                alt={item.name}
+                                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                              />
+                            ) : (
+                              <span className="text-xs text-gray-500">Image placeholder</span>
+                            )}
                           </div>
-                          <p className="text-charcoal text-sm font-medium">{item}</p>
+                          <p className="text-charcoal text-sm font-medium">{item.name}</p>
                         </div>
                       ))}
                     </div>
