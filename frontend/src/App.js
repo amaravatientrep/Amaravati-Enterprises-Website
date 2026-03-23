@@ -176,9 +176,11 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
-              <h1 className="font-playfair text-2xl md:text-3xl font-bold text-charcoal">
-                Amaravati <span className="text-gold">Enterprises</span>
-              </h1>
+              <img 
+                src="/amaravati-logo.jpg" 
+                alt="Amaravati Enterprises" 
+                className="h-16 md:h-20 w-auto object-contain"
+              />
             </div>
             
             <nav className="hidden md:flex space-x-8" data-testid="nav-menu">
@@ -667,9 +669,13 @@ function App() {
       {/* Footer */}
       <footer className="bg-charcoal text-white py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <h3 className="font-playfair text-3xl font-bold mb-4">
-            Amaravati <span className="text-gold">Enterprises</span>
-          </h3>
+          <div className="flex justify-center mb-6">
+            <img 
+              src="/amaravati-logo.jpg" 
+              alt="Amaravati Enterprises" 
+              className="h-32 w-auto object-contain"
+            />
+          </div>
           <p className="text-gray-400 mb-6">
             Premium Hospitality Supplies Across India
           </p>
