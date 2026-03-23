@@ -116,7 +116,11 @@ const ProductCatalog = () => {
     stationery: {
       title: "Stationery",
       color: "charcoal",
-      items: [
+      carouselImages: [
+        "/images/stationery-1.jpg",
+        "/images/stationery-2.jpg"
+      ],
+      products: [
         "Key Card Jacket",
         "Bottle Tag",
         "Scribbling Pad",
@@ -128,8 +132,7 @@ const ProductCatalog = () => {
         "Menu Cards",
         "Envelopes",
         "Letter Heads"
-      ],
-      hasCarousel: true
+      ]
     },
     housekeeping: {
       title: "House Keeping Supplies",
@@ -588,24 +591,57 @@ const ProductCatalog = () => {
         </button>
         
         {expandedCategories['stationery'] && (
-          <div className="p-6 space-y-6">
-            {/* Carousel placeholder */}
-            <div className="bg-gradient-to-r from-charcoal/5 to-charcoal/10 rounded-lg p-8 text-center">
-              <p className="text-charcoal-light mb-4">Product Image Carousel</p>
-              <div className="h-64 bg-gray-200 rounded-lg flex items-center justify-center">
-                <p className="text-gray-500">Carousel images will be added here</p>
-              </div>
-            </div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {productData.stationery.items.map((item, idx) => (
-                <div key={idx} className="bg-white p-4 rounded-lg border border-gray-200 hover:shadow-md transition-all">
-                  <div className="h-32 bg-gray-200 rounded mb-2 flex items-center justify-center text-xs text-gray-500">
-                    Image placeholder
+          <div className="p-6">
+            {/* Carousel */}
+            <div className="relative h-96 bg-gray-200 rounded-lg mb-6 overflow-hidden group">
+              <img 
+                src={productData.stationery.carouselImages[(carouselIndices['stationery'] || 0) % productData.stationery.carouselImages.length]} 
+                alt={`Stationery ${(carouselIndices['stationery'] || 0) + 1}`}
+                className="w-full h-full object-cover"
+              />
+              {/* Carousel navigation buttons */}
+              {productData.stationery.carouselImages.length > 1 && (
+                <>
+                  <button
+                    onClick={() => prevCarouselImage('stationery')}
+                    disabled={(carouselIndices['stationery'] || 0) === 0}
+                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-charcoal p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-30"
+                  >
+                    <ChevronLeft className="w-6 h-6" />
+                  </button>
+                  <button
+                    onClick={() => nextCarouselImage('stationery')}
+                    disabled={(carouselIndices['stationery'] || 0) >= productData.stationery.carouselImages.length - 1}
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-charcoal p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-30"
+                  >
+                    <ChevronRight className="w-6 h-6" />
+                  </button>
+                  {/* Carousel indicators */}
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+                    {productData.stationery.carouselImages.map((_, imgIdx) => (
+                      <div
+                        key={imgIdx}
+                        className={`w-2 h-2 rounded-full ${
+                          imgIdx === (carouselIndices['stationery'] || 0) ? 'bg-charcoal w-8' : 'bg-white/50'
+                        }`}
+                      />
+                    ))}
                   </div>
-                  <p className="text-charcoal text-sm font-medium">{item}</p>
-                </div>
-              ))}
+                </>
+              )}
+            </div>
+
+            {/* Product List */}
+            <div className="bg-charcoal/10 p-6 rounded-lg">
+              <h4 className="font-playfair text-xl font-bold text-charcoal mb-4">Our Products:</h4>
+              <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+                {productData.stationery.products.map((product, idx) => (
+                  <li key={idx} className="flex items-center gap-2 text-charcoal">
+                    <CheckCircle2 className="w-5 h-5 text-charcoal flex-shrink-0" />
+                    <span className="font-medium">{product}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         )}
