@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, ChevronRight, ChevronLeft, Package } from "lucide-react";
+import { ChevronDown, ChevronRight, ChevronLeft, Package, CheckCircle2 } from "lucide-react";
 
 const ProductCatalog = () => {
   const [expandedCategories, setExpandedCategories] = useState({});
@@ -90,16 +90,27 @@ const ProductCatalog = () => {
     },
     purelySerene: {
       title: "Purely Serene Premium Amenities",
-      subtitle: "A Purely Serene Brand",
       color: "gold",
-      items: [
-        { name: "Glycerin Soap", variants: ["Aloe Vera", "Indian Spices"] },
-        { name: "Shampoo" },
-        { name: "Shower Gel" },
-        { name: "Moisturiser" },
-        { name: "Conditioner" },
-        { name: "500 ml Bottles" },
-        { name: "5 Ltr Refill Cans" }
+      carouselImages: [
+        "/images/purely-serene-1.jpg",
+        "/images/purely-serene-2.jpg",
+        "/images/purely-serene-3.jpg",
+        "/images/purely-serene-4.jpg",
+        "/images/purely-serene-5.jpg",
+        "/images/purely-serene-6.jpg",
+        "/images/purely-serene-7.jpg",
+        "/images/purely-serene-8.jpg",
+        "/images/purely-serene-9.jpg",
+        "/images/purely-serene-10.jpg"
+      ],
+      products: [
+        "Glycerin Soap: Aloe Vera, Indian Spices",
+        "Shampoo",
+        "Shower Gel",
+        "Moisturiser",
+        "Conditioner",
+        "500 ml Bottles",
+        "5 Ltr Refill Cans"
       ]
     },
     stationery: {
@@ -490,14 +501,11 @@ const ProductCatalog = () => {
           className="w-full px-6 py-4 flex items-center justify-between bg-gradient-to-r from-gold/20 to-transparent hover:from-gold/30 transition-all"
           data-testid="category-purely-serene"
         >
-          <div>
-            <div className="flex items-center gap-3">
-              <Package className="w-6 h-6 text-gold" />
-              <h3 className="font-playfair text-2xl font-bold text-charcoal">
-                {productData.purelySerene.title}
-              </h3>
-            </div>
-            <p className="text-sm text-gold italic ml-9">{productData.purelySerene.subtitle}</p>
+          <div className="flex items-center gap-3">
+            <Package className="w-6 h-6 text-gold" />
+            <h3 className="font-playfair text-2xl font-bold text-charcoal">
+              {productData.purelySerene.title}
+            </h3>
           </div>
           {expandedCategories['purelySerene'] ? (
             <ChevronDown className="w-6 h-6 text-gold" />
@@ -508,22 +516,52 @@ const ProductCatalog = () => {
         
         {expandedCategories['purelySerene'] && (
           <div className="p-6">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {productData.purelySerene.items.map((item, idx) => (
-                <div key={idx} className="bg-ivory p-4 rounded-lg border border-gold/30 hover:shadow-lg transition-all">
-                  <div className="h-32 bg-gray-200 rounded mb-3 flex items-center justify-center text-xs text-gray-500">
-                    Image placeholder
-                  </div>
-                  <h5 className="font-semibold text-charcoal mb-1">{item.name}</h5>
-                  {item.variants && (
-                    <ul className="text-sm text-charcoal-light space-y-1">
-                      {item.variants.map((variant, vIdx) => (
-                        <li key={vIdx}>• {variant}</li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              ))}
+            {/* Carousel */}
+            <div className="relative h-96 bg-gray-200 rounded-lg mb-6 overflow-hidden group">
+              <img 
+                src={productData.purelySerene.carouselImages[(carouselIndices['purelySerene'] || 0) % productData.purelySerene.carouselImages.length]} 
+                alt={`Purely Serene ${(carouselIndices['purelySerene'] || 0) + 1}`}
+                className="w-full h-full object-cover"
+              />
+              {/* Carousel navigation buttons */}
+              <button
+                onClick={() => prevCarouselImage('purelySerene')}
+                disabled={(carouselIndices['purelySerene'] || 0) === 0}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-charcoal p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-30"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              <button
+                onClick={() => nextCarouselImage('purelySerene')}
+                disabled={(carouselIndices['purelySerene'] || 0) >= productData.purelySerene.carouselImages.length - 1}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-charcoal p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-30"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+              {/* Carousel indicators */}
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+                {productData.purelySerene.carouselImages.map((_, imgIdx) => (
+                  <div
+                    key={imgIdx}
+                    className={`w-2 h-2 rounded-full ${
+                      imgIdx === (carouselIndices['purelySerene'] || 0) ? 'bg-gold w-8' : 'bg-white/50'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Product List */}
+            <div className="bg-gold/10 p-6 rounded-lg">
+              <h4 className="font-playfair text-xl font-bold text-charcoal mb-4">Our Products:</h4>
+              <ul className="grid md:grid-cols-2 gap-3">
+                {productData.purelySerene.products.map((product, idx) => (
+                  <li key={idx} className="flex items-center gap-2 text-charcoal">
+                    <CheckCircle2 className="w-5 h-5 text-gold flex-shrink-0" />
+                    <span className="font-medium">{product}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         )}
