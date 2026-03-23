@@ -42,10 +42,10 @@ function App() {
 
   // Hero carousel images
   const heroCarouselImages = [
-    "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
-    "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&q=80",
-    "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=1200&q=80",
-    "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200&q=80"
+    "/images/clarion-amenities.jpg",
+    "/images/white-leaf-amenities.jpg",
+    "/images/deccan-serai-amenities.jpg",
+    "/images/park-amenities.jpg"
   ];
 
   useEffect(() => {
