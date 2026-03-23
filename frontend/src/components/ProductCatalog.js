@@ -33,14 +33,14 @@ const ProductCatalog = () => {
             { name: "Shaving Kit", image: "/images/shaving-kit.jpg" },
             { name: "Handle Comb", image: "/images/comb.jpg" },
             { name: "Shower Cap", image: "/images/shower-cap.jpg" },
-            { name: "For Your Care Kit", image: "" },
-            { name: "Sewing Kit", image: "" },
-            { name: "Shoe Shiner", image: "" },
-            { name: "Laundry Bag", image: "" },
-            { name: "Slippers", image: "" },
-            { name: "Patient Admission Kit", image: "" },
-            { name: "DND Card", image: "" },
-            { name: "Toiletries Kit", image: "" }
+            { name: "For Your Care Kit", image: "/images/for-your-care-kit.jpg" },
+            { name: "Sewing Kit", image: "/images/sewing-kit.jpg" },
+            { name: "Shoe Shiner", image: "/images/shoe-shine.jpg" },
+            { name: "Laundry Bag", image: "/images/laundry-bag.jpg" },
+            { name: "Slippers", image: "/images/slipper.jpg" },
+            { name: "Patient Admission Kit", image: "/images/patient-admission-kit.jpg" },
+            { name: "DND Card", image: "/images/dnd-card.jpg" },
+            { name: "Toiletries Kit", images: ["/images/freshness-kit-1.jpg", "/images/freshness-kit-2.jpg"] }
           ]
         },
         wetAmenities: {
@@ -322,19 +322,40 @@ const ProductCatalog = () => {
                     <h5 className="font-semibold text-charcoal mb-2 text-lg">Products:</h5>
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3">
                       {productData.hotelAmenities.subCategories.dryAmenities.items.map((item, idx) => (
-                        <div key={idx} className="bg-white p-3 rounded-lg border border-gray-200 hover:shadow-md transition-all">
-                          <div className="h-32 bg-gray-200 rounded mb-2 overflow-hidden flex items-center justify-center">
-                            {item.image ? (
-                              <img 
-                                src={item.image} 
-                                alt={item.name}
-                                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                              />
-                            ) : (
-                              <span className="text-xs text-gray-500">Image placeholder</span>
-                            )}
-                          </div>
-                          <p className="text-charcoal text-sm font-medium">{item.name}</p>
+                        <div key={idx} className={`bg-white p-3 rounded-lg border border-gray-200 hover:shadow-md transition-all ${item.images ? 'md:col-span-2' : ''}`}>
+                          {item.images ? (
+                            // Multiple images for Toiletries Kit
+                            <div>
+                              <div className="grid grid-cols-2 gap-2 mb-2">
+                                {item.images.map((img, imgIdx) => (
+                                  <div key={imgIdx} className="h-32 bg-gray-200 rounded overflow-hidden">
+                                    <img 
+                                      src={img} 
+                                      alt={`${item.name} ${imgIdx + 1}`}
+                                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                                    />
+                                  </div>
+                                ))}
+                              </div>
+                              <p className="text-charcoal text-sm font-medium">{item.name}</p>
+                            </div>
+                          ) : (
+                            // Single image or placeholder
+                            <>
+                              <div className="h-32 bg-gray-200 rounded mb-2 overflow-hidden flex items-center justify-center">
+                                {item.image ? (
+                                  <img 
+                                    src={item.image} 
+                                    alt={item.name}
+                                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                                  />
+                                ) : (
+                                  <span className="text-xs text-gray-500">Image placeholder</span>
+                                )}
+                              </div>
+                              <p className="text-charcoal text-sm font-medium">{item.name}</p>
+                            </>
+                          )}
                         </div>
                       ))}
                     </div>
