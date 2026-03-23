@@ -262,29 +262,21 @@ const ProductCatalog = () => {
     biotique: {
       title: "Biotique Hotel Amenities",
       color: "green",
-      categories: {
-        "Soaps": ["15gm – 50gm"],
-        "Assorted Range 25ml & 35ml": [
-          "Shampoo",
-          "Shower Gel",
-          "Moisturiser",
-          "Conditioner",
-          "Talcum Powder"
-        ],
-        "Orchid Tubes & Terraverde Tubes": [
-          "Shampoo",
-          "Shower Gel",
-          "Moisturiser",
-          "Conditioner"
-        ],
-        "380ml Dispensers with Brackets": [
-          "Farm fresh",
-          "Assorted Range",
-          "Cypress Citrus & Neroli",
-          "Bergamot Patchouli"
-        ],
-        "5 Ltr Cans": []
-      }
+      cataloguePDF: "/biotique-catalogue.pdf",
+      carouselImages: [
+        "/images/biotique-1.jpg",
+        "/images/biotique-2.jpg",
+        "/images/biotique-3.jpg",
+        "/images/biotique-4.jpg",
+        "/images/biotique-5.jpg"
+      ],
+      products: [
+        "Soaps: 15gm – 50gm",
+        "Assorted Range 25ml & 35ml: Shampoo, Shower Gel, Moisturiser, Conditioner, Talcum Powder",
+        "Orchid Tubes & Terraverde Tubes: Shampoo, Shower Gel, Moisturiser, Conditioner",
+        "380ml Dispensers with Brackets: Farm Fresh, Assorted Range, Cypress Citrus & Neroli, Bergamot Patchouli",
+        "5 Ltr Cans"
+      ]
     },
     diverseyLape: {
       title: "Diversey Lape Hotel Amenities",
@@ -816,26 +808,71 @@ const ProductCatalog = () => {
         </button>
         
         {expandedCategories['biotique'] && (
-          <div className="p-6 space-y-6">
-            {Object.entries(productData.biotique.categories).map(([catName, items], idx) => (
-              <div key={idx} className="border-l-4 border-green-600 pl-4">
-                <h4 className="font-playfair text-xl font-bold text-charcoal mb-4">{catName}</h4>
-                {items.length > 0 ? (
-                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3">
-                    {items.map((item, iIdx) => (
-                      <div key={iIdx} className="bg-green-50 p-3 rounded-lg border border-green-200 hover:shadow-md transition-all">
-                        <div className="h-24 bg-gray-200 rounded mb-2 flex items-center justify-center text-xs text-gray-500">
-                          Image
-                        </div>
-                        <p className="text-charcoal text-sm">{item}</p>
-                      </div>
+          <div className="p-6">
+            {/* Carousel */}
+            <div className="relative h-96 bg-gray-200 rounded-lg mb-6 overflow-hidden group">
+              <img 
+                src={productData.biotique.carouselImages[(carouselIndices['biotique'] || 0) % productData.biotique.carouselImages.length]} 
+                alt={`Biotique ${(carouselIndices['biotique'] || 0) + 1}`}
+                className="w-full h-full object-cover"
+              />
+              {/* Carousel navigation buttons */}
+              {productData.biotique.carouselImages.length > 1 && (
+                <>
+                  <button
+                    onClick={() => prevCarouselImage('biotique')}
+                    disabled={(carouselIndices['biotique'] || 0) === 0}
+                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-charcoal p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-30"
+                  >
+                    <ChevronLeft className="w-6 h-6" />
+                  </button>
+                  <button
+                    onClick={() => nextCarouselImage('biotique')}
+                    disabled={(carouselIndices['biotique'] || 0) >= productData.biotique.carouselImages.length - 1}
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-charcoal p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-30"
+                  >
+                    <ChevronRight className="w-6 h-6" />
+                  </button>
+                  {/* Carousel indicators */}
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+                    {productData.biotique.carouselImages.map((_, imgIdx) => (
+                      <div
+                        key={imgIdx}
+                        className={`w-2 h-2 rounded-full ${
+                          imgIdx === (carouselIndices['biotique'] || 0) ? 'bg-green-600 w-8' : 'bg-white/50'
+                        }`}
+                      />
                     ))}
                   </div>
-                ) : (
-                  <p className="text-charcoal-light italic">Products available - Images to be added</p>
-                )}
-              </div>
-            ))}
+                </>
+              )}
+            </div>
+
+            {/* Download Catalogue Button */}
+            <div className="mb-6 flex justify-center">
+              <a 
+                href={productData.biotique.cataloguePDF}
+                download
+                className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-md font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3"
+                data-testid="download-biotique-catalogue-btn"
+              >
+                <Download className="w-6 h-6" />
+                Download Biotique Catalogue (PDF)
+              </a>
+            </div>
+
+            {/* Product List */}
+            <div className="bg-green-50 p-6 rounded-lg">
+              <h4 className="font-playfair text-xl font-bold text-charcoal mb-4">Our Products:</h4>
+              <ul className="grid md:grid-cols-2 gap-3">
+                {productData.biotique.products.map((product, idx) => (
+                  <li key={idx} className="flex items-center gap-2 text-charcoal">
+                    <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
+                    <span className="font-medium">{product}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         )}
       </div>
