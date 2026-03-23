@@ -10,7 +10,7 @@ import {
   Truck, 
   Award, 
   ShieldCheck, 
-  DollarSign,
+  IndianRupee,
   Building2,
   Home,
   Hotel,
@@ -20,12 +20,16 @@ import {
   Mail,
   MessageCircle,
   Download,
-  ChevronDown
+  ChevronDown,
+  ChevronRight,
+  MapPin,
+  Users
 } from "lucide-react";
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [expandedCategories, setExpandedCategories] = useState({});
   const [formData, setFormData] = useState({
     name: '',
     hotelName: '',
@@ -33,12 +37,20 @@ function App() {
     quantity: ''
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [currentCarouselIndex, setCurrentCarouselIndex] = useState(0);
+
+  // Hero carousel images
+  const heroCarouselImages = [
+    "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+    "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&q=80",
+    "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=1200&q=80",
+    "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200&q=80"
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
       
-      // Update active section based on scroll position
       const sections = ['home', 'products', 'about', 'clients', 'solutions', 'catalogue', 'contact'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
@@ -55,6 +67,14 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Auto-advance carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentCarouselIndex((prev) => (prev + 1) % heroCarouselImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [heroCarouselImages.length]);
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -66,6 +86,13 @@ function App() {
         behavior: 'smooth'
       });
     }
+  };
+
+  const toggleCategory = (categoryId) => {
+    setExpandedCategories(prev => ({
+      ...prev,
+      [categoryId]: !prev[categoryId]
+    }));
   };
 
   const handleFormChange = (e) => {
@@ -84,46 +111,6 @@ function App() {
       setFormData({ name: '', hotelName: '', requirement: '', quantity: '' });
     }, 3000);
   };
-
-  const productCategories = [
-    {
-      title: "Hotel Amenities",
-      description: "Complete toiletries kits, dental kits, guest accessories, and essential bathroom supplies for superior guest comfort.",
-      icon: Package,
-      image: "https://images.unsplash.com/photo-1600948836101-f9ffda59d250?w=800&q=80",
-      items: ["Toiletries Kits", "Dental Kits", "Guest Accessories", "Bathroom Essentials"]
-    },
-    {
-      title: "Purely Serene Premium Amenities",
-      description: "Luxury wet amenities crafted for discerning guests. Experience the pinnacle of hospitality elegance.",
-      icon: Sparkles,
-      image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&q=80",
-      items: ["Premium Shampoo", "Shower Gel", "Body Lotion", "Moisturizer", "Conditioner"],
-      isPremium: true,
-      brand: "A Purely Serene Brand"
-    },
-    {
-      title: "Housekeeping Supplies",
-      description: "Professional-grade cleaning chemicals, tools, and hygiene supplies ensuring pristine property maintenance.",
-      icon: SprayCan,
-      image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=800&q=80",
-      items: ["Cleaning Chemicals", "Hygiene Supplies", "Maintenance Tools", "Sanitization Products"]
-    },
-    {
-      title: "Kitchen Consumables",
-      description: "Premium food service essentials including aluminum foil, cling film, tissues, and eco-friendly disposables.",
-      icon: ChefHat,
-      image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&q=80",
-      items: ["Aluminum Foil", "Cling Film", "Paper Tissues", "Food Packaging", "Disposables"]
-    },
-    {
-      title: "Hotel Stationery",
-      description: "Elegant branded stationery solutions including notepads, pens, folders, and premium writing materials.",
-      icon: FileText,
-      image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80",
-      items: ["Notepads", "Premium Pens", "Branded Folders", "Envelopes", "Writing Materials"]
-    }
-  ];
 
   const whyChooseUs = [
     {
@@ -147,9 +134,14 @@ function App() {
       description: "Dependable delivery schedules and inventory management to keep your operations running smoothly."
     },
     {
-      icon: DollarSign,
+      icon: IndianRupee,
       title: "Competitive Pricing",
       description: "Premium quality products at competitive wholesale rates, optimizing your operational costs."
+    },
+    {
+      icon: Users,
+      title: "Expo Participation",
+      description: "Active participants in leading hospitality expos, staying updated with industry trends and innovations."
     }
   ];
 
@@ -162,7 +154,6 @@ function App() {
     { icon: Calendar, title: "Event Planners", description: "Event supply solutions" }
   ];
 
-  // Placeholder logos for carousel
   const clientLogos = [
     "https://via.placeholder.com/180x80/C6A96B/FFFFFF?text=Hotel+Logo+1",
     "https://via.placeholder.com/180x80/C6A96B/FFFFFF?text=Resort+Logo+2",
@@ -262,70 +253,81 @@ function App() {
               </div>
             </div>
             <div className="relative animate-fade-in">
-              <img 
-                src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&q=80" 
-                alt="Luxury hotel amenities" 
-                className="rounded-lg shadow-2xl w-full h-[500px] object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-gold/20 to-transparent rounded-lg"></div>
+              <div className="relative h-[500px] overflow-hidden rounded-lg shadow-2xl">
+                {heroCarouselImages.map((img, index) => (
+                  <img 
+                    key={index}
+                    src={img} 
+                    alt={`Luxury hotel amenities ${index + 1}`}
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                      index === currentCarouselIndex ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  />
+                ))}
+                <div className="absolute inset-0 bg-gradient-to-tr from-gold/20 to-transparent"></div>
+                
+                {/* Carousel indicators */}
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+                  {heroCarouselImages.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentCarouselIndex(index)}
+                      className={`w-3 h-3 rounded-full transition-all ${
+                        index === currentCarouselIndex ? 'bg-gold w-8' : 'bg-white/50'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Product Categories Section */}
-      <section id="products" className="py-20 px-4 sm:px-6 lg:px-8 bg-white" data-testid="products-section">
+      {/* Image Carousel Section Above Products */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="relative h-64 md:h-96 overflow-hidden rounded-xl shadow-xl">
+            {heroCarouselImages.map((img, index) => (
+              <img 
+                key={index}
+                src={img} 
+                alt={`Showcase ${index + 1}`}
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                  index === currentCarouselIndex ? 'opacity-100' : 'opacity-0'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Product Categories Section - Will be updated in next file due to size */}
+      <section id="products" className="py-20 px-4 sm:px-6 lg:px-8 bg-ivory" data-testid="products-section">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="font-playfair text-4xl md:text-5xl font-bold text-charcoal mb-4">
-              Our Product Range
+              Our Comprehensive Product Range
             </h2>
             <p className="text-lg text-charcoal-light max-w-3xl mx-auto">
-              Comprehensive hospitality supplies designed to exceed guest expectations and streamline your operations.
+              Complete hospitality supplies designed to exceed guest expectations and streamline your operations.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {productCategories.map((category, index) => (
-              <div 
-                key={index}
-                className={`group bg-ivory rounded-lg overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 ${
-                  category.isPremium ? 'border-2 border-gold' : ''
-                }`}
-                data-testid={`product-card-${index}`}
-              >
-                <div className="relative overflow-hidden h-64">
-                  <img 
-                    src={category.image} 
-                    alt={category.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="flex items-center gap-3 mb-2">
-                      <category.icon className="w-8 h-8 text-gold" />
-                      <h3 className="font-playfair text-2xl font-bold text-white">
-                        {category.title}
-                      </h3>
-                    </div>
-                    {category.isPremium && (
-                      <p className="text-gold text-sm font-medium italic">{category.brand}</p>
-                    )}
-                  </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-charcoal-light mb-4">{category.description}</p>
-                  <ul className="space-y-2">
-                    {category.items.map((item, idx) => (
-                      <li key={idx} className="flex items-center gap-2 text-sm text-charcoal">
-                        <CheckCircle2 className="w-4 h-4 text-gold flex-shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
+          {/* Note: Product catalog structure will be in a separate component file */}
+          <div className="bg-white p-8 rounded-lg shadow-lg text-center">
+            <p className="text-xl text-charcoal mb-4">
+              Our detailed product catalog with all categories is being prepared.
+            </p>
+            <p className="text-charcoal-light">
+              Please contact us for the complete product list and pricing.
+            </p>
+            <button 
+              onClick={() => scrollToSection('contact')}
+              className="mt-6 bg-gold hover:bg-gold-dark text-white px-8 py-3 rounded-md font-medium transition-all duration-300"
+            >
+              Contact Us for Product Details
+            </button>
           </div>
         </div>
       </section>
@@ -478,7 +480,7 @@ function App() {
               Download PDF Catalogue
             </a>
             <a 
-              href="https://wa.me/919494600101?text=Hi, I would like to request the product catalogue for Amaravati Enterprises"
+              href="https://wa.me/+919494600101?text=Hi, I would like to request the product catalogue for Amaravati Enterprises"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-charcoal text-white hover:bg-charcoal-light px-8 py-4 rounded-md font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3"
@@ -524,13 +526,26 @@ function App() {
                   </div>
                   <div className="flex items-center gap-4">
                     <div className="bg-gold/10 w-12 h-12 rounded-lg flex items-center justify-center">
-                      <Phone className="w-6 h-6 text-gold" />
+                      <Mail className="w-6 h-6 text-gold" />
                     </div>
                     <div>
-                      <p className="text-sm text-charcoal-light">Alternate</p>
-                      <a href="tel:+919246558811" className="text-lg font-semibold text-charcoal hover:text-gold">
-                        +91 92465 58811
+                      <p className="text-sm text-charcoal-light">Email us</p>
+                      <a href="mailto:amaravatienterprises.info@gmail.com" className="text-lg font-semibold text-charcoal hover:text-gold break-all">
+                        amaravatienterprises.info@gmail.com
                       </a>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="bg-gold/10 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-6 h-6 text-gold" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-charcoal-light">Visit us</p>
+                      <p className="text-lg font-semibold text-charcoal">
+                        C3, Banjara Gardens, Banjara Hills<br />
+                        Rd No 12, Hyderabad<br />
+                        Telangana, India – 500 034
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
@@ -540,7 +555,7 @@ function App() {
                     <div>
                       <p className="text-sm text-charcoal-light">WhatsApp</p>
                       <a 
-                        href="https://wa.me/919494600101"
+                        href="https://wa.me/+919494600101"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-lg font-semibold text-charcoal hover:text-gold"
@@ -681,7 +696,7 @@ function App() {
 
       {/* Floating WhatsApp Button */}
       <a
-        href="https://wa.me/919494600101?text=Hi, I'm interested in learning more about your hospitality products"
+        href="https://wa.me/+919494600101?text=Hi, I'm interested in learning more about your hospitality products"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white w-16 h-16 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 z-50"
