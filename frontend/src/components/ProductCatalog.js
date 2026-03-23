@@ -135,15 +135,9 @@ const ProductCatalog = () => {
       ]
     },
     housekeepingKitchen: {
-      title: "House Keeping & Kitchen Consumables",
+      title: "House Keeping Supplies & Kitchen Consumables",
       color: "blue",
       cataloguePDF: "/housekeeping-kitchen-catalogue.pdf",
-      carouselImages: [
-        "/images/clarion-amenities.jpg",  // Temporary - Replace with extracted PDF images
-        "/images/white-leaf-amenities.jpg",
-        "/images/deccan-serai-amenities.jpg",
-        "/images/park-amenities.jpg"
-      ],
       categories: {
         "Carts & Trolleys": [
           "Janitorial Cart",
@@ -242,27 +236,24 @@ const ProductCatalog = () => {
     tcmSupplies: {
       title: "TCM Supplies",
       color: "green",
-      categories: {
-        "Goodwyn Tea Sachets": [
-          "Assam Tea",
-          "Green Tea",
-          "Masala Tea",
-          "Chamomile Tea",
-          "Darjeeling Tea",
-          "Earl Grey Tea",
-          "English Breakfast Tea"
-        ],
-        "Other Supplies": [
-          "Sugar Sachets",
-          "Brown Sugar Sachets",
-          "Coffee Sachets",
-          "Sugar Free Sachets",
-          "Salt/ Pepper Sachets",
-          "Wooden/ Plastic Stirrer",
-          "Tea Spoon"
-        ],
-        "Equipment": ["Kettle (multiple images)", "Tray (multiple images)"]
-      }
+      carouselImages: [
+        "/images/tcm-1.jpg",
+        "/images/tcm-2.jpg",
+        "/images/tcm-3.jpg",
+        "/images/tcm-4.jpg"
+      ],
+      products: [
+        "Goodwyn Tea Sachets: Assam Tea, Green Tea, Masala Tea, Chamomile Tea, Darjeeling Tea, Earl Grey Tea, English Breakfast Tea",
+        "Sugar Sachets",
+        "Brown Sugar Sachets",
+        "Coffee Sachets",
+        "Sugar Free Sachets",
+        "Salt/ Pepper Sachets",
+        "Wooden/ Plastic Stirrer",
+        "Tea Spoon",
+        "Kettle",
+        "Tray"
+      ]
     },
     biotique: {
       title: "Biotique Hotel Amenities",
@@ -672,45 +663,6 @@ const ProductCatalog = () => {
         
         {expandedCategories['housekeepingKitchen'] && (
           <div className="p-6">
-            {/* Carousel */}
-            <div className="relative h-96 bg-gray-200 rounded-lg mb-6 overflow-hidden group">
-              <img 
-                src={productData.housekeepingKitchen.carouselImages[(carouselIndices['housekeepingKitchen'] || 0) % productData.housekeepingKitchen.carouselImages.length]} 
-                alt={`House Keeping & Kitchen ${(carouselIndices['housekeepingKitchen'] || 0) + 1}`}
-                className="w-full h-full object-cover"
-              />
-              {/* Carousel navigation buttons */}
-              {productData.housekeepingKitchen.carouselImages.length > 1 && (
-                <>
-                  <button
-                    onClick={() => prevCarouselImage('housekeepingKitchen')}
-                    disabled={(carouselIndices['housekeepingKitchen'] || 0) === 0}
-                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-charcoal p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-30"
-                  >
-                    <ChevronLeft className="w-6 h-6" />
-                  </button>
-                  <button
-                    onClick={() => nextCarouselImage('housekeepingKitchen')}
-                    disabled={(carouselIndices['housekeepingKitchen'] || 0) >= productData.housekeepingKitchen.carouselImages.length - 1}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-charcoal p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-30"
-                  >
-                    <ChevronRight className="w-6 h-6" />
-                  </button>
-                  {/* Carousel indicators */}
-                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-                    {productData.housekeepingKitchen.carouselImages.map((_, imgIdx) => (
-                      <div
-                        key={imgIdx}
-                        className={`w-2 h-2 rounded-full ${
-                          imgIdx === (carouselIndices['housekeepingKitchen'] || 0) ? 'bg-blue-600 w-8' : 'bg-white/50'
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
-
             {/* Download Catalogue Button */}
             <div className="mb-6 flex justify-center">
               <a 
@@ -783,21 +735,57 @@ const ProductCatalog = () => {
         </button>
         
         {expandedCategories['tcm'] && (
-          <div className="p-6 space-y-6">
-            {Object.entries(productData.tcmSupplies.categories).map(([catName, items], idx) => (
-              <div key={idx} className="border-l-4 border-green-500 pl-4">
-                <h4 className="font-playfair text-xl font-bold text-charcoal mb-4">{catName}</h4>
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3">
-                  {items.map((item, iIdx) => (
-                    <div key={iIdx} className="bg-green-50 p-3 rounded-lg border border-green-200 hover:shadow-md transition-all">
-                      <p className="text-charcoal text-sm">{item}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-            <div className="bg-green-50 rounded-lg p-4 text-center">
-              <p className="text-green-900 text-sm">Single image placeholder for tea/coffee sachets, stirrers, and spoons</p>
+          <div className="p-6">
+            {/* Carousel */}
+            <div className="relative h-96 bg-gray-200 rounded-lg mb-6 overflow-hidden group">
+              <img 
+                src={productData.tcmSupplies.carouselImages[(carouselIndices['tcm'] || 0) % productData.tcmSupplies.carouselImages.length]} 
+                alt={`TCM Supplies ${(carouselIndices['tcm'] || 0) + 1}`}
+                className="w-full h-full object-cover"
+              />
+              {/* Carousel navigation buttons */}
+              {productData.tcmSupplies.carouselImages.length > 1 && (
+                <>
+                  <button
+                    onClick={() => prevCarouselImage('tcm')}
+                    disabled={(carouselIndices['tcm'] || 0) === 0}
+                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-charcoal p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-30"
+                  >
+                    <ChevronLeft className="w-6 h-6" />
+                  </button>
+                  <button
+                    onClick={() => nextCarouselImage('tcm')}
+                    disabled={(carouselIndices['tcm'] || 0) >= productData.tcmSupplies.carouselImages.length - 1}
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-charcoal p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-30"
+                  >
+                    <ChevronRight className="w-6 h-6" />
+                  </button>
+                  {/* Carousel indicators */}
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+                    {productData.tcmSupplies.carouselImages.map((_, imgIdx) => (
+                      <div
+                        key={imgIdx}
+                        className={`w-2 h-2 rounded-full ${
+                          imgIdx === (carouselIndices['tcm'] || 0) ? 'bg-green-600 w-8' : 'bg-white/50'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* Product List */}
+            <div className="bg-green-50 p-6 rounded-lg">
+              <h4 className="font-playfair text-xl font-bold text-charcoal mb-4">Our Products:</h4>
+              <ul className="grid md:grid-cols-2 gap-3">
+                {productData.tcmSupplies.products.map((product, idx) => (
+                  <li key={idx} className="flex items-center gap-2 text-charcoal">
+                    <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
+                    <span className="font-medium">{product}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         )}
