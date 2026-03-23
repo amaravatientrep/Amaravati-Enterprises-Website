@@ -268,7 +268,8 @@ const ProductCatalog = () => {
         "/images/biotique-2.jpg",
         "/images/biotique-3.jpg",
         "/images/biotique-4.jpg",
-        "/images/biotique-5.jpg"
+        "/images/biotique-5.jpg",
+        "/images/biotique-6.jpg"
       ],
       products: [
         "Soaps: 15gm – 50gm",
