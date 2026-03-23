@@ -21,13 +21,12 @@ const ProductCatalog = () => {
         dryAmenities: {
           title: "Dry Amenities",
           packaging: [
-            "Laminated Paper Board Boxes",
-            "Textured Card Boxes",
-            "Kraft Board Boxes",
-            "Butter Paper Pouches",
-            "Chrome Paper Pouches",
-            "Kraft Paper Pouches",
-            "Imported Kraft Paper Pouches"
+            { name: "Laminated Paper Board Boxes", image: "/images/laminated-board-boxes.jpg" },
+            { name: "Textured Card Boxes", image: "/images/laminated-board-boxes.jpg" },
+            { name: "Kraft Board Boxes", image: "/images/kraft-board-boxes.jpg" },
+            { name: "Butter Paper Pouches", image: "/images/butter-paper-pouches.jpg" },
+            { name: "Kraft Paper Pouches", image: "/images/kraft-paper-pouches.jpg" },
+            { name: "Imported Kraft Paper Pouches", image: "/images/imported-kraft-pouches.jpg" }
           ],
           items: [
             "Dental Kit",
@@ -306,9 +305,13 @@ const ProductCatalog = () => {
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
                       {productData.hotelAmenities.subCategories.dryAmenities.packaging.map((pkg, idx) => (
                         <div key={idx} className="bg-ivory p-3 rounded-lg border border-gold/20 hover:border-gold/50 transition-all">
-                          <p className="text-charcoal text-sm">{pkg}</p>
-                          <div className="mt-2 h-24 bg-gray-200 rounded flex items-center justify-center text-xs text-gray-500">
-                            Image placeholder
+                          <p className="text-charcoal text-sm font-medium mb-2">{pkg.name}</p>
+                          <div className="h-48 bg-gray-100 rounded overflow-hidden">
+                            <img 
+                              src={pkg.image} 
+                              alt={pkg.name}
+                              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                            />
                           </div>
                         </div>
                       ))}
