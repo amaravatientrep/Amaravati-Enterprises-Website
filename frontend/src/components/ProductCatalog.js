@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { ChevronDown, ChevronRight, Package } from "lucide-react";
+import { ChevronDown, ChevronRight, ChevronLeft, Package } from "lucide-react";
 
 const ProductCatalog = () => {
   const [expandedCategories, setExpandedCategories] = useState({});
   const [expandedSubCategories, setExpandedSubCategories] = useState({});
+  const [carouselIndices, setCarouselIndices] = useState({});
 
   const toggleCategory = (id) => {
     setExpandedCategories(prev => ({ ...prev, [id]: !prev[id] }));
@@ -11,6 +12,20 @@ const ProductCatalog = () => {
 
   const toggleSubCategory = (id) => {
     setExpandedSubCategories(prev => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  const nextCarouselImage = (categoryId) => {
+    setCarouselIndices(prev => ({
+      ...prev,
+      [categoryId]: ((prev[categoryId] || 0) + 1)
+    }));
+  };
+
+  const prevCarouselImage = (categoryId) => {
+    setCarouselIndices(prev => ({
+      ...prev,
+      [categoryId]: Math.max(0, (prev[categoryId] || 0) - 1)
+    }));
   };
 
   const productData = {
@@ -46,12 +61,21 @@ const ProductCatalog = () => {
         wetAmenities: {
           title: "Wet Amenities",
           items: {
-            "Soap": ["Glycerin Soap", "Cream Soap"],
-            "Shampoo": [],
-            "Shower Gel": [],
-            "Moisturizer": [],
-            "Conditioner": [],
-            "Wall Mount Dispensers": []
+            "Soap": {
+              variants: ["Glycerin Soap", "Cream Soap"],
+              carouselImages: [
+                "/images/soap-1.jpg",
+                "/images/soap-2.jpg",
+                "/images/soap-3.jpg",
+                "/images/soap-4.jpg",
+                "/images/soap-5.jpg"
+              ]
+            },
+            "Shampoo": { variants: [], carouselImages: [] },
+            "Shower Gel": { variants: [], carouselImages: [] },
+            "Moisturizer": { variants: [], carouselImages: [] },
+            "Conditioner": { variants: [], carouselImages: [] },
+            "Wall Mount Dispensers": { variants: [], carouselImages: [] }
           }
         }
       }
@@ -382,21 +406,68 @@ const ProductCatalog = () => {
               
               {expandedSubCategories['wetAmenities'] && (
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {Object.entries(productData.hotelAmenities.subCategories.wetAmenities.items).map(([category, variants], idx) => (
-                    <div key={idx} className="bg-white p-4 rounded-lg border border-gray-200 hover:shadow-md transition-all">
-                      <div className="h-32 bg-gray-200 rounded mb-2 flex items-center justify-center text-xs text-gray-500">
-                        Image placeholder
+                  {Object.entries(productData.hotelAmenities.subCategories.wetAmenities.items).map(([category, data], idx) => {
+                    const hasCarousel = data.carouselImages && data.carouselImages.length > 0;
+                    const currentIndex = carouselIndices[category] || 0;
+                    const maxIndex = hasCarousel ? data.carouselImages.length - 1 : 0;
+                    
+                    return (
+                      <div key={idx} className="bg-white p-4 rounded-lg border border-gray-200 hover:shadow-md transition-all">
+                        {hasCarousel ? (
+                          // Carousel for Soap
+                          <div className="relative h-48 bg-gray-200 rounded mb-2 overflow-hidden group">
+                            <img 
+                              src={data.carouselImages[currentIndex % data.carouselImages.length]} 
+                              alt={`${category} ${currentIndex + 1}`}
+                              className="w-full h-full object-cover"
+                            />
+                            {/* Carousel navigation buttons */}
+                            {data.carouselImages.length > 1 && (
+                              <>
+                                <button
+                                  onClick={() => prevCarouselImage(category)}
+                                  disabled={currentIndex === 0}
+                                  className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-charcoal p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-30"
+                                >
+                                  <ChevronLeft className="w-5 h-5" />
+                                </button>
+                                <button
+                                  onClick={() => nextCarouselImage(category)}
+                                  disabled={currentIndex >= maxIndex}
+                                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-charcoal p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-30"
+                                >
+                                  <ChevronRight className="w-5 h-5" />
+                                </button>
+                                {/* Carousel indicators */}
+                                <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-1">
+                                  {data.carouselImages.map((_, imgIdx) => (
+                                    <div
+                                      key={imgIdx}
+                                      className={`w-2 h-2 rounded-full ${
+                                        imgIdx === currentIndex ? 'bg-gold' : 'bg-white/50'
+                                      }`}
+                                    />
+                                  ))}
+                                </div>
+                              </>
+                            )}
+                          </div>
+                        ) : (
+                          <div className="h-32 bg-gray-200 rounded mb-2 flex items-center justify-center text-xs text-gray-500">
+                            Image placeholder
+                          </div>
+                        )}
+                        <h5 className="font-semibold text-charcoal mb-1">{category}</h5>
+                        {data.variants && data.variants.length > 0 && (
+                          <ul className="text-sm text-charcoal-light space-y-1">
+                            {data.variants.map((variant, vIdx) => (
+                              <li key={vIdx}>• {variant}</li>
+                            ))}
+                          </ul>
+                        )}
                       </div>
-                      <h5 className="font-semibold text-charcoal mb-1">{category}</h5>
-                      {variants.length > 0 && (
-                        <ul className="text-sm text-charcoal-light space-y-1">
-                          {variants.map((variant, vIdx) => (
-                            <li key={vIdx}>• {variant}</li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </div>
