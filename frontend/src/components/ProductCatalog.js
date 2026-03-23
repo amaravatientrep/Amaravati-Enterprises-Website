@@ -68,7 +68,9 @@ const ProductCatalog = () => {
                 "/images/soap-2.jpg",
                 "/images/soap-3.jpg",
                 "/images/soap-4.jpg",
-                "/images/soap-5.jpg"
+                "/images/soap-5.jpg",
+                "/images/soap-6.jpg",
+                "/images/soap-7.jpg"
               ]
             },
             "Shampoo": { variants: [], carouselImages: [] },
