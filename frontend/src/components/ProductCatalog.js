@@ -73,10 +73,16 @@ const ProductCatalog = () => {
                 "/images/soap-7.jpg"
               ]
             },
-            "Shampoo": { variants: [], carouselImages: [] },
-            "Shower Gel": { variants: [], carouselImages: [] },
-            "Moisturizer": { variants: [], carouselImages: [] },
-            "Conditioner": { variants: [], carouselImages: [] },
+            "Shampoo, Shower Gel, Moisturiser, Conditioner": {
+              variants: ["Available in 20ml, 25ml, 30ml, Tubes, 5lts Cans"],
+              carouselImages: [
+                "/images/wet-amenities-1.jpg",
+                "/images/wet-amenities-2.jpg",
+                "/images/wet-amenities-3.jpg",
+                "/images/wet-amenities-4.jpg",
+                "/images/wet-amenities-5.jpg"
+              ]
+            },
             "Wall Mount Dispensers": { variants: [], carouselImages: [] }
           }
         }
