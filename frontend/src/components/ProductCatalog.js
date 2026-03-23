@@ -282,14 +282,18 @@ const ProductCatalog = () => {
     diverseyLape: {
       title: "Diversey Lape Hotel Amenities",
       color: "purple",
-      categories: {
-        "Premium 500ml Anti Theft Dispensers & 5 Ltr Cans": [
-          "Shampoo & Conditioner (2 in 1)",
-          "Shower Gel",
-          "Body Lotion",
-          "Hand Wash"
-        ]
-      }
+      carouselImages: [
+        "/images/diversey-lape-1.jpg",
+        "/images/diversey-lape-2.jpg"
+      ],
+      products: [
+        "Premium 500ml Anti Theft Dispensers",
+        "5 Ltr Refill Cans",
+        "Shampoo & Conditioner (2 in 1)",
+        "Shower Gel",
+        "Body Lotion",
+        "Hand Wash"
+      ]
     }
   };
 
@@ -899,22 +903,58 @@ const ProductCatalog = () => {
         </button>
         
         {expandedCategories['diversey'] && (
-          <div className="p-6 space-y-6">
-            {Object.entries(productData.diverseyLape.categories).map(([catName, items], idx) => (
-              <div key={idx} className="border-l-4 border-purple-500 pl-4">
-                <h4 className="font-playfair text-xl font-bold text-charcoal mb-4">{catName}</h4>
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {items.map((item, iIdx) => (
-                    <div key={iIdx} className="bg-purple-50 p-4 rounded-lg border border-purple-200 hover:shadow-md transition-all">
-                      <div className="h-32 bg-gray-200 rounded mb-2 flex items-center justify-center text-xs text-gray-500">
-                        Image placeholder
-                      </div>
-                      <p className="text-charcoal text-sm font-medium">{item}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
+          <div className="p-6">
+            {/* Carousel */}
+            <div className="relative h-96 bg-gray-200 rounded-lg mb-6 overflow-hidden group">
+              <img 
+                src={productData.diverseyLape.carouselImages[(carouselIndices['diversey'] || 0) % productData.diverseyLape.carouselImages.length]} 
+                alt={`Diversey Lape ${(carouselIndices['diversey'] || 0) + 1}`}
+                className="w-full h-full object-cover"
+              />
+              {/* Carousel navigation buttons */}
+              {productData.diverseyLape.carouselImages.length > 1 && (
+                <>
+                  <button
+                    onClick={() => prevCarouselImage('diversey')}
+                    disabled={(carouselIndices['diversey'] || 0) === 0}
+                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-charcoal p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-30"
+                  >
+                    <ChevronLeft className="w-6 h-6" />
+                  </button>
+                  <button
+                    onClick={() => nextCarouselImage('diversey')}
+                    disabled={(carouselIndices['diversey'] || 0) >= productData.diverseyLape.carouselImages.length - 1}
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-charcoal p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-30"
+                  >
+                    <ChevronRight className="w-6 h-6" />
+                  </button>
+                  {/* Carousel indicators */}
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+                    {productData.diverseyLape.carouselImages.map((_, imgIdx) => (
+                      <div
+                        key={imgIdx}
+                        className={`w-2 h-2 rounded-full ${
+                          imgIdx === (carouselIndices['diversey'] || 0) ? 'bg-purple-600 w-8' : 'bg-white/50'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* Product List */}
+            <div className="bg-purple-50 p-6 rounded-lg">
+              <h4 className="font-playfair text-xl font-bold text-charcoal mb-4">Our Products:</h4>
+              <ul className="grid md:grid-cols-2 gap-3">
+                {productData.diverseyLape.products.map((product, idx) => (
+                  <li key={idx} className="flex items-center gap-2 text-charcoal">
+                    <CheckCircle2 className="w-5 h-5 text-purple-600 flex-shrink-0" />
+                    <span className="font-medium">{product}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         )}
       </div>
