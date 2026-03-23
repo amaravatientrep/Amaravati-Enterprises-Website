@@ -240,7 +240,11 @@ const ProductCatalog = () => {
         "/images/tcm-1.jpg",
         "/images/tcm-2.jpg",
         "/images/tcm-3.jpg",
-        "/images/tcm-4.jpg"
+        "/images/tcm-4.jpg",
+        "/images/tcm-5.jpg",
+        "/images/tcm-6.jpg",
+        "/images/tcm-7.jpg",
+        "/images/tcm-8.jpg"
       ],
       products: [
         "Goodwyn Tea Sachets: Assam Tea, Green Tea, Masala Tea, Chamomile Tea, Darjeeling Tea, Earl Grey Tea, English Breakfast Tea",
