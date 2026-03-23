@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, ChevronRight, ChevronLeft, Package, CheckCircle2 } from "lucide-react";
+import { ChevronDown, ChevronRight, ChevronLeft, Package, CheckCircle2, Download } from "lucide-react";
 
 const ProductCatalog = () => {
   const [expandedCategories, setExpandedCategories] = useState({});
@@ -134,9 +134,16 @@ const ProductCatalog = () => {
         "Letter Heads"
       ]
     },
-    housekeeping: {
-      title: "House Keeping Supplies",
+    housekeepingKitchen: {
+      title: "House Keeping & Kitchen Consumables",
       color: "blue",
+      cataloguePDF: "/housekeeping-kitchen-catalogue.pdf",
+      carouselImages: [
+        "/images/clarion-amenities.jpg",  // Temporary - Replace with extracted PDF images
+        "/images/white-leaf-amenities.jpg",
+        "/images/deccan-serai-amenities.jpg",
+        "/images/park-amenities.jpg"
+      ],
       categories: {
         "Carts & Trolleys": [
           "Janitorial Cart",
@@ -220,21 +227,17 @@ const ProductCatalog = () => {
             "Napthalene Balls"
           ],
           highlight: "Diversey Chemicals, TASKI, Suma, Crew, Clax"
-        }
+        },
+        "Kitchen Consumables": [
+          "Plastic/ Paper/ Aluminum Containers",
+          "Plastic/ Bagasse Meal Trays",
+          "Plastic/ Bagasse Bowls",
+          "Paper/ Plastic/ Ripple Glasses",
+          "Paper/ Plastic/ Wooden Cutlery",
+          "Cling Film",
+          "Aluminum Foil"
+        ]
       }
-    },
-    kitchenConsumables: {
-      title: "Kitchen Consumables",
-      color: "orange",
-      items: [
-        "Plastic/ Paper/ Aluminum Containers",
-        "Plastic/ Bagasse Meal Trays",
-        "Plastic/ Bagasse Bowls",
-        "Paper/ Plastic/ Ripple Glasses",
-        "Paper/ Plastic/ Wooden Cutlery",
-        "Cling Film",
-        "Aluminum Foil"
-      ]
     },
     tcmSupplies: {
       title: "TCM Supplies",
@@ -647,92 +650,111 @@ const ProductCatalog = () => {
         )}
       </div>
 
-      {/* House Keeping Supplies */}
+      {/* House Keeping & Kitchen Consumables - Merged Category */}
       <div className="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-blue-500/20">
         <button
-          onClick={() => toggleCategory('housekeeping')}
+          onClick={() => toggleCategory('housekeepingKitchen')}
           className="w-full px-6 py-4 flex items-center justify-between bg-gradient-to-r from-blue-500/10 to-transparent hover:from-blue-500/20 transition-all"
-          data-testid="category-housekeeping"
+          data-testid="category-housekeeping-kitchen"
         >
           <div className="flex items-center gap-3">
             <Package className="w-6 h-6 text-blue-600" />
             <h3 className="font-playfair text-2xl font-bold text-charcoal">
-              {productData.housekeeping.title}
+              {productData.housekeepingKitchen.title}
             </h3>
           </div>
-          {expandedCategories['housekeeping'] ? (
+          {expandedCategories['housekeepingKitchen'] ? (
             <ChevronDown className="w-6 h-6 text-blue-600" />
           ) : (
             <ChevronRight className="w-6 h-6 text-blue-600" />
           )}
         </button>
         
-        {expandedCategories['housekeeping'] && (
-          <div className="p-6 space-y-6">
-            {Object.entries(productData.housekeeping.categories).map(([catName, items], idx) => (
-              <div key={idx} className="border-l-4 border-blue-500 pl-4">
-                <h4 className="font-playfair text-xl font-bold text-charcoal mb-4">{catName}</h4>
-                {typeof items === 'object' && items.items ? (
-                  <>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
-                      {items.items.map((item, iIdx) => (
+        {expandedCategories['housekeepingKitchen'] && (
+          <div className="p-6">
+            {/* Carousel */}
+            <div className="relative h-96 bg-gray-200 rounded-lg mb-6 overflow-hidden group">
+              <img 
+                src={productData.housekeepingKitchen.carouselImages[(carouselIndices['housekeepingKitchen'] || 0) % productData.housekeepingKitchen.carouselImages.length]} 
+                alt={`House Keeping & Kitchen ${(carouselIndices['housekeepingKitchen'] || 0) + 1}`}
+                className="w-full h-full object-cover"
+              />
+              {/* Carousel navigation buttons */}
+              {productData.housekeepingKitchen.carouselImages.length > 1 && (
+                <>
+                  <button
+                    onClick={() => prevCarouselImage('housekeepingKitchen')}
+                    disabled={(carouselIndices['housekeepingKitchen'] || 0) === 0}
+                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-charcoal p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-30"
+                  >
+                    <ChevronLeft className="w-6 h-6" />
+                  </button>
+                  <button
+                    onClick={() => nextCarouselImage('housekeepingKitchen')}
+                    disabled={(carouselIndices['housekeepingKitchen'] || 0) >= productData.housekeepingKitchen.carouselImages.length - 1}
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-charcoal p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-30"
+                  >
+                    <ChevronRight className="w-6 h-6" />
+                  </button>
+                  {/* Carousel indicators */}
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+                    {productData.housekeepingKitchen.carouselImages.map((_, imgIdx) => (
+                      <div
+                        key={imgIdx}
+                        className={`w-2 h-2 rounded-full ${
+                          imgIdx === (carouselIndices['housekeepingKitchen'] || 0) ? 'bg-blue-600 w-8' : 'bg-white/50'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* Download Catalogue Button */}
+            <div className="mb-6 flex justify-center">
+              <a 
+                href={productData.housekeepingKitchen.cataloguePDF}
+                download
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-md font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3"
+                data-testid="download-hk-catalogue-btn"
+              >
+                <Download className="w-6 h-6" />
+                Download Complete Catalogue (PDF)
+              </a>
+            </div>
+
+            {/* Product Categories */}
+            <div className="space-y-6">
+              {Object.entries(productData.housekeepingKitchen.categories).map(([catName, items], idx) => (
+                <div key={idx} className="border-l-4 border-blue-500 pl-4">
+                  <h4 className="font-playfair text-xl font-bold text-charcoal mb-4">{catName}</h4>
+                  {typeof items === 'object' && items.items ? (
+                    <>
+                      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
+                        {items.items.map((item, iIdx) => (
+                          <div key={iIdx} className="bg-ivory p-3 rounded-lg border border-gray-200 hover:shadow-md transition-all">
+                            <p className="text-charcoal text-sm">{item}</p>
+                          </div>
+                        ))}
+                      </div>
+                      {items.highlight && (
+                        <div className="bg-blue-50 border-2 border-blue-500 rounded-lg p-4 mt-4">
+                          <p className="text-blue-900 font-semibold text-lg text-center">
+                            {items.highlight}
+                          </p>
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3">
+                      {items.map((item, iIdx) => (
                         <div key={iIdx} className="bg-ivory p-3 rounded-lg border border-gray-200 hover:shadow-md transition-all">
                           <p className="text-charcoal text-sm">{item}</p>
                         </div>
                       ))}
                     </div>
-                    {items.highlight && (
-                      <div className="bg-blue-50 border-2 border-blue-500 rounded-lg p-4 mt-4">
-                        <p className="text-blue-900 font-semibold text-lg text-center">
-                          {items.highlight}
-                        </p>
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3">
-                    {items.map((item, iIdx) => (
-                      <div key={iIdx} className="bg-ivory p-3 rounded-lg border border-gray-200 hover:shadow-md transition-all">
-                        <p className="text-charcoal text-sm">{item}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-
-      {/* Kitchen Consumables */}
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-orange-500/20">
-        <button
-          onClick={() => toggleCategory('kitchen')}
-          className="w-full px-6 py-4 flex items-center justify-between bg-gradient-to-r from-orange-500/10 to-transparent hover:from-orange-500/20 transition-all"
-          data-testid="category-kitchen"
-        >
-          <div className="flex items-center gap-3">
-            <Package className="w-6 h-6 text-orange-600" />
-            <h3 className="font-playfair text-2xl font-bold text-charcoal">
-              {productData.kitchenConsumables.title}
-            </h3>
-          </div>
-          {expandedCategories['kitchen'] ? (
-            <ChevronDown className="w-6 h-6 text-orange-600" />
-          ) : (
-            <ChevronRight className="w-6 h-6 text-orange-600" />
-          )}
-        </button>
-        
-        {expandedCategories['kitchen'] && (
-          <div className="p-6">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {productData.kitchenConsumables.items.map((item, idx) => (
-                <div key={idx} className="bg-white p-4 rounded-lg border border-gray-200 hover:shadow-md transition-all">
-                  <div className="h-32 bg-gray-200 rounded mb-2 flex items-center justify-center text-xs text-gray-500">
-                    Image placeholder
-                  </div>
-                  <p className="text-charcoal text-sm font-medium">{item}</p>
+                  )}
                 </div>
               ))}
             </div>
