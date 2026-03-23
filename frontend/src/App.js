@@ -156,12 +156,10 @@ function App() {
   ];
 
   const clientLogos = [
-    "https://via.placeholder.com/180x80/C6A96B/FFFFFF?text=Hotel+Logo+1",
-    "https://via.placeholder.com/180x80/C6A96B/FFFFFF?text=Resort+Logo+2",
-    "https://via.placeholder.com/180x80/C6A96B/FFFFFF?text=Brand+3",
-    "https://via.placeholder.com/180x80/C6A96B/FFFFFF?text=Hotel+Logo+4",
-    "https://via.placeholder.com/180x80/C6A96B/FFFFFF?text=Resort+Logo+5",
-    "https://via.placeholder.com/180x80/C6A96B/FFFFFF?text=Brand+6"
+    "/images/client-the-park.jpg",
+    "/images/client-lemon-tree.png",
+    "/images/client-clarks-inn.png",
+    "/images/client-skyla.png"
   ];
 
   return (
@@ -391,16 +389,16 @@ function App() {
               Trusted by Leading Hospitality Brands
             </h3>
             <div className="relative overflow-hidden">
-              <div className="flex animate-scroll" style={{ width: 'calc(360px * 12)' }}>
+              <div className="flex animate-scroll" style={{ width: 'calc(360px * 8)' }}>
                 {[...clientLogos, ...clientLogos].map((logo, index) => (
                   <div 
                     key={index} 
-                    className="flex-shrink-0 w-[180px] h-[80px] mx-4 flex items-center justify-center"
+                    className="flex-shrink-0 w-[180px] h-[100px] mx-4 flex items-center justify-center bg-white rounded-lg shadow-md p-4"
                   >
                     <img 
                       src={logo} 
                       alt={`Client logo ${index + 1}`}
-                      className="max-w-full max-h-full object-contain opacity-60 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
+                      className="max-w-full max-h-full object-contain hover:scale-110 transition-transform duration-300"
                     />
                   </div>
                 ))}
