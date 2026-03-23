@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "@/App.css";
+import ProductCatalog from "@/components/ProductCatalog";
 import { 
   Package, 
   Sparkles, 
@@ -302,7 +303,7 @@ function App() {
         </div>
       </section>
 
-      {/* Product Categories Section - Will be updated in next file due to size */}
+      {/* Product Categories Section */}
       <section id="products" className="py-20 px-4 sm:px-6 lg:px-8 bg-ivory" data-testid="products-section">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -314,21 +315,7 @@ function App() {
             </p>
           </div>
 
-          {/* Note: Product catalog structure will be in a separate component file */}
-          <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-            <p className="text-xl text-charcoal mb-4">
-              Our detailed product catalog with all categories is being prepared.
-            </p>
-            <p className="text-charcoal-light">
-              Please contact us for the complete product list and pricing.
-            </p>
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="mt-6 bg-gold hover:bg-gold-dark text-white px-8 py-3 rounded-md font-medium transition-all duration-300"
-            >
-              Contact Us for Product Details
-            </button>
-          </div>
+          <ProductCatalog />
         </div>
       </section>
 
