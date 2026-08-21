@@ -411,18 +411,18 @@ function App() {
             <h3 className="text-center font-playfair text-2xl font-bold text-charcoal mb-8">
               Trusted by Leading Hospitality Brands
             </h3>
-            <div className="relative overflow-hidden">
+            <div className="relative overflow-hidden py-16">
               <div className="flex animate-scroll" style={{ width: `calc(212px * ${clientLogos.length * 2})` }}>
                 {[...clientLogos, ...clientLogos].map((logo, index) => (
-                  <div 
-                    key={index} 
-                    className="flex-shrink-0 w-[180px] h-[100px] mx-4 flex items-center justify-center bg-white rounded-lg shadow-md p-4"
+                  <div
+                    key={index}
+                    className="relative z-0 hover:z-20 flex-shrink-0 w-[180px] h-[100px] mx-4 flex items-center justify-center bg-white rounded-lg shadow-md p-4"
                   >
                     <img
                       src={logo}
                       alt={`Client logo ${index + 1}`}
                       loading="lazy"
-                      className="max-w-full max-h-full object-contain hover:scale-110 transition-transform duration-300"
+                      className="max-w-full max-h-full object-contain hover:scale-[2] transition-transform duration-300"
                     />
                   </div>
                 ))}
