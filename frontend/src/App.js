@@ -158,10 +158,11 @@ function App() {
   ];
 
   const clientLogos = [
-    "/images/client-the-park.jpg",
-    "/images/client-lemon-tree.png",
-    "/images/client-clarks-inn.png",
-    "/images/client-skyla.png"
+    "/images/client-the-park-transparent.png",
+    "/images/client-lemon-tree-transparent.png",
+    "/images/client-clarks-inn-transparent.png",
+    "/images/client-skyla-transparent.png",
+    "/images/client-royal-orchid-transparent.png"
   ];
 
   return (
