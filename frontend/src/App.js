@@ -416,13 +416,13 @@ function App() {
                 {[...clientLogos, ...clientLogos].map((logo, index) => (
                   <div
                     key={index}
-                    className="relative z-0 hover:z-20 flex-shrink-0 w-[180px] h-[100px] mx-4 flex items-center justify-center bg-white rounded-lg shadow-md p-4"
+                    className="relative z-0 hover:z-20 hover:scale-[2] transition-transform duration-300 flex-shrink-0 w-[180px] h-[100px] mx-4 flex items-center justify-center bg-white rounded-lg shadow-md p-4"
                   >
                     <img
                       src={logo}
                       alt={`Client logo ${index + 1}`}
                       loading="lazy"
-                      className="max-w-full max-h-full object-contain hover:scale-[2] transition-transform duration-300"
+                      className="max-w-full max-h-full object-contain"
                     />
                   </div>
                 ))}
