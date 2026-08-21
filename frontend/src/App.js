@@ -291,10 +291,11 @@ function App() {
         <div className="max-w-7xl mx-auto">
           <div className="relative h-64 md:h-96 overflow-hidden rounded-xl shadow-xl">
             {heroCarouselImages.map((img, index) => (
-              <img 
+              <img
                 key={index}
-                src={img} 
+                src={img}
                 alt={`Showcase ${index + 1}`}
+                loading="lazy"
                 className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
                   index === currentCarouselIndex ? 'opacity-100' : 'opacity-0'
                 }`}
@@ -396,9 +397,10 @@ function App() {
                     key={index} 
                     className="flex-shrink-0 w-[180px] h-[100px] mx-4 flex items-center justify-center bg-white rounded-lg shadow-md p-4"
                   >
-                    <img 
-                      src={logo} 
+                    <img
+                      src={logo}
                       alt={`Client logo ${index + 1}`}
+                      loading="lazy"
                       className="max-w-full max-h-full object-contain hover:scale-110 transition-transform duration-300"
                     />
                   </div>
@@ -437,9 +439,12 @@ function App() {
               </ul>
             </div>
             <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&q=80"
-                alt="B2B Solutions"
+              <img
+                src="/images/purely-serene-2.jpg"
+                alt="Purely Serene hospitality amenities arranged for bulk supply"
+                width="1200"
+                height="500"
+                loading="lazy"
                 className="rounded-lg shadow-2xl w-full h-[500px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-gold/30 to-transparent rounded-lg"></div>
@@ -668,9 +673,10 @@ function App() {
       <footer className="bg-charcoal text-white py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex justify-center mb-6">
-            <img 
-              src="/amaravati-logo.png" 
-              alt="Amaravati Enterprises" 
+            <img
+              src="/amaravati-logo.png"
+              alt="Amaravati Enterprises"
+              loading="lazy"
               className="h-32 w-auto object-contain"
             />
           </div>
