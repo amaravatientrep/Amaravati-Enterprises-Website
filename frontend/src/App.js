@@ -158,11 +158,31 @@ function App() {
   ];
 
   const clientLogos = [
-    "/images/client-the-park-transparent.png",
+    "/images/client-royalton-hotels.png",
+    "/images/client-iit-hyderabad.png",
+    "/images/client-ellaa-hotel.png",
+    "/images/client-regenta-place.png",
+    "/images/client-greenpark-hotels.png",
+    "/images/client-stae-hotels.png",
+    "/images/client-priya.png",
+    "/images/client-royal-orchid-transparent.png",
     "/images/client-lemon-tree-transparent.png",
+    "/images/client-fairfield-marriott.png",
+    "/images/client-daspalla.png",
+    "/images/client-casa-hotel-suites.png",
+    "/images/client-deccan-serai-hotels.png",
+    "/images/client-avasa-hotels.png",
+    "/images/client-ginger-ihcl.png",
+    "/images/client-dhanturi-group.png",
+    "/images/client-sarovar-hotels.png",
+    "/images/client-monday-hotels.png",
     "/images/client-clarks-inn-transparent.png",
     "/images/client-skyla-transparent.png",
-    "/images/client-royal-orchid-transparent.png"
+    "/images/client-the-park-transparent.png",
+    "/images/client-best-western.png",
+    "/images/client-click-hotels-suba.png",
+    "/images/client-trunk-and-trolley.png",
+    "/images/client-clarion-choice-hotels.png"
   ];
 
   return (
@@ -392,7 +412,7 @@ function App() {
               Trusted by Leading Hospitality Brands
             </h3>
             <div className="relative overflow-hidden">
-              <div className="flex animate-scroll" style={{ width: 'calc(360px * 8)' }}>
+              <div className="flex animate-scroll" style={{ width: `calc(212px * ${clientLogos.length * 2})` }}>
                 {[...clientLogos, ...clientLogos].map((logo, index) => (
                   <div 
                     key={index} 
