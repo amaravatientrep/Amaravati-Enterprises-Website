@@ -264,7 +264,7 @@ function App() {
                   data-testid="download-catalogue-btn"
                 >
                   <Download className="w-5 h-5" />
-                  Download Catalogue
+                  Brochure
                 </button>
                 <button 
                   onClick={() => scrollToSection('contact')}
@@ -491,7 +491,7 @@ function App() {
               data-testid="catalogue-download-btn"
             >
               <Download className="w-6 h-6" />
-              Download PDF Catalogue
+              Brochure
             </button>
             <a
               href="https://wa.me/919494600101?text=Hi, I would like to request the product catalogue for Amaravati Enterprises"
