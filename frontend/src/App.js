@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "@/App.css";
 import ProductCatalog from "@/components/ProductCatalog";
+import CatalogueDialog from "@/components/CatalogueDialog";
 import { 
   Package, 
   Sparkles, 
@@ -39,6 +40,7 @@ function App() {
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [currentCarouselIndex, setCurrentCarouselIndex] = useState(0);
+  const [catalogueDialogOpen, setCatalogueDialogOpen] = useState(false);
 
   // Hero carousel images
   const heroCarouselImages = [
@@ -235,15 +237,14 @@ function App() {
                   Explore Products
                   <ChevronDown className="w-5 h-5" />
                 </button>
-                <a 
-                  href="/housekeeping-kitchen-catalogue.pdf"
-                  download
+                <button
+                  onClick={() => setCatalogueDialogOpen(true)}
                   className="bg-white border-2 border-gold text-gold hover:bg-gold hover:text-white px-8 py-3 rounded-md font-medium transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2"
                   data-testid="download-catalogue-btn"
                 >
                   <Download className="w-5 h-5" />
                   Download Catalogue
-                </a>
+                </button>
                 <button 
                   onClick={() => scrollToSection('contact')}
                   className="bg-charcoal hover:bg-charcoal-light text-white px-8 py-3 rounded-md font-medium transition-all duration-300 shadow-md hover:shadow-lg"
@@ -457,16 +458,15 @@ function App() {
             Explore our full range of hospitality supplies with detailed specifications, pricing, and MOQ information.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a 
-              href="/housekeeping-kitchen-catalogue.pdf"
-              download
+            <button
+              onClick={() => setCatalogueDialogOpen(true)}
               className="bg-white text-gold hover:bg-ivory px-8 py-4 rounded-md font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3"
               data-testid="catalogue-download-btn"
             >
               <Download className="w-6 h-6" />
               Download PDF Catalogue
-            </a>
-            <a 
+            </button>
+            <a
               href="https://wa.me/919494600101?text=Hi, I would like to request the product catalogue for Amaravati Enterprises"
               target="_blank"
               rel="noopener noreferrer"
@@ -696,6 +696,8 @@ function App() {
       >
         <MessageCircle className="w-8 h-8" />
       </a>
+
+      <CatalogueDialog open={catalogueDialogOpen} onOpenChange={setCatalogueDialogOpen} />
     </div>
   );
 }
