@@ -220,9 +220,9 @@ function App() {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 animate-fade-in">
-              <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-charcoal leading-tight">
+              <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-charcoal leading-tight">
                 Elevating Guest Experiences with Premium Hospitality Supplies
-              </h2>
+              </h1>
               <p className="text-lg md:text-xl text-charcoal-light leading-relaxed">
                 From toiletries to housekeeping essentials and kitchen consumables — everything your property needs, delivered with consistency and elegance.
               </p>
@@ -236,7 +236,7 @@ function App() {
                   <ChevronDown className="w-5 h-5" />
                 </button>
                 <a 
-                  href="/placeholder-catalogue.pdf" 
+                  href="/housekeeping-kitchen-catalogue.pdf"
                   download
                   className="bg-white border-2 border-gold text-gold hover:bg-gold hover:text-white px-8 py-3 rounded-md font-medium transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2"
                   data-testid="download-catalogue-btn"
@@ -458,7 +458,7 @@ function App() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a 
-              href="/placeholder-catalogue.pdf" 
+              href="/housekeeping-kitchen-catalogue.pdf"
               download
               className="bg-white text-gold hover:bg-ivory px-8 py-4 rounded-md font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3"
               data-testid="catalogue-download-btn"
@@ -467,7 +467,7 @@ function App() {
               Download PDF Catalogue
             </a>
             <a 
-              href="https://wa.me/+919494600101?text=Hi, I would like to request the product catalogue for Amaravati Enterprises"
+              href="https://wa.me/919494600101?text=Hi, I would like to request the product catalogue for Amaravati Enterprises"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-charcoal text-white hover:bg-charcoal-light px-8 py-4 rounded-md font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3"
@@ -542,7 +542,7 @@ function App() {
                     <div>
                       <p className="text-sm text-charcoal-light">WhatsApp</p>
                       <a 
-                        href="https://wa.me/+919494600101"
+                        href="https://wa.me/919494600101"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-lg font-semibold text-charcoal hover:text-gold"
@@ -687,7 +687,7 @@ function App() {
 
       {/* Floating WhatsApp Button */}
       <a
-        href="https://wa.me/+919494600101?text=Hi, I'm interested in learning more about your hospitality products"
+        href="https://wa.me/919494600101?text=Hi, I'm interested in learning more about your hospitality products"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white w-16 h-16 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 z-50"
