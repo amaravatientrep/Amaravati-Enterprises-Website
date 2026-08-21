@@ -158,31 +158,31 @@ function App() {
   ];
 
   const clientLogos = [
-    "/images/client-royalton-hotels.png",
-    "/images/client-iit-hyderabad.png",
-    "/images/client-ellaa-hotel.png",
-    "/images/client-regenta-place.png",
-    "/images/client-greenpark-hotels.png",
-    "/images/client-stae-hotels.png",
-    "/images/client-priya.png",
-    "/images/client-royal-orchid-transparent.png",
-    "/images/client-lemon-tree-transparent.png",
-    "/images/client-fairfield-marriott.png",
-    "/images/client-daspalla.png",
-    "/images/client-casa-hotel-suites.png",
-    "/images/client-deccan-serai-hotels.png",
-    "/images/client-avasa-hotels.png",
-    "/images/client-ginger-ihcl.png",
-    "/images/client-dhanturi-group.png",
-    "/images/client-sarovar-hotels.png",
-    "/images/client-monday-hotels.png",
-    "/images/client-clarks-inn-transparent.png",
-    "/images/client-skyla-transparent.png",
-    "/images/client-the-park-transparent.png",
-    "/images/client-best-western.png",
-    "/images/client-click-hotels-suba.png",
-    "/images/client-trunk-and-trolley.png",
-    "/images/client-clarion-choice-hotels.png"
+    { src: "/images/client-royalton-hotels.png", bg: "#10110C" },
+    { src: "/images/client-iit-hyderabad.png" },
+    { src: "/images/client-ellaa-hotel.png", bg: "#0D502F" },
+    { src: "/images/client-regenta-place.png" },
+    { src: "/images/client-greenpark-hotels.png" },
+    { src: "/images/client-stae-hotels.png", bg: "#E94F37" },
+    { src: "/images/client-priya.png" },
+    { src: "/images/client-royal-orchid-transparent.png" },
+    { src: "/images/client-lemon-tree-transparent.png" },
+    { src: "/images/client-fairfield-marriott.png" },
+    { src: "/images/client-daspalla.png" },
+    { src: "/images/client-casa-hotel-suites.png", bg: "#8A4347" },
+    { src: "/images/client-deccan-serai-hotels.png" },
+    { src: "/images/client-avasa-hotels.png" },
+    { src: "/images/client-ginger-ihcl.png" },
+    { src: "/images/client-dhanturi-group.png", bg: "#123462" },
+    { src: "/images/client-sarovar-hotels.png" },
+    { src: "/images/client-monday-hotels.png", bg: "#003B95" },
+    { src: "/images/client-clarks-inn-transparent.png" },
+    { src: "/images/client-skyla-transparent.png" },
+    { src: "/images/client-the-park-transparent.png" },
+    { src: "/images/client-best-western.png" },
+    { src: "/images/client-click-hotels-suba.png" },
+    { src: "/images/client-trunk-and-trolley.png", bg: "#0D3455" },
+    { src: "/images/client-clarion-choice-hotels.png" }
   ];
 
   return (
@@ -416,10 +416,11 @@ function App() {
                 {[...clientLogos, ...clientLogos].map((logo, index) => (
                   <div
                     key={index}
-                    className="relative z-0 hover:z-20 hover:scale-[2] transition-transform duration-300 flex-shrink-0 w-[180px] h-[100px] mx-4 flex items-center justify-center bg-white rounded-lg shadow-md p-1.5"
+                    style={{ backgroundColor: logo.bg || '#ffffff' }}
+                    className="relative z-0 hover:z-20 hover:scale-[2] transition-transform duration-300 flex-shrink-0 w-[180px] h-[100px] mx-4 flex items-center justify-center rounded-lg shadow-md p-1.5"
                   >
                     <img
-                      src={logo}
+                      src={logo.src}
                       alt={`Client logo ${index + 1}`}
                       loading="lazy"
                       className="max-w-full max-h-full object-contain"
