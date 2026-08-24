@@ -307,25 +307,6 @@ function App() {
         </div>
       </section>
 
-      {/* Image Carousel Section Above Products */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="relative h-64 md:h-96 overflow-hidden rounded-xl shadow-xl">
-            {heroCarouselImages.map((img, index) => (
-              <img
-                key={index}
-                src={img}
-                alt={`Showcase ${index + 1}`}
-                loading="lazy"
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                  index === currentCarouselIndex ? 'opacity-100' : 'opacity-0'
-                }`}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Product Categories Section */}
       <section id="products" className="py-20 px-4 sm:px-6 lg:px-8 bg-ivory" data-testid="products-section">
         <div className="max-w-7xl mx-auto">
