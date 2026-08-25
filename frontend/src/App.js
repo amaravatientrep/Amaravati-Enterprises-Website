@@ -198,9 +198,9 @@ function App() {
           <div className="flex justify-between items-center">
             <div className="flex items-center">
               <img
-                src="/amaravati-logo-transparent.png"
+                src="/amaravati-logo.svg"
                 alt="Amaravati Enterprises"
-                className="h-20 w-[108px] md:h-28 md:w-[152px] object-contain"
+                className="h-20 md:h-28 w-auto object-contain"
               />
             </div>
             
@@ -677,10 +677,10 @@ function App() {
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex justify-center mb-6">
             <img
-              src="/amaravati-logo-transparent.png"
+              src="/amaravati-logo.svg"
               alt="Amaravati Enterprises"
               loading="lazy"
-              className="h-32 w-[176px] object-contain"
+              className="h-32 w-auto object-contain"
             />
           </div>
           <p className="text-gray-400 mb-6">
