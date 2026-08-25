@@ -188,9 +188,9 @@ function App() {
   return (
     <div className="App min-h-screen bg-ivory font-poppins">
       {/* Sticky Header */}
-      <header 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-white shadow-lg py-4' : 'bg-transparent py-6'
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#1E283D] shadow-lg ${
+          isScrolled ? 'py-4' : 'py-6'
         }`}
         data-testid="header"
       >
@@ -216,9 +216,9 @@ function App() {
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={`text-sm font-medium transition-colors ${
-                    activeSection === item.id 
-                      ? 'text-gold border-b-2 border-gold' 
-                      : 'text-charcoal-light hover:text-gold'
+                    activeSection === item.id
+                      ? 'text-gold border-b-2 border-gold'
+                      : 'text-ivory/80 hover:text-gold'
                   }`}
                   data-testid={`nav-${item.id}`}
                 >
@@ -673,7 +673,7 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-charcoal text-white py-12 px-4 sm:px-6 lg:px-8">
+      <footer className="bg-[#1E283D] text-white py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex justify-center mb-6">
             <img
