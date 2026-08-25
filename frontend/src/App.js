@@ -561,6 +561,26 @@ function App() {
                         Rd No 12, Hyderabad<br />
                         Telangana, India – 500 034
                       </p>
+                      <a
+                        href="https://maps.app.goo.gl/xgaWArfsQybF7Zn19"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative block h-40 w-full max-w-sm mt-3 rounded-lg overflow-hidden shadow-md group"
+                        aria-label="Open our location in Google Maps"
+                        data-testid="map-link"
+                      >
+                        <iframe
+                          src="https://www.google.com/maps?q=C3,+Banjara+Gardens,+Banjara+Hills,+Rd+No+12,+Hyderabad,+Telangana+500034&output=embed"
+                          className="w-full h-full pointer-events-none"
+                          loading="lazy"
+                          title="Amaravati Enterprises location on Google Maps"
+                        />
+                        <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/10 transition-colors flex items-end justify-end p-3">
+                          <span className="bg-white text-charcoal text-xs font-semibold px-3 py-1.5 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-opacity">
+                            Open in Google Maps
+                          </span>
+                        </div>
+                      </a>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
