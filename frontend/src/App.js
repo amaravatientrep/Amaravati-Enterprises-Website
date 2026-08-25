@@ -190,17 +190,17 @@ function App() {
       {/* Sticky Header */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#1E283D] shadow-lg ${
-          isScrolled ? 'py-4' : 'py-6'
+          isScrolled ? 'py-2' : 'py-3'
         }`}
         data-testid="header"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
-              <img 
-                src="/amaravati-logo-transparent.png" 
-                alt="Amaravati Enterprises" 
-                className="h-16 md:h-20 w-auto object-contain"
+              <img
+                src="/amaravati-logo-transparent.png"
+                alt="Amaravati Enterprises"
+                className="h-20 md:h-28 w-auto object-contain"
               />
             </div>
             
