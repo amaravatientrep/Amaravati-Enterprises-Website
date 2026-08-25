@@ -324,15 +324,6 @@ function App() {
               <div className="text-sm text-charcoal-light mt-1 tracking-wide">SKUs Stocked</div>
             </div>
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-3 mt-8 pt-8 border-t border-gray-100">
-            <span className="text-xs uppercase tracking-widest text-charcoal-light mr-1">Authorized Distributor</span>
-            <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-gold/40 bg-gold/5 text-charcoal font-medium text-sm">
-              <CheckCircle2 className="w-4 h-4 text-gold" /> Diversey
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-gold/40 bg-gold/5 text-charcoal font-medium text-sm">
-              <CheckCircle2 className="w-4 h-4 text-gold" /> Biotique
-            </span>
-          </div>
         </div>
       </section>
 
