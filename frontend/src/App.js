@@ -200,7 +200,7 @@ function App() {
               <img
                 src="/amaravati-logo-transparent.png"
                 alt="Amaravati Enterprises"
-                className="h-20 md:h-28 w-auto object-contain"
+                className="h-20 w-[108px] md:h-28 md:w-[152px] object-contain"
               />
             </div>
             
@@ -680,7 +680,7 @@ function App() {
               src="/amaravati-logo-transparent.png"
               alt="Amaravati Enterprises"
               loading="lazy"
-              className="h-32 w-auto object-contain"
+              className="h-32 w-[176px] object-contain"
             />
           </div>
           <p className="text-gray-400 mb-6">
