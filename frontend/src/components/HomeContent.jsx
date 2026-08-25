@@ -1,5 +1,6 @@
+'use client';
+
 import { useState, useEffect } from "react";
-import "@/App.css";
 import ProductCatalog from "@/components/ProductCatalog";
 import CatalogueDialog from "@/components/CatalogueDialog";
 import { 
@@ -28,7 +29,7 @@ import {
   Users
 } from "lucide-react";
 
-function App() {
+function HomeContent() {
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
   const [expandedCategories, setExpandedCategories] = useState({});
@@ -751,4 +752,4 @@ function App() {
   );
 }
 
-export default App;
+export default HomeContent;
