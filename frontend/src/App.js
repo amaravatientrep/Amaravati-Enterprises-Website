@@ -241,8 +241,8 @@ function App() {
       {/* Hero Section */}
       <section id="home" className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-ivory to-white" data-testid="hero-section">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6 animate-fade-in">
+          <div className="grid md:grid-cols-12 gap-12 items-center">
+            <div className="md:col-span-5 space-y-6 animate-fade-in">
               <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-charcoal leading-tight">
                 Elevating Guest Experiences with Premium Hospitality Supplies
               </h1>
@@ -275,8 +275,8 @@ function App() {
                 </button>
               </div>
             </div>
-            <div className="relative animate-fade-in">
-              <div className="relative h-[500px] overflow-hidden rounded-lg shadow-2xl">
+            <div className="md:col-span-7 relative animate-fade-in">
+              <div className="relative h-[420px] md:h-[600px] overflow-hidden rounded-lg shadow-2xl">
                 {heroCarouselImages.map((img, index) => (
                   <img 
                     key={index}
@@ -303,6 +303,35 @@ function App() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Stats Strip */}
+      <section className="py-10 px-4 sm:px-6 lg:px-8 bg-white border-y border-gray-100" data-testid="stats-section">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-4 text-center">
+            <div>
+              <div className="font-playfair text-4xl md:text-5xl font-bold text-gold">1000+</div>
+              <div className="text-sm text-charcoal-light mt-1 tracking-wide">Hotels &amp; Resorts Supplied</div>
+            </div>
+            <div className="sm:border-x sm:border-gray-200">
+              <div className="font-playfair text-4xl md:text-5xl font-bold text-gold">8+</div>
+              <div className="text-sm text-charcoal-light mt-1 tracking-wide">Years in Business</div>
+            </div>
+            <div>
+              <div className="font-playfair text-4xl md:text-5xl font-bold text-gold">500+</div>
+              <div className="text-sm text-charcoal-light mt-1 tracking-wide">SKUs Stocked</div>
+            </div>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-3 mt-8 pt-8 border-t border-gray-100">
+            <span className="text-xs uppercase tracking-widest text-charcoal-light mr-1">Authorized Distributor</span>
+            <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-gold/40 bg-gold/5 text-charcoal font-medium text-sm">
+              <CheckCircle2 className="w-4 h-4 text-gold" /> Diversey
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-gold/40 bg-gold/5 text-charcoal font-medium text-sm">
+              <CheckCircle2 className="w-4 h-4 text-gold" /> Biotique
+            </span>
           </div>
         </div>
       </section>

@@ -306,11 +306,14 @@ const ProductCatalog = () => {
           className="w-full px-6 py-4 flex items-center justify-between bg-gradient-to-r from-gold/10 to-transparent hover:from-gold/20 transition-all"
           data-testid="category-hotel-amenities"
         >
-          <div className="flex items-center gap-3">
-            <Package className="w-6 h-6 text-gold" />
-            <h3 className="font-playfair text-2xl font-bold text-charcoal">
-              {productData.hotelAmenities.title}
-            </h3>
+          <div className="flex items-center gap-4">
+            <img src="/images/freshness-kit-1.jpg" alt="" className="w-14 h-14 rounded-lg object-cover flex-shrink-0" />
+            <div className="flex items-center gap-3">
+              <Package className="w-6 h-6 text-gold" />
+              <h3 className="font-playfair text-2xl font-bold text-charcoal">
+                {productData.hotelAmenities.title}
+              </h3>
+            </div>
           </div>
           {expandedCategories['hotelAmenities'] ? (
             <ChevronDown className="w-6 h-6 text-gold" />
@@ -499,11 +502,14 @@ const ProductCatalog = () => {
           className="w-full px-6 py-4 flex items-center justify-between bg-gradient-to-r from-gold/20 to-transparent hover:from-gold/30 transition-all"
           data-testid="category-purely-serene"
         >
-          <div className="flex items-center gap-3">
-            <Package className="w-6 h-6 text-gold" />
-            <h3 className="font-playfair text-2xl font-bold text-charcoal">
-              {productData.purelySerene.title}
-            </h3>
+          <div className="flex items-center gap-4">
+            <img src={productData.purelySerene.carouselImages[0]} alt="" className="w-14 h-14 rounded-lg object-cover flex-shrink-0" />
+            <div className="flex items-center gap-3">
+              <Package className="w-6 h-6 text-gold" />
+              <h3 className="font-playfair text-2xl font-bold text-charcoal">
+                {productData.purelySerene.title}
+              </h3>
+            </div>
           </div>
           {expandedCategories['purelySerene'] ? (
             <ChevronDown className="w-6 h-6 text-gold" />
@@ -572,11 +578,14 @@ const ProductCatalog = () => {
           className="w-full px-6 py-4 flex items-center justify-between bg-gradient-to-r from-charcoal/10 to-transparent hover:from-charcoal/20 transition-all"
           data-testid="category-stationery"
         >
-          <div className="flex items-center gap-3">
-            <Package className="w-6 h-6 text-charcoal" />
-            <h3 className="font-playfair text-2xl font-bold text-charcoal">
-              {productData.stationery.title}
-            </h3>
+          <div className="flex items-center gap-4">
+            <img src={productData.stationery.carouselImages[0]} alt="" className="w-14 h-14 rounded-lg object-cover flex-shrink-0" />
+            <div className="flex items-center gap-3">
+              <Package className="w-6 h-6 text-charcoal" />
+              <h3 className="font-playfair text-2xl font-bold text-charcoal">
+                {productData.stationery.title}
+              </h3>
+            </div>
           </div>
           {expandedCategories['stationery'] ? (
             <ChevronDown className="w-6 h-6 text-charcoal" />
@@ -722,11 +731,14 @@ const ProductCatalog = () => {
           className="w-full px-6 py-4 flex items-center justify-between bg-gradient-to-r from-green-500/10 to-transparent hover:from-green-500/20 transition-all"
           data-testid="category-tcm"
         >
-          <div className="flex items-center gap-3">
-            <Package className="w-6 h-6 text-green-600" />
-            <h3 className="font-playfair text-2xl font-bold text-charcoal">
-              {productData.tcmSupplies.title}
-            </h3>
+          <div className="flex items-center gap-4">
+            <img src={productData.tcmSupplies.carouselImages[0]} alt="" className="w-14 h-14 rounded-lg object-cover flex-shrink-0" />
+            <div className="flex items-center gap-3">
+              <Package className="w-6 h-6 text-green-600" />
+              <h3 className="font-playfair text-2xl font-bold text-charcoal">
+                {productData.tcmSupplies.title}
+              </h3>
+            </div>
           </div>
           {expandedCategories['tcm'] ? (
             <ChevronDown className="w-6 h-6 text-green-600" />
@@ -799,11 +811,14 @@ const ProductCatalog = () => {
           className="w-full px-6 py-4 flex items-center justify-between bg-gradient-to-r from-green-600/10 to-transparent hover:from-green-600/20 transition-all"
           data-testid="category-biotique"
         >
-          <div className="flex items-center gap-3">
-            <Package className="w-6 h-6 text-green-700" />
-            <h3 className="font-playfair text-2xl font-bold text-charcoal">
-              {productData.biotique.title}
-            </h3>
+          <div className="flex items-center gap-4">
+            <img src={productData.biotique.carouselImages[0]} alt="" className="w-14 h-14 rounded-lg object-cover flex-shrink-0" />
+            <div className="flex items-center gap-3">
+              <Package className="w-6 h-6 text-green-700" />
+              <h3 className="font-playfair text-2xl font-bold text-charcoal">
+                {productData.biotique.title}
+              </h3>
+            </div>
           </div>
           {expandedCategories['biotique'] ? (
             <ChevronDown className="w-6 h-6 text-green-700" />
@@ -889,11 +904,14 @@ const ProductCatalog = () => {
           className="w-full px-6 py-4 flex items-center justify-between bg-gradient-to-r from-purple-500/10 to-transparent hover:from-purple-500/20 transition-all"
           data-testid="category-diversey"
         >
-          <div className="flex items-center gap-3">
-            <Package className="w-6 h-6 text-purple-600" />
-            <h3 className="font-playfair text-2xl font-bold text-charcoal">
-              {productData.diverseyLape.title}
-            </h3>
+          <div className="flex items-center gap-4">
+            <img src={productData.diverseyLape.carouselImages[0]} alt="" className="w-14 h-14 rounded-lg object-cover flex-shrink-0" />
+            <div className="flex items-center gap-3">
+              <Package className="w-6 h-6 text-purple-600" />
+              <h3 className="font-playfair text-2xl font-bold text-charcoal">
+                {productData.diverseyLape.title}
+              </h3>
+            </div>
           </div>
           {expandedCategories['diversey'] ? (
             <ChevronDown className="w-6 h-6 text-purple-600" />
