@@ -81,3 +81,27 @@ android-sdk/ -e
 # Environment files
 *.env
 *.env.*
+
+.next-check/
+image-drop/
+
+# Owner's source photo folders and working files (the site uses the exported copies in frontend/public)
+frontend/AE Dispenser System.pdf
+frontend/src/AE Dispenser System.pdf
+frontend/Biotique Dispensers/
+frontend/Biotique/
+frontend/Custom Branding/
+frontend/Dispenser/
+frontend/Final product images/
+frontend/Guest Amenities/
+frontend/HK Catalogue 2025/
+frontend/Home Page Carousel/
+frontend/Home Page thumbnails/
+frontend/Purely Serene/
+frontend/Soap/
+frontend/Stationery/
+frontend/Toiletries liquid/
+frontend/Tray & Kettle/
+frontend/Tray only/
+frontend/.impeccable/
+.impeccable/

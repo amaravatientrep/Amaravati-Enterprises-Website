@@ -1,0 +1,20 @@
+"use client";
+
+import { motion, useReducedMotion } from "motion/react";
+
+// Gentle fade-up as content enters the viewport. Static under reduced motion.
+export default function Reveal({ children, delay = 0, className, as = "div" }) {
+  const reduce = useReducedMotion();
+  const Tag = motion[as];
+  return (
+    <Tag
+      className={className}
+      initial={reduce ? false : { opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] }}
+    >
+      {children}
+    </Tag>
+  );
+}

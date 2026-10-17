@@ -1,234 +1,110 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-    margin: 0;
-    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-        "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-        sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background-color: #F8F6F2;
+/* Colour tokens (RGB triplets). One accent: deep forest green. */
+:root {
+  --bg: 243 245 243;
+  --surface: 251 252 251;
+  --sunk: 232 236 233;
+  --ink: 19 24 22;
+  --muted: 78 87 83;
+  --line: 19 24 22;
+  --accent: 14 90 71;
+  --accent-ink: 247 250 248;
+  --accent-soft: 222 236 230;
+  color-scheme: light;
 }
 
-code {
-    font-family:
-        source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-@layer base {
-    :root {
-        --background: 0 0% 100%;
-        --foreground: 0 0% 3.9%;
-        --card: 0 0% 100%;
-        --card-foreground: 0 0% 3.9%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 0 0% 3.9%;
-        --primary: 0 0% 9%;
-        --primary-foreground: 0 0% 98%;
-        --secondary: 0 0% 96.1%;
-        --secondary-foreground: 0 0% 9%;
-        --muted: 0 0% 96.1%;
-        --muted-foreground: 0 0% 45.1%;
-        --accent: 0 0% 96.1%;
-        --accent-foreground: 0 0% 9%;
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 89.8%;
-        --input: 0 0% 89.8%;
-        --ring: 0 0% 3.9%;
-        --chart-1: 12 76% 61%;
-        --chart-2: 173 58% 39%;
-        --chart-3: 197 37% 24%;
-        --chart-4: 43 74% 66%;
-        --chart-5: 27 87% 67%;
-        --radius: 0.5rem;
-    }
-    .dark {
-        --background: 0 0% 3.9%;
-        --foreground: 0 0% 98%;
-        --card: 0 0% 3.9%;
-        --card-foreground: 0 0% 98%;
-        --popover: 0 0% 3.9%;
-        --popover-foreground: 0 0% 98%;
-        --primary: 0 0% 98%;
-        --primary-foreground: 0 0% 9%;
-        --secondary: 0 0% 14.9%;
-        --secondary-foreground: 0 0% 98%;
-        --muted: 0 0% 14.9%;
-        --muted-foreground: 0 0% 63.9%;
-        --accent: 0 0% 14.9%;
-        --accent-foreground: 0 0% 98%;
-        --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 14.9%;
-        --input: 0 0% 14.9%;
-        --ring: 0 0% 83.1%;
-        --chart-1: 220 70% 50%;
-        --chart-2: 160 60% 45%;
-        --chart-3: 30 80% 55%;
-        --chart-4: 280 65% 60%;
-        --chart-5: 340 75% 55%;
-    }
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: 12 15 14;
+    --surface: 20 25 23;
+    --sunk: 27 33 31;
+    --ink: 233 238 235;
+    --muted: 163 173 168;
+    --line: 233 238 235;
+    --accent: 92 191 156;
+    --accent-ink: 9 26 20;
+    --accent-soft: 25 46 39;
+    color-scheme: dark;
+  }
 }
 
 @layer base {
-    * {
-        @apply border-border;
-    }
-    body {
-        @apply bg-ivory text-charcoal;
-    }
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-bg text-ink antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+  ::selection {
+    background: rgb(var(--accent) / 0.2);
+  }
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
 }
 
-.App {
-  min-height: 100vh;
-  background-color: #F8F6F2;
+@layer components {
+  /* Double-bezel: outer shell + inner core */
+  .shell {
+    @apply rounded-shell bg-ink/[0.035] p-1.5 ring-1 ring-line/[0.06];
+  }
+  .core {
+    @apply rounded-core bg-surface;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.5), 0 24px 48px -32px rgb(var(--ink) / 0.18);
+  }
+  .container-x {
+    @apply mx-auto w-full max-w-[1320px] px-4 sm:px-6 lg:px-10;
+  }
 }
 
-/* Smooth scrolling offset for fixed header */
-section {
-  scroll-margin-top: 100px;
+/* Smooth FAQ open/close where the browser supports animating to auto height */
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+  details::details-content {
+    height: 0;
+    overflow: clip;
+    transition: height 0.5s cubic-bezier(0.16, 1, 0.3, 1), content-visibility 0.5s allow-discrete;
+  }
+  details[open]::details-content {
+    height: auto;
+  }
 }
 
-/* Custom animations */
-@keyframes fadeIn {
+/* Hero entrance in CSS, so the headline paints with the HTML instead of waiting for JavaScript */
+/* Movement only, no fade: a faded-out headline does not count as painted, which delays LCP */
+@keyframes hero-rise {
   from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: translateY(14px);
   }
 }
-
-.animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
+.hero-rise {
+  animation: hero-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* Logo carousel continuous scroll */
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .hero-rise {
+    animation: none;
   }
 }
 
-.animate-scroll {
-  animation: scroll 30s linear infinite;
-}
-
-.animate-scroll:hover {
-  animation-play-state: paused;
-}
-
-/* Gradient text effect */
-.gradient-text {
-  background: linear-gradient(135deg, #C6A96B 0%, #B39858 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Card hover effects */
-.card-hover {
-  transition: all 0.3s ease;
-}
-
-.card-hover:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(198, 169, 107, 0.3);
-}
-
-/* Button ripple effect */
-button {
-  position: relative;
-  overflow: hidden;
-}
-
-button::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
-}
-
-button:active::after {
-  width: 300px;
-  height: 300px;
-}
-
-/* Luxury border effect */
-.luxury-border {
-  position: relative;
-  border: 2px solid transparent;
-  background: linear-gradient(white, white) padding-box,
-              linear-gradient(135deg, #C6A96B, #B39858) border-box;
-}
-
-/* Placeholder image styling */
-img {
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-}
-
-/* Form focus states */
-input:focus,
-textarea:focus {
-  border-color: #C6A96B;
-  box-shadow: 0 0 0 3px rgba(198, 169, 107, 0.1);
-}
-
-/* Mobile menu toggle (for future implementation) */
-@media (max-width: 768px) {
-  .animate-scroll {
-    animation: scroll 20s linear infinite;
+/* Kit explorer: with reduced motion the open-the-box sequence is skipped, even before hydration */
+@media (prefers-reduced-motion: reduce) {
+  .kx-rows[data-phase="intro"] {
+    opacity: 1 !important;
   }
-}
-
-/* Ensure WhatsApp button is always visible */
-.fixed.bottom-6.right-6 {
-  z-index: 9999;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #F8F6F2;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #C6A96B;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #B39858;
-}
-
-/* Print styles */
-@media print {
-  header,
-  .fixed {
+  .kx-hero[data-phase="intro"] {
     display: none;
+  }
+  .kx-stage[data-phase="intro"] {
+    display: block;
   }
 }

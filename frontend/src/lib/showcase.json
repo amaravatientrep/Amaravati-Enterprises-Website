@@ -1,0 +1,254 @@
+[
+  {
+    "image": "/images/showcase/scene-01.webp",
+    "alt": "Celebrity Resort Vanity Essentials",
+    "group": "solo-0",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-02.webp",
+    "alt": "Clarion Hotel Marble Vanity Amenities",
+    "group": "clarion",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-03.webp",
+    "alt": "Daspalla Hotel Toiletries on Marble",
+    "group": "solo-2",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-04.webp",
+    "alt": "Deccan Serai Hotel Amenities Display",
+    "group": "deccan-serai",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-05.webp",
+    "alt": "Deccan Serai Hotel Toiletries Display",
+    "group": "deccan-serai",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-06.webp",
+    "alt": "Cozy Hotel Tea Station",
+    "group": "tea-steel",
+    "kind": "tea"
+  },
+  {
+    "image": "/images/showcase/scene-07.webp",
+    "alt": "Elegant EllaA Hotel Bathroom Amenities",
+    "group": "ellaa",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-08.webp",
+    "alt": "Elegant Hotel Bathroom Amenity Tray",
+    "group": "kraft-pouch",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-09.webp",
+    "alt": "Elegant Hotel Toiletry Tray Display",
+    "group": "kraft-pouch",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-10.webp",
+    "alt": "Hotel Bathroom Amenity Kit Still Life",
+    "group": "solo-9",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-11.webp",
+    "alt": "Hotel Bathroom Welcome Kit Display",
+    "group": "kvs-amor",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-12.webp",
+    "alt": "Cozy Hotel Tea Station Still Life",
+    "group": "tea-red",
+    "kind": "tea"
+  },
+  {
+    "image": "/images/showcase/scene-13.webp",
+    "alt": "Hotel Spa Amenities on Marble Countertop",
+    "group": "leaf",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-14.webp",
+    "alt": "Hotel Welcome Kit Bathroom Display",
+    "group": "kvs-amor",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-15.webp",
+    "alt": "Luxurious Maroon Hotel Amenities Vanity",
+    "group": "solo-14",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-16.webp",
+    "alt": "Luxury Ellaa Hotel Vanity Amenities",
+    "group": "ellaa",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-17.webp",
+    "alt": "Luxury Hotel Amenity Display",
+    "group": "solo-16",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-18.webp",
+    "alt": "Cozy Hotel Tea Station",
+    "group": "tea-red",
+    "kind": "tea"
+  },
+  {
+    "image": "/images/showcase/scene-19.webp",
+    "alt": "Luxury Hotel Bathroom Amenities",
+    "group": "royalton",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-20.webp",
+    "alt": "Luxury Hotel Bathroom Amenity Display",
+    "group": "the-park",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-21.webp",
+    "alt": "Luxury Hotel Bathroom Amenity Set",
+    "group": "tre",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-22.webp",
+    "alt": "Luxury Hotel Bathroom Amenity Tray",
+    "group": "leaf",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-23.webp",
+    "alt": "Luxury Hotel Toiletries on Marble",
+    "group": "white-pouch",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-24.webp",
+    "alt": "Cozy Hotel Tea and Coffee Station",
+    "group": "tea-steel",
+    "kind": "tea"
+  },
+  {
+    "image": "/images/showcase/scene-25.webp",
+    "alt": "Luxury Hotel Toiletry Display",
+    "group": "purely-serene",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-26.webp",
+    "alt": "Luxury Hotel Toiletry Display",
+    "group": "minerva",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-27.webp",
+    "alt": "Luxury Hotel Vanity Amenities",
+    "group": "solo-26",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-28.webp",
+    "alt": "Luxury Hotel Vanity Amenities",
+    "group": "minerva",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-29.webp",
+    "alt": "Luxury SKYLA Hotel Vanity Set",
+    "group": "skyla",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-30.webp",
+    "alt": "Elegant Hotel Tea Station",
+    "group": "tea-wood",
+    "kind": "tea"
+  },
+  {
+    "image": "/images/showcase/scene-31.webp",
+    "alt": "Luxury Spa Bathroom Amenity Display",
+    "group": "solo-30",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-32.webp",
+    "alt": "Luxury Spa Shower with Purely Serene Bottles",
+    "group": "solo-31",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-33.webp",
+    "alt": "Purely Serene Spa Vanity Collection",
+    "group": "purely-serene",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-34.webp",
+    "alt": "Royalton Hotel Spa Toiletries",
+    "group": "royalton",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-35.webp",
+    "alt": "Skyla Spa Toiletries on Marble",
+    "group": "skyla",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-36.webp",
+    "alt": "Elegant Hotel Tea Tray Still Life",
+    "group": "tea-wood",
+    "kind": "tea"
+  },
+  {
+    "image": "/images/showcase/scene-37.webp",
+    "alt": "Spa-Ready Hexagonal Toiletry Trio",
+    "group": "purely-serene",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-38.webp",
+    "alt": "The Park Hyderabad Hotel Amenities",
+    "group": "the-park",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-39.webp",
+    "alt": "Upscale Hotel Amenity Tray",
+    "group": "solo-38",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-40.webp",
+    "alt": "Upscale Hotel Bathroom Amenities Display",
+    "group": "white-pouch",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-41.webp",
+    "alt": "Upscale Hotel Bathroom Amenity Tray",
+    "group": "solo-40",
+    "kind": "kit"
+  },
+  {
+    "image": "/images/showcase/scene-42.webp",
+    "alt": "Warm Hotel Tea Station with Pigeon Kettle",
+    "group": "solo-41",
+    "kind": "tea"
+  }
+]

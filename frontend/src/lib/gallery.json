@@ -1,0 +1,754 @@
+{
+ "kits": [
+  {
+   "src": "/images/showcase/scene-01.webp",
+   "alt": "Celebrity Resort Vanity Essentials",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-02.webp",
+   "alt": "Clarion Hotel Marble Vanity Amenities",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-03.webp",
+   "alt": "Daspalla Hotel Toiletries on Marble",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-04.webp",
+   "alt": "Deccan Serai Hotel Amenities Display",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-05.webp",
+   "alt": "Deccan Serai Hotel Toiletries Display",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-07.webp",
+   "alt": "Elegant EllaA Hotel Bathroom Amenities",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-08.webp",
+   "alt": "Elegant Hotel Bathroom Amenity Tray",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-09.webp",
+   "alt": "Elegant Hotel Toiletry Tray Display",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-10.webp",
+   "alt": "Hotel Bathroom Amenity Kit Still Life",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-11.webp",
+   "alt": "Hotel Bathroom Welcome Kit Display",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-13.webp",
+   "alt": "Hotel Spa Amenities on Marble Countertop",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-14.webp",
+   "alt": "Hotel Welcome Kit Bathroom Display",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-15.webp",
+   "alt": "Luxurious Maroon Hotel Amenities Vanity",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-16.webp",
+   "alt": "Luxury Ellaa Hotel Vanity Amenities",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-17.webp",
+   "alt": "Luxury Hotel Amenity Display",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-19.webp",
+   "alt": "Luxury Hotel Bathroom Amenities",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-20.webp",
+   "alt": "Luxury Hotel Bathroom Amenity Display",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-21.webp",
+   "alt": "Luxury Hotel Bathroom Amenity Set",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-22.webp",
+   "alt": "Luxury Hotel Bathroom Amenity Tray",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-23.webp",
+   "alt": "Luxury Hotel Toiletries on Marble",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-25.webp",
+   "alt": "Luxury Hotel Toiletry Display",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-26.webp",
+   "alt": "Luxury Hotel Toiletry Display",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-27.webp",
+   "alt": "Luxury Hotel Vanity Amenities",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-28.webp",
+   "alt": "Luxury Hotel Vanity Amenities",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-29.webp",
+   "alt": "Luxury SKYLA Hotel Vanity Set",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-31.webp",
+   "alt": "Luxury Spa Bathroom Amenity Display",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-33.webp",
+   "alt": "Purely Serene Spa Vanity Collection",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-34.webp",
+   "alt": "Royalton Hotel Spa Toiletries",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-35.webp",
+   "alt": "Skyla Spa Toiletries on Marble",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-37.webp",
+   "alt": "Spa-Ready Hexagonal Toiletry Trio",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-38.webp",
+   "alt": "The Park Hyderabad Hotel Amenities",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-39.webp",
+   "alt": "Upscale Hotel Amenity Tray",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-40.webp",
+   "alt": "Upscale Hotel Bathroom Amenities Display",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-41.webp",
+   "alt": "Upscale Hotel Bathroom Amenity Tray",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/2026/car-the-park.jpg",
+   "alt": "Branded amenities made for The Park, Hyderabad",
+   "w": 1200,
+   "h": 1500
+  },
+  {
+   "src": "/images/2026/car-paper-board.jpg",
+   "alt": "Navy paper board amenity kits made for Deccan Serai",
+   "w": 1200,
+   "h": 1500
+  },
+  {
+   "src": "/images/2026/car-kraft-paper.jpg",
+   "alt": "Kraft paper amenities made for trē",
+   "w": 1200,
+   "h": 1500
+  },
+  {
+   "src": "/images/2026/car-kraft-board.jpg",
+   "alt": "Kraft board amenity kits made for Clarion",
+   "w": 1200,
+   "h": 1500
+  },
+  {
+   "src": "/images/2026/brand-premium-flatlay.jpg",
+   "alt": "White amenity kit with towels and loofah",
+   "w": 1200,
+   "h": 1500
+  },
+  {
+   "src": "/images/2025/guest-amenities-p.jpg",
+   "alt": "Guest amenity kits",
+   "w": 1200,
+   "h": 1500
+  },
+  {
+   "src": "/images/2025/guest-amenities.jpg",
+   "alt": "Guest amenity kits in boxes and pouches",
+   "w": 1600,
+   "h": 1200
+  },
+  {
+   "src": "/images/clarion-amenities.jpg",
+   "alt": "Amenity tray made for Clarion",
+   "w": 1512,
+   "h": 2016
+  },
+  {
+   "src": "/images/park-amenities.jpg",
+   "alt": "Amenities made for The Park",
+   "w": 1512,
+   "h": 2016
+  },
+  {
+   "src": "/images/deccan-serai-amenities.jpg",
+   "alt": "Amenities made for Deccan Serai",
+   "w": 768,
+   "h": 1344
+  },
+  {
+   "src": "/images/white-leaf-amenities.jpg",
+   "alt": "White leaf-design amenity kits",
+   "w": 1600,
+   "h": 2400
+  },
+  {
+   "src": "/images/freshness-kit-1.jpg",
+   "alt": "Freshness kit",
+   "w": 1600,
+   "h": 1068
+  },
+  {
+   "src": "/images/kraft-board-boxes.jpg",
+   "alt": "Kraft board amenity boxes",
+   "w": 1600,
+   "h": 1200
+  },
+  {
+   "src": "/images/biotique/dry-amenities-1.jpg",
+   "alt": "Biotique dry amenity kits",
+   "w": 1272,
+   "h": 1280
+  },
+  {
+   "src": "/images/biotique/dry-amenities-2.jpg",
+   "alt": "Biotique kraft dry amenity kits",
+   "w": 994,
+   "h": 1000
+  },
+  {
+   "src": "/images/biotique/dry-amenities-3.jpg",
+   "alt": "Biotique dry amenities",
+   "w": 1400,
+   "h": 1036
+  }
+ ],
+ "toiletries": [
+  {
+   "src": "/images/2025/hotel-toiletries-p.jpg",
+   "alt": "Hotel toiletries",
+   "w": 1200,
+   "h": 1500
+  },
+  {
+   "src": "/images/2025/hotel-toiletries.jpg",
+   "alt": "Hotel toiletries range",
+   "w": 1600,
+   "h": 1200
+  },
+  {
+   "src": "/images/2026/car-purely-serene.jpg",
+   "alt": "Purely Serene guest-size bottles on a tiered stand",
+   "w": 1200,
+   "h": 1500
+  },
+  {
+   "src": "/images/2025/purely-serene-p.jpg",
+   "alt": "Purely Serene luxury toiletries",
+   "w": 1200,
+   "h": 1500
+  },
+  {
+   "src": "/images/2025/purely-serene.jpg",
+   "alt": "Purely Serene range",
+   "w": 1600,
+   "h": 1200
+  },
+  {
+   "src": "/images/purely-serene/hero.jpg",
+   "alt": "Purely Serene bottles and soaps",
+   "w": 1672,
+   "h": 941
+  },
+  {
+   "src": "/images/purely-serene/bottles-20ml-hexagon.jpg",
+   "alt": "Purely Serene 20 ml hexagon bottles",
+   "w": 1448,
+   "h": 1086
+  },
+  {
+   "src": "/images/purely-serene/bottles-35ml.jpg",
+   "alt": "Purely Serene 35 ml bottles",
+   "w": 1448,
+   "h": 1086
+  },
+  {
+   "src": "/images/purely-serene/cans-5-litre.jpg",
+   "alt": "Purely Serene 5 litre cans",
+   "w": 1448,
+   "h": 1086
+  },
+  {
+   "src": "/images/2026/bottles-20ml.jpg",
+   "alt": "20 ml bottles",
+   "w": 1200,
+   "h": 900
+  },
+  {
+   "src": "/images/2026/bottles-25ml.jpg",
+   "alt": "25 ml bottles",
+   "w": 1200,
+   "h": 900
+  },
+  {
+   "src": "/images/2026/bottles-30ml.jpg",
+   "alt": "30 ml bottles",
+   "w": 1200,
+   "h": 900
+  },
+  {
+   "src": "/images/2026/bottles-20ml-hexa.jpg",
+   "alt": "20 ml hexa bottles",
+   "w": 1200,
+   "h": 900
+  },
+  {
+   "src": "/images/2026/bottles-30ml-gold-cap.jpg",
+   "alt": "30 ml gold cap bottles",
+   "w": 1200,
+   "h": 900
+  },
+  {
+   "src": "/images/2026/tubes-15ml.jpg",
+   "alt": "15 ml tubes",
+   "w": 1200,
+   "h": 900
+  },
+  {
+   "src": "/images/2026/cans-5-litre.jpg",
+   "alt": "5 litre refill cans",
+   "w": 1200,
+   "h": 900
+  },
+  {
+   "src": "/images/2026/car-biotique.jpg",
+   "alt": "Biotique hotel toiletries",
+   "w": 1200,
+   "h": 1500
+  },
+  {
+   "src": "/images/2025/biotique-royal-p.jpg",
+   "alt": "Biotique Royal range",
+   "w": 1200,
+   "h": 1500
+  },
+  {
+   "src": "/images/2025/biotique-tray-p.jpg",
+   "alt": "Biotique amenities on a tray",
+   "w": 1200,
+   "h": 1500
+  },
+  {
+   "src": "/images/biotique/assorted-bottles-25-35ml.jpg",
+   "alt": "Biotique assorted bottles",
+   "w": 1448,
+   "h": 1086
+  },
+  {
+   "src": "/images/biotique/farm-fresh-soap-bottles.jpg",
+   "alt": "Biotique Farm Fresh soaps and bottles",
+   "w": 1448,
+   "h": 1086
+  },
+  {
+   "src": "/images/biotique/tubes-orchid-terraverde.jpg",
+   "alt": "Biotique Orchid and Terraverde tubes",
+   "w": 1448,
+   "h": 1086
+  },
+  {
+   "src": "/images/biotique/assorted-cans-5l.jpg",
+   "alt": "Biotique 5 litre cans",
+   "w": 1448,
+   "h": 1086
+  },
+  {
+   "src": "/images/biotique/farm-fresh-cans-5l.jpg",
+   "alt": "Biotique Farm Fresh 5 litre cans",
+   "w": 1448,
+   "h": 1086
+  },
+  {
+   "src": "/images/wet-amenities-1.jpg",
+   "alt": "Hotel toiletries bottles",
+   "w": 1600,
+   "h": 1200
+  },
+  {
+   "src": "/images/wet-amenities-3.jpg",
+   "alt": "Hotel toiletries",
+   "w": 1600,
+   "h": 1068
+  }
+ ],
+ "dispensers": [
+  {
+   "src": "/images/showcase/scene-32.webp",
+   "alt": "Luxury Spa Shower with Purely Serene Bottles",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/2026/car-purely-serene-dispensers.jpg",
+   "alt": "Purely Serene 500 ml dispensers",
+   "w": 1200,
+   "h": 1500
+  },
+  {
+   "src": "/images/2025/anti-theft-dispensers-p.jpg",
+   "alt": "Anti-theft dispensers",
+   "w": 1200,
+   "h": 1500
+  },
+  {
+   "src": "/images/2025/anti-theft-dispensers.jpg",
+   "alt": "Wall-mounted anti-theft dispensers",
+   "w": 1600,
+   "h": 1200
+  },
+  {
+   "src": "/images/purely-serene/dispensers-500ml-bathroom.jpg",
+   "alt": "Purely Serene dispensers in a bathroom",
+   "w": 1536,
+   "h": 1024
+  },
+  {
+   "src": "/images/purely-serene/dispensers-500ml-lineup.jpg",
+   "alt": "Purely Serene dispenser lineup",
+   "w": 1536,
+   "h": 1024
+  },
+  {
+   "src": "/images/purely-serene/dispensers-500ml-closeup.jpg",
+   "alt": "Purely Serene dispensers close up",
+   "w": 1536,
+   "h": 1024
+  },
+  {
+   "src": "/images/2026/dispenser-500ml.jpg",
+   "alt": "500 ml dispenser bottles",
+   "w": 1200,
+   "h": 900
+  },
+  {
+   "src": "/images/2026/biotique-cypress-citrus.jpg",
+   "alt": "Biotique Royal Cypress Citrus and Neroli dispensers",
+   "w": 1200,
+   "h": 900
+  },
+  {
+   "src": "/images/2026/biotique-bergamot.jpg",
+   "alt": "Biotique Royal Bergamot and Patchouli dispensers",
+   "w": 1200,
+   "h": 900
+  },
+  {
+   "src": "/images/2026/biotique-spa-essentials.jpg",
+   "alt": "Biotique dispensers",
+   "w": 1200,
+   "h": 900
+  },
+  {
+   "src": "/images/biotique/assorted-dispensers-380ml.jpg",
+   "alt": "Biotique 380 ml dispensers",
+   "w": 1448,
+   "h": 1086
+  },
+  {
+   "src": "/images/biotique/farm-fresh-dispensers.jpg",
+   "alt": "Biotique Farm Fresh dispensers",
+   "w": 1448,
+   "h": 1086
+  },
+  {
+   "src": "/images/biotique/royal-bergamot-patchouli.jpg",
+   "alt": "Biotique Royal Bergamot Patchouli",
+   "w": 1448,
+   "h": 1086
+  },
+  {
+   "src": "/images/biotique/royal-cypress-citrus-neroli.jpg",
+   "alt": "Biotique Royal Cypress Citrus Neroli",
+   "w": 1448,
+   "h": 1086
+  },
+  {
+   "src": "/images/biotique/royal-red-grapefruit-kopou-phool.jpg",
+   "alt": "Biotique Royal Red Grapefruit and Kopou Phool",
+   "w": 1448,
+   "h": 1086
+  },
+  {
+   "src": "/images/dispensers/photo-1.jpg",
+   "alt": "Wall-mounted dispenser",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "src": "/images/dispensers/photo-2.jpg",
+   "alt": "Wall-mounted dispenser",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "src": "/images/dispensers/photo-3.jpg",
+   "alt": "Wall-mounted dispenser",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "src": "/images/dispensers/photo-4.jpg",
+   "alt": "Wall-mounted dispenser",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "src": "/images/dispensers/photo-5.jpg",
+   "alt": "Wall-mounted dispenser",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "src": "/images/dispensers/photo-6.jpg",
+   "alt": "Wall-mounted dispenser",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "src": "/images/dispensers/photo-7.jpg",
+   "alt": "Wall-mounted dispenser",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "src": "/images/dispensers/photo-8.jpg",
+   "alt": "Wall-mounted dispenser",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "src": "/images/dispensers/photo-9.jpg",
+   "alt": "Wall-mounted dispenser",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "src": "/images/dispensers/photo-10.jpg",
+   "alt": "Wall-mounted dispenser",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "src": "/images/dispensers/photo-11.jpg",
+   "alt": "Wall-mounted dispenser",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "src": "/images/dispensers/photo-12.jpg",
+   "alt": "Wall-mounted dispenser",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "src": "/images/dispensers/photo-13.jpg",
+   "alt": "Wall-mounted dispenser",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "src": "/images/dispensers/photo-14.jpg",
+   "alt": "Wall-mounted dispenser",
+   "w": 1000,
+   "h": 1000
+  }
+ ],
+ "tea": [
+  {
+   "src": "/images/showcase/scene-06.webp",
+   "alt": "Cozy Hotel Tea Station",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-12.webp",
+   "alt": "Cozy Hotel Tea Station Still Life",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-18.webp",
+   "alt": "Cozy Hotel Tea Station",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-24.webp",
+   "alt": "Cozy Hotel Tea and Coffee Station",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-30.webp",
+   "alt": "Elegant Hotel Tea Station",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-36.webp",
+   "alt": "Elegant Hotel Tea Tray Still Life",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/showcase/scene-42.webp",
+   "alt": "Warm Hotel Tea Station with Pigeon Kettle",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "src": "/images/2026/car-tray-kettle.jpg",
+   "alt": "In-room tea and coffee tray with steel kettle",
+   "w": 1200,
+   "h": 1500
+  },
+  {
+   "src": "/images/2025/tcm-tray-kettle-p.jpg",
+   "alt": "Tray and kettle set",
+   "w": 1200,
+   "h": 1500
+  },
+  {
+   "src": "/images/2026/tcm-show-1.jpg",
+   "alt": "Kettle tray set",
+   "w": 1536,
+   "h": 1024
+  },
+  {
+   "src": "/images/2026/tcm-show-2.jpg",
+   "alt": "Kettle tray set",
+   "w": 1536,
+   "h": 1024
+  },
+  {
+   "src": "/images/2026/tcm-show-3.jpg",
+   "alt": "Kettle tray set",
+   "w": 1536,
+   "h": 1024
+  },
+  {
+   "src": "/images/2026/tcm-show-4.jpg",
+   "alt": "Kettle tray set",
+   "w": 1536,
+   "h": 1024
+  },
+  {
+   "src": "/images/2026/tcm-show-5.jpg",
+   "alt": "Kettle tray set",
+   "w": 1536,
+   "h": 1024
+  },
+  {
+   "src": "/images/tcm-1.jpg",
+   "alt": "Kettle tray with cups and sachets",
+   "w": 1600,
+   "h": 1200
+  },
+  {
+   "src": "/images/tcm-2.jpg",
+   "alt": "Kettle tray set",
+   "w": 1600,
+   "h": 1200
+  },
+  {
+   "src": "/images/tcm-3.jpg",
+   "alt": "Wooden kettle tray",
+   "w": 1600,
+   "h": 1068
+  },
+  {
+   "src": "/images/tcm-5.jpg",
+   "alt": "Kettle tray with glasses",
+   "w": 1600,
+   "h": 1068
+  }
+ ]
+}

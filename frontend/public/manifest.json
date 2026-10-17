@@ -1,20 +1,20 @@
 {
-  "short_name": "Amaravati Enterprises",
-  "name": "Amaravati Enterprises — Premium Hospitality Supplies",
+  "short_name": "Amaravati",
+  "name": "Amaravati Enterprises: Hotel Amenities Supplier",
   "icons": [
     {
-      "src": "logo192.png",
+      "src": "/apple-touch-icon.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "180x180"
     },
     {
-      "src": "logo512.png",
+      "src": "/amaravati-logo.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "962x962"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#c9a961",
-  "background_color": "#faf8f1"
+  "theme_color": "#0E5A47",
+  "background_color": "#F3F5F3"
 }
