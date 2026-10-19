@@ -13,6 +13,7 @@ import ShowcaseSlideshow from "@/components/motion/ShowcaseSlideshow";
 import TrayMarquee from "@/components/TrayMarquee";
 import SceneSlideshow from "@/components/SceneSlideshow";
 import { kitScenes, teaScenes, rotate } from "@/lib/scenes";
+import { fileSize } from "@/lib/fileSize";
 
 export function generateStaticParams() {
   return categories.filter((c) => !c.customPage).map((c) => ({ slug: c.slug }));
@@ -151,20 +152,22 @@ export default function CategoryPage({ params }) {
         </div>
         {c.brochure && (
           <a href={c.brochure} target="_blank" rel="noopener" className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink/[0.05] px-5 py-3 text-[15px] font-medium ring-1 ring-line/10 hover:bg-ink/[0.08]">
-            <DownloadSimple size={18} aria-hidden="true" /> {c.name} brochure (PDF)
+            <DownloadSimple size={18} aria-hidden="true" /> {c.name} Brochure (PDF{fileSize(c.brochure) ? `, ${fileSize(c.brochure)}` : ""})
           </a>
         )}
-        <p className="mt-8 max-w-2xl text-muted">
-          Want these with your hotel&rsquo;s name?{" "}
-          <Link href="/custom-branding" className="font-medium text-ink underline decoration-line/30 underline-offset-4 hover:decoration-accent">
-            See how custom branding works
-          </Link>
-          .
-        </p>
+        {c.slug !== "tea-coffee" && (
+          <p className="mt-8 max-w-2xl text-muted">
+            Want these with your hotel&rsquo;s identity?{" "}
+            <Link href="/custom-branding" className="font-medium text-ink underline decoration-line/30 underline-offset-4 hover:decoration-accent">
+              See how Custom Branding works
+            </Link>
+            .
+          </p>
+        )}
       </section>
       )}
 
-      <CtaBand title={`Get a quote for ${c.name.toLowerCase()}.`} product={c.name} />
+      <CtaBand product={c.name} />
 
       <section className="container-x mt-24" aria-labelledby="more-title">
         <h2 id="more-title" className="text-2xl font-semibold tracking-tight">

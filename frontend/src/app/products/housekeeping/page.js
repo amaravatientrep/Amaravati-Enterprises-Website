@@ -4,8 +4,9 @@ import PageHeader from "@/components/PageHeader";
 import ButtonLink from "@/components/Button";
 import CtaBand from "@/components/CtaBand";
 import HousekeepingCatalogue from "@/components/HousekeepingCatalogue";
-import { hkSections, hkItemCount } from "@/lib/housekeeping";
+import { hkItemCount } from "@/lib/housekeeping";
 import { categories, brochures, whatsappLink, SITE_URL } from "@/lib/site";
+import { fileSize } from "@/lib/fileSize";
 
 const c = categories.find((x) => x.slug === "housekeeping");
 const hkBrochure = brochures.find((b) => b.file.includes("ae-hk"));
@@ -33,8 +34,7 @@ export default function HousekeepingPage() {
       <PageHeader
         crumbs={[{ label: "Products", href: "/products" }, { label: c.name }]}
         title={c.name}
-        subtitle={`Housekeeping material list: ${hkItemCount} products in ${hkSections.length} sections, each with its catalogue code.`}
-        intro="Search by name or code, tap the products you need, and send them to us in one enquiry."
+        intro="Search by product name or code, tap the products you need, and send them to us in one enquiry."
       >
         <div className="mt-9 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
           <ButtonLink fill href={`/contact?product=${encodeURIComponent(c.name)}#enquiry`} icon={ArrowRight}>
@@ -45,7 +45,7 @@ export default function HousekeepingPage() {
           </ButtonLink>
           {hkBrochure && (
             <ButtonLink fill href={hkBrochure.file} external icon={DownloadSimple} variant="ghost" className="col-span-2">
-              Download material list (PDF)
+              Download Brochure{fileSize(hkBrochure.file) ? ` (${fileSize(hkBrochure.file)})` : ""}
             </ButtonLink>
           )}
         </div>
@@ -57,7 +57,7 @@ export default function HousekeepingPage() {
         </Suspense>
       </div>
 
-      <CtaBand title="Get a quote for housekeeping material." product={c.name} />
+      <CtaBand product={c.name} />
     </>
   );
 }

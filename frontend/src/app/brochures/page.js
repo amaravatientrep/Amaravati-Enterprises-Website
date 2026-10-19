@@ -11,7 +11,7 @@ export const metadata = {
 export default function BrochuresPage() {
   return (
     <>
-      <PageHeader ld crumbs={[{ label: "Brochures" }]} title="Brochures" intro="View or download our brochures. Each one opens as a PDF." />
+      <PageHeader ld crumbs={[{ label: "Brochures" }]} title="Brochures" intro="View or download our Brochures. Each one opens as a PDF." />
       <section className="container-x">
         <BrochureGrid />
       </section>

@@ -12,7 +12,7 @@ import { nav, whatsappLink, contact, categories } from "@/lib/site";
 // Everything listed under Products: our categories plus the Biotique catalogue.
 const productLinks = [
   ...categories.map((c) => ({ href: `/products/${c.slug}`, label: c.name })),
-  { href: "/products/biotique", label: "Biotique" },
+  { href: "/products/biotique", label: "Biotique Range" },
 ];
 
 export default function Header() {
@@ -125,7 +125,7 @@ export default function Header() {
             </Link>
             <Link
               href="/contact#enquiry"
-              className="hidden rounded-full bg-[#5CBF9C] px-5 py-2.5 text-[14px] font-medium text-[#0A1A14] transition-transform duration-500 ease-snap active:scale-[0.98] sm:inline-flex"
+              className="hidden rounded-full bg-[#5CBF9C] px-5 py-2.5 text-[14px] font-medium text-[#0A1A14] transition-transform duration-200 ease-snap active:scale-[0.98] sm:inline-flex"
             >
               Get a quote
             </Link>
@@ -140,13 +140,13 @@ export default function Header() {
             >
               <span
                 className={clsx(
-                  "absolute h-[1.5px] w-5 bg-current transition-transform duration-500 ease-snap",
+                  "absolute h-[1.5px] w-5 bg-current transition-transform duration-200 ease-snap",
                   open ? "rotate-45" : "-translate-y-[4px]"
                 )}
               />
               <span
                 className={clsx(
-                  "absolute h-[1.5px] w-5 bg-current transition-transform duration-500 ease-snap",
+                  "absolute h-[1.5px] w-5 bg-current transition-transform duration-200 ease-snap",
                   open ? "-rotate-45" : "translate-y-[4px]"
                 )}
               />
@@ -204,7 +204,7 @@ export default function Header() {
             initial={reduce ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
+            transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
             className="pointer-events-auto fixed inset-0 -z-10 bg-[#0C0F0E]/95 pt-28 text-[#EEF2EF] backdrop-blur-2xl lg:hidden"
           >
             <nav aria-label="Mobile" className="container-x">

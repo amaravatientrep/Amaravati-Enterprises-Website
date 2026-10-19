@@ -89,10 +89,103 @@
   animation: hero-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+/* Entrances for things that appear on a tap: short and ease-out, so they answer at once */
+@keyframes tray-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+}
+.anim-tray {
+  animation: tray-in 220ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+.anim-viewer {
+  animation: fade-in 200ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+@keyframes photo-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
+.anim-photo {
+  animation: photo-in 240ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+/* Tick on a selected option: a small pop, so the tap clearly registered */
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+.anim-pop {
+  animation: pop 160ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+/* Switching products in a kit explorer: the new contents fade up into place */
+@keyframes swap-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+.anim-swap {
+  animation: swap-in 200ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+/* Enquiry sent: the thank-you block rises in, its tick pops a moment later */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+.anim-rise {
+  animation: rise-in 350ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+.anim-pop-slow {
+  animation: pop 320ms cubic-bezier(0.23, 1, 0.32, 1) 120ms both;
+}
+/* Logo preview: an uploaded logo fades onto the products (SVG image, scaled from its own centre) */
+.anim-logo {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pop 300ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+/* Floating WhatsApp button (tablet and desktop): waits below the fold until the visitor scrolls, then slides up once */
+.wa-float {
+  transition:
+    opacity 300ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.wa-float[data-wait] {
+  opacity: 0;
+  transform: translateY(24px);
+  pointer-events: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
-  .hero-rise {
+  .hero-rise,
+  .anim-tray,
+  .anim-viewer,
+  .anim-photo,
+  .anim-pop,
+  .anim-swap,
+  .anim-rise,
+  .anim-pop-slow,
+  .anim-logo {
     animation: none;
+  }
+  /* Hover and state transitions become instant (utility classes set them per element, hence !important) */
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0s !important;
   }
 }
 

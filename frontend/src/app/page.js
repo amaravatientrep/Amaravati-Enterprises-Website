@@ -21,23 +21,24 @@ export const metadata = {
 };
 
 // Range tiles: our categories plus Biotique (partner brand). Order sets the bento placement.
-const tileOrder = ["hotel-toiletries","amenity-kits", "purely-serene", "anti-theft-dispensers", "housekeeping", "stationery", "tea-coffee", "biotique", "in-room-amenities"];
+const tileOrder = ["hotel-toiletries","amenity-kits", "purely-serene", "anti-theft-dispensers", "housekeeping", "stationery", "tea-coffee", "biotique", "in-room-amenities", "eco-friendly"];
 const rangeTiles = [
   ...categories.map((c) => ({ ...c, href: `/products/${c.slug}` })),
-  { slug: "biotique", name: "Biotique", short: "Ayurvedic hotel amenities from a name guests already know.", href: "/products/biotique" },
+  { slug: "biotique", name: "Biotique Range", short: "Ayurvedic hotel amenities from a name guests already know.", href: "/products/biotique" },
 ].sort((a, b) => tileOrder.indexOf(a.slug) - tileOrder.indexOf(b.slug));
 
 // Mosaic: 6 columns x 8 rows on desktop, every cell filled.
-// lg map:  T T T K K K / T T T K K K / T T T P P H / D D B P P H / D D B C C H / D D S C C H / I I I I I I (2 rows)
+// lg map:  T T T K K K / T T T K K K / T T T P P H / D D B P P H / D D B C C H / D D S C C H / I I I E E E (2 rows)
 const bento = {
-  "hotel-toiletries": { cls: "col-span-2 md:col-span-2 md:row-span-2 lg:col-span-3 lg:row-span-3 lg:col-start-1 lg:row-start-1", img: "/images/tiles/hotel-toiletries.jpg", pos: "72% 40%", sizes: "(min-width: 1024px) 50vw, 100vw", text: true, big: true },
+  "hotel-toiletries": { cls: "col-span-2 md:col-span-2 md:row-span-2 lg:col-span-3 lg:row-span-3 lg:col-start-1 lg:row-start-1", img: "/images/tiles/hotel-toiletries.jpg", pos: "72% 40%", sizes: "(min-width: 1024px) 50vw, 100vw", big: true },
   "amenity-kits": { cls: "lg:col-span-3 lg:row-span-2 lg:col-start-4 lg:row-start-1", img: "/images/tiles/guest-amenities.jpg", pos: "55% 40%", sizes: "(min-width: 1024px) 50vw, (min-width: 768px) 50vw, 100vw", text: true },
   "purely-serene": { cls: "lg:col-span-2 lg:row-span-2 lg:col-start-4 lg:row-start-3", img: "/images/tiles/purely-serene.jpg", pos: "50% 35%", sizes: "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" },
   "anti-theft-dispensers": { cls: "md:row-span-2 lg:col-span-2 lg:row-span-3 lg:col-start-1 lg:row-start-4", img: "/images/tiles/dispensers.jpg", pos: "62% 38%", sizes: "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" },
   housekeeping: { cls: "md:row-span-2 lg:col-span-1 lg:row-span-4 lg:col-start-6 lg:row-start-3", img: "/images/tiles/housekeeping.jpg", pos: "55% 45%", sizes: "(min-width: 1024px) 17vw, (min-width: 768px) 50vw, 100vw" },
   stationery: { cls: "lg:col-span-1 lg:row-span-1 lg:col-start-3 lg:row-start-6", img: "/images/tiles/stationery.jpg", pos: "55% 55%", sizes: "(min-width: 1024px) 17vw, (min-width: 768px) 50vw, 100vw" },
   "tea-coffee": { cls: "lg:col-span-2 lg:row-span-2 lg:col-start-4 lg:row-start-5", img: "/images/tiles/tea-coffee.jpg", pos: "50% 45%", sizes: "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw", text: true },
-  "in-room-amenities": { cls: "md:col-span-2 lg:col-span-6 lg:row-span-2 lg:col-start-1 lg:row-start-7", img: "/images/stationery/leather-products.jpg", sizes: "100vw", text: true },
+  "in-room-amenities": { cls: "md:col-span-2 lg:col-span-3 lg:row-span-2 lg:col-start-1 lg:row-start-7", img: "/images/stationery/leather-products.jpg", sizes: "(min-width: 1024px) 50vw, 100vw", text: true },
+  "eco-friendly": { cls: "col-span-2 lg:col-span-3 lg:row-span-2 lg:col-start-4 lg:row-start-7", img: "/images/tiles/eco-friendly.jpg", pos: "50% 55%", sizes: "(min-width: 1024px) 50vw, 100vw", text: true },
   biotique: { cls: "md:col-span-2 lg:col-span-1 lg:row-span-2 lg:col-start-3 lg:row-start-4", img: "/images/tiles/biotique.jpg", pos: "50% 36%", sizes: "(min-width: 1024px) 17vw, 100vw" },
 };
 
@@ -64,29 +65,26 @@ export default function Home() {
       <section aria-labelledby="clients-title" className="py-10">
         <div className="container-x">
           <h2 id="clients-title" className="mb-6 text-center text-[15px] text-muted">
-            Trusted by hotels, resorts and institutions, including
+            Our Clients
           </h2>
         </div>
         <ClientMarquee />
       </section>
 
-      {/* Custom branding: real client work, horizontal strip */}
+      {/* Custom Branding: real client work, horizontal strip */}
       <section aria-labelledby="branding-title" className="mt-10 bg-sunk py-20 md:mt-14 md:py-28">
         <div className="container-x grid gap-12 md:grid-cols-12">
           <Reveal className="md:col-span-4">
             <p className="mb-5 inline-flex rounded-full bg-accent-soft px-3 py-1 text-[12px] font-medium uppercase tracking-[0.14em] text-accent">
-              Custom branding
+              Custom Branding
             </p>
             <h2 id="branding-title" className="text-4xl font-semibold leading-[1.05] tracking-tight md:text-5xl">
-              Your Hotel&rsquo;s identity on all products.
+              Your hotel&rsquo;s identity on all products.
             </h2>
-            <p className="mt-5 max-w-sm text-lg leading-relaxed text-muted">
-              Soaps, bottles, kits, boxes and stationery, printed with your hotel&rsquo;s identity.
-            </p>
             <ol className="mt-10 space-y-5">
               {[
                 { icon: PenNib, t: "Share your logo", d: "Send it on WhatsApp or email." },
-                { icon: Stamp, t: "Approve the artwork", d: "We prepare the design for your sign-off." },
+                { icon: Stamp, t: "Approve the artwork", d: "We prepare the design and send it for your approval." },
                 { icon: Truck, t: "Receive branded stock", d: "Delivered to your property." },
               ].map((s) => (
                 <li key={s.t} className="flex gap-4">
@@ -119,16 +117,16 @@ export default function Home() {
       <section className="container-x mt-20 md:mt-28">
         <Reveal className="grid gap-12 md:grid-cols-12 md:items-end">
           <p className="text-3xl font-medium leading-[1.15] tracking-tight md:col-span-7 md:text-[2.75rem]">
-            One supplier for the whole guest room, from the soap by the basin to the card on the door handle.
+            One-stop shop for all your hospitality needs, from the soap by the basin to the card on the door handle.
           </p>
           <dl className="grid grid-cols-3 gap-4 sm:gap-6 md:col-span-5">
             {stats.map((s) => (
-              <div key={s.label} className="border-t border-line/15 pt-4">
-                <dt className="sr-only">{s.label}</dt>
-                <dd className="text-[1.75rem] font-semibold tabular-nums tracking-tighter sm:text-4xl md:text-5xl">
+              // The label is the term (read once); the number is shown above it
+              <div key={s.label} className="flex flex-col border-t border-line/15 pt-4">
+                <dt className="order-2 mt-2 text-[14px] leading-snug text-muted">{s.label}</dt>
+                <dd className="order-1 text-[1.75rem] font-semibold tabular-nums tracking-tighter sm:text-4xl md:text-5xl">
                   <CountUp value={s.value} />
                 </dd>
-                <dd className="mt-2 text-[14px] leading-snug text-muted">{s.label}</dd>
               </div>
             ))}
           </dl>
@@ -160,13 +158,13 @@ export default function Home() {
                         sizes={b.sizes}
                         // Each photo is aimed at its products (they sit off-centre in the shot), clear of the caption shade
                         style={{ objectPosition: b.pos || "50% 50%" }}
-                        className="object-cover transition-transform duration-[1200ms] ease-snap group-hover:scale-[1.04]"
+                        className="object-cover transition-transform duration-700 ease-snap group-hover:scale-[1.04]"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0C0F0E]/90 via-[#0C0F0E]/30 to-transparent md:from-[#0C0F0E]/85 md:via-[#0C0F0E]/25" />
                       <div className="relative p-4 text-white md:p-5 xl:p-6">
                         <h3 className={`flex items-end justify-between gap-3 font-semibold leading-tight tracking-tight ${b.big ? "text-2xl md:text-4xl" : "text-base md:text-2xl"}`}>
                           {c.name}
-                          <ArrowUpRight size={18} aria-hidden="true" className="mb-0.5 shrink-0 transition-transform duration-500 ease-snap group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                          <ArrowUpRight size={18} aria-hidden="true" className="mb-0.5 shrink-0 transition-transform duration-200 ease-snap group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                         </h3>
                         {b.text && <p className={`mt-2 max-w-md text-[15px] leading-relaxed text-white/80 ${b.big ? "" : "hidden md:block"}`}>{c.short}</p>}
                       </div>
@@ -199,7 +197,7 @@ export default function Home() {
       <section aria-labelledby="brochures-title" className="container-x mt-24 md:mt-32">
         <Reveal className="mb-10 max-w-2xl">
           <h2 id="brochures-title" className="text-4xl font-semibold leading-[1.05] tracking-tight md:text-5xl">
-            Browse the brochures.
+            Browse Our Brochures.
           </h2>
         </Reveal>
         <BrochureGrid />

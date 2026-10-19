@@ -16,9 +16,9 @@ const ease = [0.16, 1, 0.3, 1];
 // Soft hyphens so long one-word labels break cleanly in the narrow phone cards.
 const soft = (t) => t.replace(/^(Trans)(lucent|parent)$/, "$1­$2");
 
-function rowsOf(p) {
+function rowsOf(p, packaging = amenityPackaging) {
   const rows = (p.parts || []).map((part) => ({ id: part.id, label: part.label, options: part.options, images: part.images, hideLabel: part.hideLabel }));
-  if (p.packaging) rows.push({ id: "packaging", label: "Packaging", options: amenityPackaging, images: p.packagingImages });
+  if (p.packaging) rows.push({ id: "packaging", label: "Packaging", options: packaging, images: p.packagingImages });
   return rows;
 }
 
@@ -72,9 +72,9 @@ const HEROES = {
     closed: { top: 0.0106, bottom: 0.9894, left: 0.1416, right: 0.8584 },
     open: { top: 0.1856, bottom: 0.9914, left: 0.1416, right: 0.8567 },
     pieces: [
-      { content: "2 ear buds", left: 54, height: 120, rise: -96, tilt: -7, z: 1 },
-      { content: "1 emery board", left: 94, height: 110, rise: -82, tilt: 7, z: 2 },
-      { content: "1 band aid", left: 74, height: 95, rise: -64, tilt: 0, z: 3 },
+      { content: "2 Ear Buds", left: 54, height: 120, rise: -96, tilt: -7, z: 1 },
+      { content: "1 Emery Board", left: 94, height: 110, rise: -82, tilt: 7, z: 2 },
+      { content: "1 Band Aid", left: 74, height: 95, rise: -64, tilt: 0, z: 3 },
     ],
   },
   // Contents mounted on one card: the whole card rises and lands on the single "In the kit" photo.
@@ -94,7 +94,7 @@ const HEROES = {
     open: { top: 0.3411, bottom: 0.9688, left: 0.1267, right: 0.8822 },
     pieces: [
       {
-        content: "1 biodegradable disposal sanitary bag",
+        content: "1 biodegradable Sanitary Disposal Bag",
         src: "/images/amenities/disposal-sanitary-bag/content-bag-folded.webp",
         // Narrower than the box opening (about 70 of its 110 px) and only partly out, so it reads as coming out
         // of the box rather than sitting on top of it.
@@ -182,17 +182,54 @@ function Scene({ p, hero, settled }) {
   );
 }
 
+// The explorer's last frame (open carton with its pieces risen) as a still, scaled to fill its parent and cropped
+// to the carton and pieces. Returns null for products without the open-the-box sequence.
+export function KitSnapshot({ slug }) {
+  const ref = useRef(null);
+  const [s, setS] = useState(0);
+  const hero = HEROES[slug];
+  const p = amenityProducts.find((x) => x.slug === slug);
+  // Vertical extent of the frame: highest risen piece (or the carton top) down to the carton bottom
+  const top = Math.min(hero?.body.y ?? 0, ...(hero?.pieces || []).map((pc) => hero.body.y + 4 + pc.rise)) - 6;
+  const h = (hero?.body.y ?? 0) + (hero?.body.h ?? 0) + 6 - top;
+
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const fit = () => setS(Math.min(el.clientWidth / 180, el.clientHeight / h));
+    fit();
+    const ro = new ResizeObserver(fit);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [h]);
+
+  if (!hero || !p?.carton) return null;
+  return (
+    <div ref={ref} className="absolute inset-0 overflow-hidden" aria-hidden="true">
+      <div
+        className="absolute left-1/2 top-1/2"
+        style={{ width: 180, height: h, transform: `translate(-50%, -50%) scale(${s})`, visibility: s ? "visible" : "hidden" }}
+      >
+        <div className="absolute inset-x-0" style={{ top: -top, height: 320 }}>
+          <Scene p={p} hero={hero} settled />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const centre = (el) => {
   const r = el.getBoundingClientRect();
   return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
 };
 
 // Pick an amenity, watch the kit open into its parts, varieties and packaging, and collect options for one enquiry.
-// product: the enquiry form option to preselect.
-export default function KitExplorer({ product }) {
-  const [slug, setSlug] = useState(amenityProducts[0].slug);
+// product: the enquiry form option to preselect. products/packaging/title: another range in the same format
+// (the eco page); products without a HEROES entry show their rows straight away.
+export default function KitExplorer({ product, products = amenityProducts, packaging = amenityPackaging, title = "Build your Amenity Kit" }) {
+  const [slug, setSlug] = useState(products[0].slug);
   // intro: closed box waiting to play (server render) · play: sequence running · done: settled view
-  const [phase, setPhase] = useState(ANIMATED.has(amenityProducts[0].slug) ? "intro" : "done");
+  const [phase, setPhase] = useState(ANIMATED.has(products[0].slug) ? "intro" : "done");
   const [run, setRun] = useState(0);
   const [picked, setPicked] = useState([]); // [{ key, slug, row, option }]
   const reduce = useRef(false);
@@ -203,16 +240,17 @@ export default function KitExplorer({ product }) {
   const [fit, setFit] = useState(null); // desktop column size, see fitFor()
   const heroRef = useRef(null);
 
-  const p = amenityProducts.find((x) => x.slug === slug);
+  const p = products.find((x) => x.slug === slug);
   const animated = ANIMATED.has(slug);
   const hero = HEROES[slug];
-  const rows = rowsOf(p);
+  const rows = rowsOf(p, packaging);
   const settled = phase === "done" || !animated;
+  const still = !animated && Boolean(p.tile);
 
   // Deep link (#dental-kit), reduced motion, and play the first time the stage comes into view.
   useEffect(() => {
     reduce.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const fromHash = amenityProducts.find((x) => `#${x.slug}` === window.location.hash);
+    const fromHash = products.find((x) => `#${x.slug}` === window.location.hash);
     if (fromHash) setSlug(fromHash.slug);
     const s = fromHash?.slug ?? slug;
     if (reduce.current || !ANIMATED.has(s)) {
@@ -227,7 +265,7 @@ export default function KitExplorer({ product }) {
         // Fetch the other animated kits' carton and hero pieces while idle, so tapping them starts at once.
         const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 1500));
         idle(() => {
-          amenityProducts
+          products
             .filter((x) => ANIMATED.has(x.slug) && x.slug !== s)
             .forEach((x) => {
               const urls = [x.carton.closed, x.carton.open, ...HEROES[x.slug].pieces.map((pc, i) => pieceSrc(x, pc, i))];
@@ -435,7 +473,7 @@ export default function KitExplorer({ product }) {
   };
 
   // "Dental Kit (Brush: Bamboo, White; Packaging: Kraft Board Boxes); Care Kit"
-  const pickedText = amenityProducts
+  const pickedText = products
     .filter((x) => picked.some((k) => k.slug === x.slug))
     .map((x) => {
       const mine = picked.filter((k) => k.slug === x.slug && k.row !== "kit");
@@ -453,23 +491,23 @@ export default function KitExplorer({ product }) {
         <style>{`.kx-rows{opacity:1!important}.kx-hero{display:none}.kx-stage{display:block!important}`}</style>
       </noscript>
       {/* Deep-link targets: /products/amenity-kits#dental-kit lands here, even without JavaScript */}
-      {amenityProducts.map((x) => (
+      {products.map((x) => (
         <span key={x.slug} id={x.slug} className="block scroll-mt-28" aria-hidden="true" />
       ))}
       <h2 id="explorer-title" className="text-3xl font-semibold tracking-tight md:text-4xl">
-        Build your amenity kit
+        {title}
       </h2>
-      <p className="mt-3 max-w-2xl text-muted">Pick an amenity to see what goes in it. Tap the options you want, then send them to us in one enquiry.</p>
+      <p className="mt-3 max-w-2xl text-muted">Pick a product. Tap the options you want, then send them to us in one enquiry.</p>
 
       <div ref={chipsRef} role="group" aria-label="Choose an amenity" className="-mx-4 mt-6 flex gap-2 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden">
-        {amenityProducts.map((x) => (
+        {products.map((x) => (
           <button
             key={x.slug}
             type="button"
             onClick={() => choose(x.slug)}
             aria-pressed={x.slug === slug}
             className={clsx(
-              "shrink-0 rounded-full px-4 py-2.5 text-[15px] font-medium ring-1 transition-colors duration-200",
+              "shrink-0 rounded-full px-4 py-2.5 text-[15px] font-medium ring-1 transition-[color,background-color,transform] duration-150 ease-out active:scale-[0.97]",
               x.slug === slug ? "bg-accent text-accent-ink ring-accent" : "bg-surface ring-line/15 hover:bg-ink/[0.05]"
             )}
           >
@@ -483,7 +521,7 @@ export default function KitExplorer({ product }) {
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div aria-live="polite">
               <h3 className="text-xl font-semibold tracking-tight md:text-2xl">{p.name}</h3>
-              <p className="mt-1 text-[15px] text-muted">{amenityLine(p)}</p>
+              {amenityLine(p) && <p className="mt-1 text-[15px] text-muted">{amenityLine(p)}</p>}
             </div>
             {animated && (
               <div className="flex items-center gap-2">
@@ -502,6 +540,7 @@ export default function KitExplorer({ product }) {
             className={clsx(
               "kx-stage relative mt-6",
               animated && "lg:grid lg:grid-cols-[var(--kx-col)_minmax(0,1fr)] lg:gap-12",
+              still && "lg:grid lg:grid-cols-[300px_minmax(0,1fr)] lg:gap-12",
               // room for the full-width stage while the sequence plays, even for kits with few rows
               animated && phase !== "done" && "min-h-[320px] lg:min-h-[560px]"
             )}
@@ -534,7 +573,17 @@ export default function KitExplorer({ product }) {
               </div>
             )}
 
-            <div ref={rowsRef} data-phase={animated ? phase : "done"} className="kx-rows lg:self-start space-y-5 sm:space-y-6" style={animated && phase === "intro" ? { opacity: 0 } : undefined}>
+            {/* Still kits (eco range): one photo of the pack with its contents, beside the rows on desktop, above them on
+                phones. Decorative: the rows carry the content. */}
+            {still && (
+              <div key={`photo-${slug}`} className="anim-swap mb-5 lg:mb-0" aria-hidden="true">
+                <div className="flex h-52 items-center justify-center overflow-hidden rounded-3xl bg-white sm:h-64 lg:sticky lg:top-28 lg:aspect-square lg:h-auto">
+                  <img src={p.tile} alt="" decoding="async" className="h-full w-full object-contain p-3" />
+                </div>
+              </div>
+            )}
+
+            <div ref={rowsRef} key={animated ? "rows" : `rows-${slug}`} data-phase={animated ? phase : "done"} className={clsx("kx-rows lg:self-start space-y-5 sm:space-y-6", !animated && "anim-swap")} style={animated && phase === "intro" ? { opacity: 0 } : undefined}>
               {/* Example kits (shown, not chosen) for kits whose contents are made to order */}
               {p.examples && (
                 <div data-row="examples">
@@ -607,7 +656,7 @@ export default function KitExplorer({ product }) {
                     isPicked(kitKey) ? "bg-accent-soft text-accent ring-2 ring-accent" : "ring-line/15 hover:bg-ink/[0.05]"
                   )}
                 >
-                  <Check size={16} weight="bold" className={isPicked(kitKey) ? "" : "opacity-30"} aria-hidden="true" />
+                  <Check size={16} weight="bold" className={isPicked(kitKey) ? "anim-pop" : "opacity-30"} aria-hidden="true" />
                   Add {p.name.toLowerCase()} to enquiry
                 </button>
               )}
@@ -640,7 +689,7 @@ export default function KitExplorer({ product }) {
                               onClick={() => toggle(row.label, opt)}
                               aria-pressed={on}
                               className={clsx(
-                                "relative ring-1 transition-[box-shadow,background-color] duration-200",
+                                "relative ring-1 transition-[box-shadow,background-color,transform] duration-150 ease-out active:scale-[0.97]",
                                 card ? "flex h-full w-full flex-col items-center gap-1.5 rounded-xl px-0.5 pb-2 pt-2.5 sm:gap-2 sm:rounded-2xl sm:px-1 sm:pb-2.5 sm:pt-3" : "inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-[15px]",
                                 on ? "bg-accent-soft ring-2 ring-accent" : "bg-surface ring-line/10 hover:ring-line/25"
                               )}
@@ -667,12 +716,12 @@ export default function KitExplorer({ product }) {
                                     )}
                                     aria-hidden="true"
                                   >
-                                    <Check size={12} weight="bold" />
+                                    <Check size={12} weight="bold" className={on ? "anim-pop" : ""} />
                                   </span>
                                 </>
                               ) : (
                                 <>
-                                  <Check size={16} weight="bold" className={on ? "text-accent" : "opacity-25"} aria-hidden="true" />
+                                  <Check size={16} weight="bold" className={on ? "anim-pop text-accent" : "opacity-25"} aria-hidden="true" />
                                   {opt}
                                 </>
                               )}
@@ -692,7 +741,7 @@ export default function KitExplorer({ product }) {
       {/* Enquiry tray (same pattern as the housekeeping catalogue) */}
       {picked.length > 0 && (
         <div className="fixed inset-x-4 bottom-24 z-40 mx-auto max-w-2xl md:bottom-6" role="region" aria-label="Selected options">
-          <div className="flex items-center gap-2 rounded-full bg-[#131816] p-2 pl-4 text-white shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] ring-1 ring-white/10 sm:gap-3 sm:p-3 sm:pl-5">
+          <div className="anim-tray flex items-center gap-2 rounded-full bg-[#131816] p-2 pl-4 text-white shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] ring-1 ring-white/10 sm:gap-3 sm:p-3 sm:pl-5">
             <p className="mr-auto flex items-center gap-1 whitespace-nowrap text-[14px] sm:text-[15px]">
               <span className="font-semibold">{picked.length}</span> selected
               <button type="button" onClick={() => setPicked([])} aria-label="Clear selection" className="ml-2 inline-flex items-center gap-1 text-white/60 hover:text-white sm:ml-3">

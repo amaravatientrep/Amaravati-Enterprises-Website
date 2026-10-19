@@ -16,7 +16,7 @@ const ways = [
   { icon: EnvelopeSimple, label: "Email", value: contact.email, href: `mailto:${contact.email}` },
   { icon: MapPin, label: "Office", value: contact.address.join(", "), href: contact.mapsHref, external: true },
   { icon: GoogleLogo, label: "Google", value: "See us on Google, reviews and directions", href: contact.googleProfile, external: true },
-  { icon: InstagramLogo, label: "Instagram", value: "Stay updated about our next trade shows and events", href: contact.instagram, external: true },
+  { icon: InstagramLogo, label: "Instagram", value: "Follow us on Instagram", href: contact.instagram, external: true },
 ];
 
 export default function ContactPage() {

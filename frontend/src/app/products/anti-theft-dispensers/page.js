@@ -7,6 +7,7 @@ import ButtonLink from "@/components/Button";
 import CtaBand from "@/components/CtaBand";
 import { dispenserGroups, prefilled } from "@/lib/dispensers";
 import { categories, whatsappLink, SITE_URL } from "@/lib/site";
+import { fileSize } from "@/lib/fileSize";
 
 const c = categories.find((x) => x.slug === "anti-theft-dispensers");
 
@@ -63,7 +64,7 @@ function DispenserCard({ it }) {
         </dl>
         <Link href={enquireHref(it.name)} className="group mt-auto inline-flex items-center gap-2 pt-5 text-[15px] font-medium text-accent">
           Enquire about this dispenser
-          <ArrowRight size={16} aria-hidden="true" className="transition-transform duration-500 ease-snap group-hover:translate-x-0.5" />
+          <ArrowRight size={16} aria-hidden="true" className="transition-transform duration-200 ease-snap group-hover:translate-x-0.5" />
         </Link>
       </div>
     </article>
@@ -87,19 +88,19 @@ export default function DispensersPage() {
       <PageHeader
         crumbs={[{ label: "Products", href: "/products" }, { label: c.name }]}
         title={c.name}
-        subtitle="Lockable dispensers, wall mounted bottle systems, and soap and sanitizer dispensers."
+        subtitle="Lockable Dispensers & Wall Mounted Bottle Systems."
         intro="Dispensers stay on the wall and are refilled from bulk cans, so you stop replacing small bottles every stay."
       >
         <div className="mt-9 flex flex-wrap gap-3">
           <ButtonLink href={`/contact?product=${encodeURIComponent(c.name)}#enquiry`} icon={ArrowRight}>
             Get a quote
           </ButtonLink>
-          <ButtonLink href={whatsappLink("Hi, I'd like a quote for dispensers.")} external icon={WhatsappLogo} variant="ghost">
+          <ButtonLink href={whatsappLink("Hi, I'd like a quote for Dispensers.")} external icon={WhatsappLogo} variant="ghost">
             WhatsApp us
           </ButtonLink>
           {c.brochure && (
             <ButtonLink href={c.brochure} external icon={DownloadSimple} variant="ghost">
-              Download catalogue
+              Download Brochure{fileSize(c.brochure) ? ` (${fileSize(c.brochure)})` : ""}
             </ButtonLink>
           )}
         </div>
@@ -130,7 +131,7 @@ export default function DispensersPage() {
             <h2 id="prefilled-title" className="text-3xl font-semibold tracking-tight md:text-4xl">
               Prefilled Brand Dispensers
             </h2>
-            <p className="mt-3 text-lg leading-relaxed text-muted">Dispensers that arrive filled, with matching refill cans.</p>
+            <p className="mt-3 text-lg leading-relaxed text-muted">Dispensers that arrive filled, with matching Refill Cans.</p>
           </Reveal>
           <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {prefilled.map((p, i) => (
@@ -138,12 +139,12 @@ export default function DispensersPage() {
                 <Link href={p.href} className="group block">
                   <div className="shell">
                     <div className="core relative aspect-[4/3] overflow-hidden">
-                      <Image src={p.image} alt={`${p.name} dispensers`} fill sizes="(min-width: 1024px) 30vw, 100vw" className="object-cover transition-transform duration-[1200ms] ease-snap group-hover:scale-[1.04]" />
+                      <Image src={p.image} alt={`${p.name} Dispensers`} fill sizes="(min-width: 1024px) 30vw, 100vw" className="object-cover transition-transform duration-700 ease-snap group-hover:scale-[1.04]" />
                     </div>
                   </div>
                   <h3 className="mt-5 flex items-center gap-2 text-xl font-semibold tracking-tight">
                     {p.name}
-                    <ArrowUpRight size={18} aria-hidden="true" className="transition-transform duration-500 ease-snap group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    <ArrowUpRight size={18} aria-hidden="true" className="transition-transform duration-200 ease-snap group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                   </h3>
                   <p className="mt-2 text-[15px] leading-relaxed text-muted">{p.text}</p>
                 </Link>
@@ -153,7 +154,7 @@ export default function DispensersPage() {
         </section>
       </div>
 
-      <CtaBand title="Get a quote for dispensers." product={c.name} />
+      <CtaBand product={c.name} />
     </>
   );
 }

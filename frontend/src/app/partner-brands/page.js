@@ -5,11 +5,12 @@ import PageHeader from "@/components/PageHeader";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
 import { partnerBrands } from "@/lib/site";
+import { fileSize } from "@/lib/fileSize";
 
 export const metadata = {
-  title: "Biotique and Diversey Hotel Amenities",
+  title: "Biotique Hotel Amenities",
   description:
-    "Biotique hotel amenities and Diversey housekeeping chemicals (TASKI, Suma, Crew, Clax), supplied to hotels all over India.",
+    "Biotique hotel amenities supplied to hotels all over India.",
   alternates: { canonical: "/partner-brands" },
 };
 
@@ -18,8 +19,8 @@ export default function PartnerBrandsPage() {
     <>
       <PageHeader ld
         crumbs={[{ label: "Partner brands" }]}
-        title="Biotique and Diversey, from the same supplier."
-        intro="Some guests look for a name they recognise. We supply both brands alongside our own range, so they arrive in the same order."
+        title="Biotique Range, from the same supplier."
+        intro="Some guests look for a name they recognise. We supply Biotique alongside our own range, so it arrives in the same order."
       />
 
       {partnerBrands.map((p, idx) => (
@@ -51,12 +52,12 @@ export default function PartnerBrandsPage() {
               </ul>
               {p.catalogue && (
                 <Link href={p.catalogue} className="mt-8 mr-3 inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-[15px] font-medium text-accent-ink hover:bg-accent/90">
-                  View the {p.name} catalogue <ArrowRight size={18} aria-hidden="true" />
+                  View the {p.name} <ArrowRight size={18} aria-hidden="true" />
                 </Link>
               )}
               {p.brochure && (
                 <a href={p.brochure} target="_blank" rel="noopener" className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink/[0.05] px-5 py-3 text-[15px] font-medium ring-1 ring-line/10 hover:bg-ink/[0.08]">
-                  <DownloadSimple size={18} aria-hidden="true" /> {p.name} brochure (PDF)
+                  <DownloadSimple size={18} aria-hidden="true" /> {p.name} Brochure (PDF{fileSize(p.brochure) ? `, ${fileSize(p.brochure)}` : ""})
                 </a>
               )}
             </Reveal>
@@ -64,7 +65,7 @@ export default function PartnerBrandsPage() {
         </section>
       ))}
 
-      <CtaBand title="Need Biotique or Diversey?" text="Tell us the products and quantities and we will send a quote." />
+      <CtaBand />
     </>
   );
 }

@@ -8,7 +8,7 @@ export default function FaqList({ items }) {
           <details key={f.q} className="group py-2">
             <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-4 text-lg font-medium tracking-tight [&::-webkit-details-marker]:hidden">
               {f.q}
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink/[0.05] transition-transform duration-500 ease-snap group-open:rotate-45" aria-hidden="true">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink/[0.05] transition-transform duration-200 ease-snap group-open:rotate-45" aria-hidden="true">
                 <Plus size={16} />
               </span>
             </summary>

@@ -6,6 +6,7 @@ import ButtonLink from "@/components/Button";
 import CtaBand from "@/components/CtaBand";
 import { biotiqueRanges } from "@/lib/biotique";
 import { partnerBrands, whatsappLink, SITE_URL } from "@/lib/site";
+import { fileSize } from "@/lib/fileSize";
 
 const brochure = partnerBrands.find((p) => p.slug === "biotique")?.brochure;
 
@@ -17,7 +18,7 @@ export const metadata = {
   openGraph: { images: [{ url: "/images/biotique/royal-bergamot-patchouli.jpg" }] },
 };
 
-const enquireHref = (range) => `/contact?product=Biotique&range=${encodeURIComponent(range)}#enquiry`;
+const enquireHref = (range) => `/contact?product=${encodeURIComponent("Biotique Range")}&range=${encodeURIComponent(range)}#enquiry`;
 
 export default function BiotiquePage() {
   const jsonLd = {
@@ -26,7 +27,7 @@ export default function BiotiquePage() {
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
       { "@type": "ListItem", position: 2, name: "Products", item: `${SITE_URL}/products` },
-      { "@type": "ListItem", position: 3, name: "Biotique", item: `${SITE_URL}/products/biotique` },
+      { "@type": "ListItem", position: 3, name: "Biotique Range", item: `${SITE_URL}/products/biotique` },
     ],
   };
 
@@ -34,18 +35,18 @@ export default function BiotiquePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <PageHeader
-        crumbs={[{ label: "Products", href: "/products" }, { label: "Biotique" }]}
-        title="Biotique"
-        intro="Ayurvedic bath and dry amenities for hotel rooms, from guest-size bottles and soap to dispensers and refill cans."
+        crumbs={[{ label: "Products", href: "/products" }, { label: "Biotique Range" }]}
+        title="Biotique Range"
+        intro="Bath and dry amenities for hotel rooms, from single-use bottles and soap to dispensers and refill cans."
       >
         <p className="mt-5 text-[15px] text-muted">Biotique Hospitality Collection — Distributed by Amaravati Enterprises</p>
         <div className="mt-9 flex flex-wrap gap-3">
-          <ButtonLink href="/contact?product=Biotique#enquiry" icon={ArrowRight}>
+          <ButtonLink href="/contact?product=Biotique%20Range#enquiry" icon={ArrowRight}>
             Get a quote
           </ButtonLink>
           {brochure && (
             <ButtonLink href={brochure} external icon={DownloadSimple} variant="ghost">
-              Download catalogue
+              Download Brochure{fileSize(brochure) ? ` (${fileSize(brochure)})` : ""}
             </ButtonLink>
           )}
         </div>
@@ -104,7 +105,7 @@ export default function BiotiquePage() {
         ))}
       </div>
 
-      <CtaBand title="Get a quote for Biotique amenities." product="Biotique" />
+      <CtaBand product="Biotique Range" />
     </>
   );
 }

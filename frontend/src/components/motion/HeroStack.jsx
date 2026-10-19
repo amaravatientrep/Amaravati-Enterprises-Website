@@ -59,7 +59,7 @@ export default function HeroStack({ items }) {
       <div className="mt-6 flex items-center justify-center gap-3 md:justify-end">
         <span className="flex gap-1.5" aria-hidden="true">
           {items.map((it, i) => (
-            <span key={it.image} className={`h-1.5 rounded-full transition-all duration-500 ease-snap ${order[0] === i ? "w-6 bg-accent" : "w-1.5 bg-ink/20"}`} />
+            <span key={it.image} className={`h-1.5 rounded-full transition-all duration-200 ease-snap ${order[0] === i ? "w-6 bg-accent" : "w-1.5 bg-ink/20"}`} />
           ))}
         </span>
       </div>

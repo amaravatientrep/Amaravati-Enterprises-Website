@@ -66,7 +66,7 @@ export default function BrandTeaser() {
           <span className="text-[15px] leading-relaxed text-muted">Upload your logo and see it on our whole amenity range in seconds.</span>
           <span className="inline-flex items-center gap-2 text-[15px] font-medium text-accent">
             Open the preview tool
-            <ArrowUpRight size={18} className="transition-transform duration-500 ease-snap group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+            <ArrowUpRight size={18} className="transition-transform duration-200 ease-snap group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
           </span>
         </span>
       </span>

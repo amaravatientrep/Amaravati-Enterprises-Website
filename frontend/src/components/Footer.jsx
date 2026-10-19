@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { InstagramLogo } from "@phosphor-icons/react/dist/ssr";
 import Logo from "./Logo";
+import { CookieSettingsLink } from "./CookieConsent";
 import { categories, contact, nav } from "@/lib/site";
 
 export default function Footer() {
@@ -12,26 +13,12 @@ export default function Footer() {
         <div className="col-span-2 md:col-span-4">
           <Logo size="lg" />
           <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/65">
-            Hotel toiletries, guest amenities, branded packaging, stationery and housekeeping material for hotels all over India.
+            Complete Hospitality Solutions for Modern Hospitality.
           </p>
-          <a
-            href={contact.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group mt-6 inline-flex max-w-sm items-center gap-3 rounded-2xl py-2 text-white/80 hover:text-white"
-          >
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/[0.07] ring-1 ring-white/15 transition-colors group-hover:bg-white/[0.12]" aria-hidden="true">
-              <InstagramLogo size={22} />
-            </span>
-            <span className="text-[14px] leading-snug">
-              <span className="block font-medium text-white">Follow us on Instagram</span>
-              Stay updated about our next trade shows and events
-            </span>
-          </a>
         </div>
 
         <div className="md:col-span-2">
-          <h2 className="text-sm font-medium text-white">Products</h2>
+          <h2 className="text-sm font-medium text-white">Product Range</h2>
           <ul className="mt-1 text-[14px] text-white/65 md:mt-3 md:space-y-0.5">
             {categories.map((c) => (
               <li key={c.slug}>
@@ -42,7 +29,7 @@ export default function Footer() {
             ))}
             <li>
               <Link className="block py-3 leading-snug hover:text-white md:inline-block md:py-1.5" href="/products/biotique">
-                Biotique
+                Biotique Range
               </Link>
             </li>
           </ul>
@@ -115,12 +102,27 @@ export default function Footer() {
           <a href={contact.googleProfile} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex py-3 text-[14px] text-white/65 underline md:mt-4 md:py-0 decoration-white/30 underline-offset-4 hover:text-white">
             See us on Google
           </a>
-          <p className="mt-6 text-[14px] text-white/65">Supplying hotels all over India.</p>
+          <a
+            href={contact.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group mt-4 flex w-fit items-center gap-3 rounded-2xl py-2 text-white/80 hover:text-white"
+          >
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/[0.07] ring-1 ring-white/15 transition-colors group-hover:bg-white/[0.12]" aria-hidden="true">
+              <InstagramLogo size={22} />
+            </span>
+            <span className="text-[14px] font-medium leading-snug text-white">Follow us on Instagram</span>
+          </a>
+          <p className="mt-6 text-[14px] text-white/65">Providing solutions to Hotels all over India.</p>
         </div>
       </div>
       <div className="border-t border-white/10">
         <div className="container-x flex flex-col gap-2 py-6 text-[13px] text-white/50 sm:flex-row sm:justify-between">
           <p>© {year} Amaravati Enterprises. All rights reserved.</p>
+          <Link href="/privacy" className="underline decoration-white/30 underline-offset-4 hover:text-white">
+            Privacy Notice
+          </Link>
+          <CookieSettingsLink className="text-left underline decoration-white/30 underline-offset-4 hover:text-white" />
         </div>
       </div>
     </footer>

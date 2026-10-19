@@ -5,6 +5,22 @@ const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+  // Security headers on every response. (A strict Content-Security-Policy is left out on purpose: the site loads
+  // PostHog, Google Maps and Web3Forms, and a mistake there would silently break the enquiry form.)
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
+          { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains" },
+        ],
+      },
+    ];
+  },
   async redirects() {
     // Old single-page anchors and removed files
     return [

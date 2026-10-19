@@ -83,7 +83,7 @@ export default function AreaPage({ params }) {
         <ClientMarquee />
       </section>
 
-      <CtaBand title={`Supplying hotels in ${a.name}.`} />
+      <CtaBand />
     </>
   );
 }

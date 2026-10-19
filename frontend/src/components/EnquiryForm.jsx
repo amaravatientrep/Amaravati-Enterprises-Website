@@ -10,7 +10,7 @@ import { categories, whatsappLink, contact } from "@/lib/site";
 // Without a key the enquiry is sent as a pre-filled WhatsApp message, so no enquiry is ever lost.
 const ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 
-const productOptions = [...categories.map((c) => c.name), "Biotique", "Diversey"];
+const productOptions = [...categories.map((c) => c.name), "Biotique Range"];
 
 function buildMessage(d) {
   return [
@@ -105,8 +105,8 @@ export default function EnquiryForm() {
 
   if (status === "sent") {
     return (
-      <div className="flex flex-col items-start gap-5 py-6" role="status">
-        <CheckCircle size={44} weight="light" className="text-accent" aria-hidden="true" />
+      <div className="anim-rise flex flex-col items-start gap-5 py-6" role="status">
+        <CheckCircle size={44} weight="light" className="anim-pop-slow text-accent" aria-hidden="true" />
         <h3 className="text-2xl font-semibold tracking-tight">Thank you, {data.name.split(" ")[0]}.</h3>
         <p className="max-w-md text-muted">
           {ACCESS_KEY
@@ -225,13 +225,19 @@ export default function EnquiryForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="group inline-flex w-full items-center justify-between rounded-full bg-accent py-2 pl-6 pr-2 text-[15px] font-medium text-accent-ink transition-transform duration-500 ease-snap active:scale-[0.99] disabled:opacity-70 sm:w-auto sm:justify-start sm:gap-4"
+        className="group inline-flex w-full items-center justify-between rounded-full bg-accent py-2 pl-6 pr-2 text-[15px] font-medium text-accent-ink transition-transform duration-200 ease-snap active:scale-[0.99] disabled:opacity-70 sm:w-auto sm:justify-start sm:gap-4"
       >
         {status === "sending" ? "Sending..." : "Send enquiry"}
-        <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent-ink/15 transition-transform duration-500 ease-snap group-hover:translate-x-0.5" aria-hidden="true">
+        <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent-ink/15 transition-transform duration-200 ease-snap group-hover:translate-x-0.5" aria-hidden="true">
           <ArrowRight size={18} />
         </span>
       </button>
+      <p className="text-[13px] text-muted">
+        We use your details only to reply to your enquiry.{" "}
+        <a href="/privacy" className="underline decoration-line/30 underline-offset-4 hover:text-ink">
+          Privacy Notice
+        </a>
+      </p>
     </form>
   );
 }

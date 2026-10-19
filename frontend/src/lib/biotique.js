@@ -9,7 +9,7 @@ export const biotiqueRanges = [
     title: "Biotique Assorted Range",
     text: "Shampoo, body wash, skin lotion, conditioner and hand wash in guest sizes, dispensers and refill cans.",
     items: [
-      { src: `${I}assorted-bottles-25-35ml.jpg`, label: "25 ml & 35 ml Bottles", alt: "Biotique Assorted Range guest bottles in 25 ml and 35 ml" },
+      { src: `${I}assorted-bottles-25-35ml.jpg`, label: "25 ml & 35 ml Bottles", alt: "Biotique Assorted Range single-use bottles in 25 ml and 35 ml" },
       { src: `${I}assorted-dispensers-380ml.jpg`, label: "380 ml Dispensers", alt: "Biotique Assorted Range 380 ml dispensers" },
       { src: `${I}assorted-cans-5l.jpg`, label: "5 Litre Cans", alt: "Biotique Assorted Range 5 litre cans" },
     ],
@@ -19,7 +19,7 @@ export const biotiqueRanges = [
     title: "Biotique Nourishing Almond Soap",
     text: "Wrapped guest soap.",
     specs: ["15 g", "25 g", "30 g"],
-    items: [{ src: `${I}almond-soap.jpg`, label: "15 g, 25 g and 30 g", alt: "Biotique Nourishing Soap in 15 g, 25 g and 30 g wraps" }],
+    items: [{ src: `${I}almond-soap.jpg`, alt: "Biotique Nourishing soap in 15 g, 25 g and 30 g wraps" }],
   },
   {
     id: "dry-amenities",
@@ -35,14 +35,14 @@ export const biotiqueRanges = [
   {
     id: "tubes",
     title: "Biotique Tubes",
-    text: "Shampoo, Shower Gel, Moisturizer and Conditioner.",
+    text: "Shampoo, shower gel, moisturizer and conditioner.",
     specs: ["Orchid 30 ml", "Terraverde 15 ml"],
-    items: [{ src: `${I}tubes-orchid-terraverde.jpg`, label: "Orchid 30 ml and Terraverde 15 ml", alt: "Biotique Orchid and Terraverde tubes" }],
+    items: [{ src: `${I}tubes-orchid-terraverde.jpg`, alt: "Biotique Orchid and Terraverde tubes" }],
   },
   {
     id: "royal",
     title: "Biotique Royal",
-    text: "Each fragrance in 380 ml dispensers and 5 litre cans.",
+    text: "Available in 380 ml dispensers and 5 litre cans.",
     items: [
       { src: `${I}royal-bergamot-patchouli.jpg`, label: "Bergamot & Patchouli", alt: "Biotique Royal Bergamot & Patchouli 380 ml dispensers and 5 litre cans" },
       { src: `${I}royal-cypress-citrus-neroli.jpg`, label: "Cypress Citrus & Neroli", alt: "Biotique Royal Cypress Citrus & Neroli 380 ml dispensers and 5 litre cans" },
@@ -51,12 +51,12 @@ export const biotiqueRanges = [
   },
   {
     id: "farm-fresh",
-    title: "Biotique Farm Fresh",
-    text: "Lemon Balm & Watermint, in dispensers, refill cans, guest bottles and soap.",
+    title: "Farm Fresh by Biotique",
+    text: "Lemon Balm & Watermint, in dispensers, refill cans, single-use bottles and soap.",
     items: [
       { src: `${I}farm-fresh-dispensers.jpg`, label: "Dispensers", alt: "Biotique Farm Fresh dispensers" },
       { src: `${I}farm-fresh-cans-5l.jpg`, label: "5 Litre Cans", alt: "Biotique Farm Fresh 5 litre cans" },
-      { src: `${I}farm-fresh-soap-bottles.jpg`, label: "Guest Bottles & Soap", alt: "Biotique Farm Fresh guest bottles and soap" },
+      { src: `${I}farm-fresh-soap-bottles.jpg`, label: "Single-Use Bottles & Soap", alt: "Biotique Farm Fresh single-use bottles and soap" },
     ],
   },
 ];

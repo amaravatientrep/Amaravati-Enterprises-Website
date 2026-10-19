@@ -1,6 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx}"],
+  // hover: styles only on devices with a real pointer, so a tap on a phone never leaves an image zoomed or an arrow nudged
+  future: { hoverOnlyWhenSupported: true },
   theme: {
     extend: {
       colors: {

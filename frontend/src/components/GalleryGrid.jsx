@@ -55,7 +55,7 @@ export default function GalleryGrid({ groups }) {
             onClick={() => setFilter(f.id)}
             aria-pressed={filter === f.id}
             className={clsx(
-              "shrink-0 rounded-full px-4 py-2.5 text-[15px] font-medium ring-1 transition-colors duration-200",
+              "shrink-0 rounded-full px-4 py-2.5 text-[15px] font-medium ring-1 transition-[color,background-color,transform] duration-150 ease-out active:scale-[0.97]",
               filter === f.id ? "bg-accent text-accent-ink ring-accent" : "bg-surface ring-line/15 hover:bg-ink/[0.05]"
             )}
           >
@@ -88,7 +88,7 @@ export default function GalleryGrid({ groups }) {
       </ul>
 
       {current && (
-        <div role="dialog" aria-modal="true" aria-label={current.alt} className="fixed inset-0 z-[70] flex flex-col bg-[#0B0E0D] text-white" onClick={close}>
+        <div role="dialog" aria-modal="true" aria-label={current.alt} className="anim-viewer fixed inset-0 z-[70] flex flex-col bg-[#0B0E0D] text-white" onClick={close}>
           <div className="flex items-center justify-between gap-3 p-4">
             <p className="text-[14px] tabular-nums text-white/70">
               {open + 1} / {shown.length}
@@ -99,7 +99,7 @@ export default function GalleryGrid({ groups }) {
           </div>
           <div className="relative min-h-0 flex-1 px-4" onClick={(e) => e.stopPropagation()}>
             {/* Served as is: the files are already web-sized, so the viewer never waits on resizing */}
-            <Image key={current.src} src={current.src} alt={current.alt} fill unoptimized className="object-contain" />
+            <Image key={current.src} src={current.src} alt={current.alt} fill unoptimized className="anim-photo object-contain" />
           </div>
           <div className="flex items-center justify-between gap-3 p-4" onClick={(e) => e.stopPropagation()}>
             <p className="min-w-0 truncate text-[14px] text-white/80">{current.alt}</p>

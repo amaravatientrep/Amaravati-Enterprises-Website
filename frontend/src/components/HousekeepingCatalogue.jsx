@@ -93,7 +93,6 @@ export default function HousekeepingCatalogue({ sections: source = hkSections, p
                     )}
                   >
                     {sec.title}
-                    <span className="shrink-0 text-[12px] tabular-nums opacity-70">{sec.items.length}</span>
                   </a>
                 </li>
               ))}
@@ -148,7 +147,7 @@ export default function HousekeepingCatalogue({ sections: source = hkSections, p
       {q && !matches && (
         <div className="mt-10 rounded-shell bg-surface p-8 text-center ring-1 ring-line/10 md:p-12">
           <p className="text-lg font-medium">We could not find “{query}” in this list.</p>
-          <p className="mt-2 text-muted">We supply more than the catalogue shows. Ask us and we will tell you if we can source it.</p>
+          <p className="mt-2 text-muted">We supply more than the Brochure shows. Ask us and we will tell you if we can source it.</p>
           <div className="mt-6 flex justify-center">
             <a
               href={whatsappLink(`Hi, do you supply ${query}?`)}
@@ -177,9 +176,6 @@ export default function HousekeepingCatalogue({ sections: source = hkSections, p
                 <h2 id={`${sec.id}-title`} className="text-2xl font-semibold tracking-tight md:text-3xl">
                   {sec.title}
                 </h2>
-                <p className="mt-2 text-[15px] text-muted">
-                  {sec.items.length} product{sec.items.length === 1 ? "" : "s"}
-                </p>
               </div>
               <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-4">
                 {sec.items.map((it) => {
@@ -192,14 +188,14 @@ export default function HousekeepingCatalogue({ sections: source = hkSections, p
                         onClick={() => toggle(key, labelOf(it))}
                         aria-pressed={on}
                         className={clsx(
-                          "group flex h-full w-full flex-col overflow-hidden rounded-2xl text-left ring-1 transition-[box-shadow,background-color] duration-300",
+                          "group flex h-full w-full flex-col overflow-hidden rounded-2xl text-left ring-1 transition-[box-shadow,background-color,transform] duration-150 ease-out active:scale-[0.98]",
                           on ? "bg-accent-soft ring-2 ring-accent" : "bg-surface ring-line/10 hover:ring-line/25"
                         )}
                       >
                         <span className="relative block aspect-square bg-white">
                           {it.img && (
                             // Small pre-compressed webp files: served as-is, which keeps 300 srcset lists out of the HTML. The product name is the button text, so alt stays empty.
-                            <Image src={it.img} alt="" width={240} height={240} unoptimized loading="lazy" className="absolute inset-0 h-full w-full object-contain p-2 transition-transform duration-500 ease-snap group-hover:scale-[1.04]" />
+                            <Image src={it.img} alt="" width={240} height={240} unoptimized loading="lazy" className="absolute inset-0 h-full w-full object-contain p-2 transition-transform duration-200 ease-snap group-hover:scale-[1.04]" />
                           )}
                           <span
                             className={clsx(
@@ -208,7 +204,7 @@ export default function HousekeepingCatalogue({ sections: source = hkSections, p
                             )}
                             aria-hidden="true"
                           >
-                            <Check size={14} weight="bold" />
+                            <Check size={14} weight="bold" className={on ? "anim-pop" : ""} />
                           </span>
                         </span>
                         <span className="flex flex-1 flex-col gap-1 p-3">
@@ -228,7 +224,7 @@ export default function HousekeepingCatalogue({ sections: source = hkSections, p
       {/* Enquiry tray */}
       {picked.length > 0 && (
         <div className="fixed inset-x-4 bottom-24 z-40 mx-auto max-w-2xl md:bottom-6" role="region" aria-label="Selected products">
-          <div className="flex items-center gap-2 rounded-full bg-[#131816] p-2 pl-4 sm:gap-3 sm:p-3 sm:pl-5 text-white shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] ring-1 ring-white/10">
+          <div className="anim-tray flex items-center gap-2 rounded-full bg-[#131816] p-2 pl-4 sm:gap-3 sm:p-3 sm:pl-5 text-white shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] ring-1 ring-white/10">
             <p className="mr-auto flex items-center gap-1 whitespace-nowrap text-[14px] sm:text-[15px]">
               <span className="font-semibold">{picked.length}</span> selected
               <button type="button" onClick={() => setPicked([])} aria-label="Clear selection" className="ml-2 inline-flex items-center gap-1 text-white/60 hover:text-white sm:ml-3">

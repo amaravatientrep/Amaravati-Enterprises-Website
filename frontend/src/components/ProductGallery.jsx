@@ -3,6 +3,7 @@ import Reveal from "./Reveal";
 import StripCarousel from "./motion/StripCarousel";
 
 // Captioned photo groups for a product category: a grid per group, or a swipeable row when layout is "carousel".
+// cutout: product photos shot on white, shown whole on a white panel.
 export default function ProductGallery({ groups }) {
   return (
     <div className="space-y-20 md:space-y-24">
@@ -22,8 +23,8 @@ export default function ProductGallery({ groups }) {
                 <Reveal as="li" key={it.src} delay={(i % 4) * 0.05}>
                   <figure>
                     <div className="shell">
-                      <div className={`core relative overflow-hidden ${g.aspect === "square" ? "aspect-square" : "aspect-[4/3]"}`}>
-                        <Image src={it.src} alt={g.captions !== false ? `${g.title}: ${it.label}` : it.label} fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover" />
+                      <div className={`core relative overflow-hidden ${g.aspect === "square" ? "aspect-square" : "aspect-[4/3]"} ${g.cutout ? "!bg-white" : ""}`}>
+                        <Image src={it.src} alt={g.captions !== false ? `${g.title}: ${it.label}` : it.label} fill sizes="(min-width: 1024px) 25vw, 50vw" className={g.cutout ? "object-contain p-5 mix-blend-multiply" : "object-cover"} />
                       </div>
                     </div>
                     {g.captions !== false && <figcaption className="mt-3 text-[15px] font-medium">{it.label}</figcaption>}

@@ -7,6 +7,7 @@ import ButtonLink from "./Button";
 import { ProductScene, VIEWS } from "./BrandingMockups";
 import { whatsappLink } from "@/lib/site";
 import { readFile, loadImage, toCanvas, toHex, detectBackground, removeBackground, swatchFromHex } from "@/lib/logoTools";
+import { toast } from "./Toaster";
 
 const WATERMARK = "/amaravati-logo-transparent.png"; // stamped on downloaded previews
 const PNG_NAME = "amaravati-branding-preview.png";
@@ -238,6 +239,7 @@ export default function BrandingPreview() {
       setSheet({ url: URL.createObjectURL(blob), blob, whatsapp: false });
     } else {
       saveBlob(blob);
+      toast("Preview saved to your downloads.");
     }
     window.posthog?.capture?.("branding_preview_downloaded");
   }
@@ -259,6 +261,7 @@ export default function BrandingPreview() {
       return;
     }
     saveBlob(blob);
+    toast("Your preview has downloaded. Attach it in the WhatsApp chat.");
     const link = whatsappLink(whatsappMessage());
     if (chat) chat.location.href = link;
     else window.location.href = link;
@@ -296,7 +299,7 @@ export default function BrandingPreview() {
             </div>
           </div>
           <p className="px-6 pb-5 pt-4 text-center text-[13px] text-muted">
-            {view === "all" ? "Shown at true relative size. " : ""}Preview only. Final artwork is shared for your approval before printing.
+            Preview only. Final artwork is shared for your approval before printing.
           </p>
         </div>
       </div>
@@ -480,7 +483,7 @@ export default function BrandingPreview() {
               <button
                 type="button"
                 onClick={download}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-ink/[0.05] px-6 py-3 text-[15px] font-medium ring-1 ring-line/10 transition-transform duration-500 ease-snap hover:bg-ink/[0.08] active:scale-[0.98]"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-ink/[0.05] px-6 py-3 text-[15px] font-medium ring-1 ring-line/10 transition-transform duration-200 ease-snap hover:bg-ink/[0.08] active:scale-[0.98]"
               >
                 <DownloadSimple size={18} aria-hidden="true" /> Download preview
               </button>
@@ -488,7 +491,7 @@ export default function BrandingPreview() {
             <button
               type="button"
               onClick={sendOnWhatsApp}
-              className="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#25D366] px-6 py-3.5 text-[15px] font-medium text-[#0B2A17] transition-[transform,background-color] duration-500 ease-snap hover:bg-[#25D366]/90 active:scale-[0.98]"
+              className="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#25D366] px-6 py-3.5 text-[15px] font-medium text-[#0B2A17] transition-[transform,background-color] duration-200 ease-snap hover:bg-[#25D366]/90 active:scale-[0.98]"
             >
               <WhatsappLogo size={20} weight="fill" aria-hidden="true" /> Send this design to us on WhatsApp
             </button>

@@ -36,8 +36,7 @@ export default function InRoomAmenitiesPage() {
       <PageHeader
         crumbs={[{ label: "Products", href: "/products" }, { label: c.name }]}
         title={c.name}
-        subtitle={`${count} products, each with its catalogue code.`}
-        intro="Search by name or code, tap the products you need, and send them to us in one enquiry."
+        intro="Search by product name or code, tap the products you need, and send them to us in one enquiry."
       >
         <div className="mt-9 flex flex-wrap gap-3">
           <ButtonLink href={`/contact?product=${encodeURIComponent(c.name)}#enquiry`} icon={ArrowRight}>
@@ -55,7 +54,7 @@ export default function InRoomAmenitiesPage() {
         </Suspense>
       </div>
 
-      <CtaBand title="Get a quote for in-room amenities." product={c.name} />
+      <CtaBand product={c.name} />
     </>
   );
 }

@@ -8,7 +8,7 @@ import Magnetic from "./Magnetic";
 import { whatsappLink } from "@/lib/site";
 
 // Full-screen background video with the headline over it. The poster shows instantly;
-// the video (desktop or phone cut) loads after. Skipped for reduced motion or data saver.
+// the video (desktop or phone cut) loads after. Skipped for reduced motion, data saver or a slow (2G/3G) connection.
 export default function HeroVideo() {
   const ref = useRef(null);
   const [src, setSrc] = useState(null);
@@ -18,7 +18,8 @@ export default function HeroVideo() {
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const saveData = navigator.connection?.saveData;
-    if (reduce || saveData) {
+    const slow = /(^|-)(2g|3g)$/.test(navigator.connection?.effectiveType ?? "");
+    if (reduce || saveData || slow) {
       setPlaying(false);
       return;
     }
@@ -73,13 +74,14 @@ export default function HeroVideo() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#0C0F0E] from-15% via-[#0C0F0E]/65 via-50% to-[#0C0F0E]/25 md:from-0% md:via-50% md:bg-gradient-to-r md:from-[#0C0F0E]/70 md:via-[#0C0F0E]/10 md:to-transparent" />
 
       <div className="container-x flex min-h-[100svh] flex-col justify-end pb-28 pt-28 md:justify-center md:pb-0">
-        <div className="max-w-4xl">
-          <h1 className="hero-rise font-display text-[3.4rem] font-semibold leading-[0.98] tracking-[-0.01em] sm:text-[5rem] lg:text-[6.6rem]">
-            Complete Hospitality Solutions for Modern Hospitality
+        <div className="max-w-6xl">
+          <h1 className="hero-rise font-display text-[clamp(1rem,4.6vw,3.4rem)] font-semibold uppercase leading-[1.25] tracking-[0.02em]">
+            <span className="block">Complete Hospitality Solutions</span>
+            <span className="block">for Modern Hospitality</span>
           </h1>
           <div className="hero-rise [animation-delay:150ms]">
             <p className="mt-7 max-w-[34rem] text-lg leading-relaxed text-white/85 md:text-xl">
-              Your one-stop shop for all hospitality needs, from hotel toiletries and guest amenities to tea sachets, janitorial carts, mops and cleaning tools. Delivering quality and convenience to hotels across India.
+              Your one-stop shop for all hospitality needs, from Hotel Toiletries, Guest Amenities, Shampoo Dispensers and In-Room Amenities to Housekeeping Tools &amp; Consumables. Delivering quality and convenience to hotels across India.
             </p>
             {/* Phones: two equal buttons in one row */}
             <div className="mt-10 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">

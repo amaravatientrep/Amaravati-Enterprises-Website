@@ -47,7 +47,8 @@ function LogoMark({ logo, name, x, y, w, h, ink, scale, textBoost = 1 }) {
   const sx = x + (w - sw) / 2;
   const sy = y + (h - sh) / 2;
   if (logo) {
-    return <image href={logo} x={sx} y={sy} width={sw} height={sh} preserveAspectRatio="xMidYMid meet" />;
+    // key: a newly uploaded logo fades onto the products (resizing it does not replay the fade)
+    return <image key={logo} className="anim-logo" href={logo} x={sx} y={sy} width={sw} height={sh} preserveAspectRatio="xMidYMid meet" />;
   }
   const text = (name || "Your Hotel").trim().slice(0, 28);
   if (!text) return null;

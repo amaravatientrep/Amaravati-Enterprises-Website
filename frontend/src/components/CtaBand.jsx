@@ -3,7 +3,11 @@ import ButtonLink from "./Button";
 import Reveal from "./Reveal";
 import { whatsappLink } from "@/lib/site";
 
-export default function CtaBand({ title = "Tell us what your Hotel needs.", text = "Share your hotel name and the products you use. We will send a quote for your property.", product }) {
+// Same heading and text on every page; product only pre-fills the quote form and WhatsApp message
+const title = "Tell us what your hotel needs.";
+const text = "Share us your details & requirements. We will send a proposal accordingly for your property.";
+
+export default function CtaBand({ product }) {
   const quoteHref = product ? `/contact?product=${encodeURIComponent(product)}#enquiry` : "/contact#enquiry";
   return (
     <section className="container-x mt-24 md:mt-32">

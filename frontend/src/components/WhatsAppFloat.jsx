@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { WhatsappLogo, Phone, ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { contact, whatsappLink } from "@/lib/site";
+import WhatsAppFloatReveal from "./WhatsAppFloatReveal";
 
 const waHref = whatsappLink("Hi, I'm interested in hotel amenities from Amaravati Enterprises.");
 
@@ -44,10 +45,11 @@ export default function WhatsAppFloat() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp us"
-        className="fixed bottom-5 right-5 z-30 hidden h-14 w-14 items-center justify-center rounded-full bg-accent text-accent-ink shadow-[0_16px_40px_-12px_rgb(var(--accent)/0.6)] ring-4 ring-bg transition-transform duration-500 ease-snap hover:scale-105 active:scale-95 md:flex"
+        className="wa-float fixed bottom-5 right-5 z-30 hidden h-14 w-14 items-center justify-center rounded-full bg-accent text-accent-ink shadow-[0_16px_40px_-12px_rgb(var(--accent)/0.6)] ring-4 ring-bg transition-transform duration-200 ease-snap hover:scale-105 active:scale-95 md:flex"
       >
         <WhatsappLogo size={28} weight="regular" aria-hidden="true" />
       </a>
+      <WhatsAppFloatReveal />
     </aside>
   );
 }

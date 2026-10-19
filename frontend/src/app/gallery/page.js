@@ -9,16 +9,16 @@ import { whatsappLink } from "@/lib/site";
 export const metadata = {
   title: "Gallery: Hotel Amenity Kits, Toiletries, Dispensers and Tray Sets",
   description:
-    "Photos of hotel amenity kits, toiletries, wall-mounted dispensers and kettle tray sets supplied to hotels all over India by Amaravati Enterprises, Hyderabad.",
+    "Photos of hotel amenity kits, toiletries, wall mounted dispensers and kettle tray sets supplied to hotels all over India by Amaravati Enterprises, Hyderabad.",
   alternates: { canonical: "/gallery" },
   openGraph: { images: [{ url: gallery.kits[0].src }] },
 };
 
 const groups = [
-  { id: "kits", label: "Amenity kits", items: gallery.kits },
+  { id: "kits", label: "Amenity Kits", items: gallery.kits },
   { id: "toiletries", label: "Toiletries", items: gallery.toiletries },
   { id: "dispensers", label: "Dispensers", items: gallery.dispensers },
-  { id: "tea", label: "Tray & kettle", items: gallery.tea },
+  { id: "tea", label: "Tray & Kettle", items: gallery.tea },
 ];
 
 export default function GalleryPage() {
@@ -44,7 +44,7 @@ export default function GalleryPage() {
         <GalleryGrid groups={groups} />
       </section>
 
-      <CtaBand title="Want these with your hotel's name?" />
+      <CtaBand />
     </>
   );
 }

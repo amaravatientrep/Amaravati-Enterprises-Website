@@ -13,6 +13,7 @@ export default function sitemap() {
     "/brochures",
     "/gallery",
     "/contact",
+    "/privacy",
     ...areas.map((a) => `/areas/${a.slug}`),
   ];
   return paths.map((p) => ({ url: `${SITE_URL}${p}` }));

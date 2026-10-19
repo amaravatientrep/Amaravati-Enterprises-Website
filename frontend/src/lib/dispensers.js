@@ -6,8 +6,8 @@ const I = "/images/dispensers/";
 export const dispenserGroups = [
   {
     id: "lockable",
-    title: "Lockable Bottle Dispensers",
-    text: "Bottles slide onto a concealed wall bracket and lock with a key, so they stay in the room. Refill from bulk cans.",
+    title: "Lockable Bottles",
+    text: "Refillable from bulk cans.",
     items: [
       {
         name: "Anti-Theft Dispenser",
@@ -30,7 +30,7 @@ export const dispenserGroups = [
           ["Material", "ABS bottle, ABS bracket"],
           ["Lock", "Concealed, top key release"],
           ["Colours", "Matte Black, Classic White"],
-          ["For", "Shampoo, shower gel, conditioner, moisturizer"],
+          ["For", "Shampoo, Shower Gel, Conditioner, Moisturizer"],
         ],
       },
       {
@@ -57,13 +57,6 @@ export const dispenserGroups = [
           ["Why", "UV protection for the contents"],
         ],
       },
-    ],
-  },
-  {
-    id: "wall-bottles",
-    title: "Wall Mounted Bottle Systems",
-    text: "Refillable bottles held in a fixed wall bracket, filled from the top.",
-    items: [
       {
         name: "Wall Mounted Bottle Dispenser System",
         capacity: ["300 ml"],
@@ -74,7 +67,7 @@ export const dispenserGroups = [
           ["Bottle", "PETG, transparent or smoked"],
           ["Bracket", "SS 304, or black powder-coated MS"],
           ["Pump", "ABS + PP"],
-          ["For", "Liquid soap, sanitizer, shampoo, shower gel, conditioner, lotion"],
+          ["For", "Liquid Soap, Sanitizer, Shampoo, Shower Gel, Conditioner, lotion"],
         ],
       },
       {
@@ -94,7 +87,7 @@ export const dispenserGroups = [
   {
     id: "soap-sanitizer",
     title: "Soap & Sanitizer Dispensers",
-    text: "Wall-mounted units for liquid soap, sanitizer and lotion, for guest bathrooms and public washrooms.",
+    text: "Wall mounted units for liquid soap, sanitizer and lotion, for guest bathrooms and public washrooms.",
     items: [
       {
         name: "Soap & Sanitizer Dispenser",
@@ -104,7 +97,6 @@ export const dispenserGroups = [
         specs: [
           ["Material", "ABS"],
           ["Lock", "Key lock"],
-          ["Dose", "About 1 ml per push"],
           ["Colours", "White, Black"],
         ],
       },
@@ -128,7 +120,6 @@ export const dispenserGroups = [
         specs: [
           ["Material", "ABS"],
           ["Refill", "Front opening, bulk refill"],
-          ["Dose", "About 1 ml per push"],
           ["Colours", "White, Black"],
         ],
       },
@@ -141,7 +132,7 @@ export const dispenserGroups = [
           ["Material", "ABS, transparent reservoir"],
           ["Refill", "Top fill"],
           ["Operation", "Push button, about 1 ml per push"],
-          ["For", "Liquid soap, sanitizer, shampoo, shower gel"],
+          ["For", "Liquid Soap, Sanitizer, Shampoo, Shower Gel"],
         ],
       },
       {
@@ -166,13 +157,12 @@ export const dispenserGroups = [
       {
         name: "Automatic Soap Dispenser",
         capacity: ["500 ml", "800 ml", "1000 ml"],
-        photos: [`${I}photo-14.jpg`],
+        photos: [`${I}photo-14b.jpg`],
         alt: "Touch-free automatic soap dispenser",
         specs: [
           ["Sensor", "Infrared, touch-free"],
           ["Material", "ABS, lockable lid"],
           ["Power", "4 × AA batteries"],
-          ["Dose", "1 ml ± 0.2 ml"],
         ],
       },
     ],
@@ -181,6 +171,6 @@ export const dispenserGroups = [
 
 // Prefilled brand dispensers have their own pages.
 export const prefilled = [
-  { name: "Biotique", text: "380 ml prefilled dispensers with a concealed anti-theft bracket.", href: "/products/biotique", image: "/images/biotique/assorted-dispensers-380ml.jpg" },
-  { name: "Purely Serene", text: "500 ml dispensers and 5 litre refill cans from our own brand.", href: "/products/purely-serene", image: "/images/purely-serene/dispensers-500ml-lineup.jpg" },
+  { name: "Biotique Range", text: "380 ml prefilled dispensers with a concealed anti-theft bracket.", href: "/products/biotique", image: "/images/biotique/assorted-dispensers-380ml.jpg" },
+  { name: "Purely Serene Range", text: "500 ml dispensers and 5 litre refill cans from our own brand.", href: "/products/purely-serene", image: "/images/purely-serene/dispensers-500ml-lineup.jpg" },
 ];

@@ -12,12 +12,12 @@ import { whatsappLink, SITE_URL } from "@/lib/site";
 // the photography and one champagne-gold accent taken from the labels (used for rules and tags, never body text).
 const GOLD = "#C7A66A";
 const I = "/images/purely-serene/";
-const PRODUCT = "Purely Serene Luxury Toiletries"; // matches the enquiry form's product option
+const PRODUCT = "Purely Serene Range"; // matches the enquiry form's product option
 
 export const metadata = {
-  title: "Purely Serene Luxury Toiletries",
+  title: "Purely Serene Range",
   description:
-    "Purely Serene glycerin soaps, 20 ml and 35 ml guest bottles, 500 ml dispensers and 5 litre refill cans for hotels all over India.",
+    "Purely Serene glycerin soaps, 20 ml and 35 ml single-use bottles, 500 ml dispensers and 5 litre refill cans for hotels all over India.",
   alternates: { canonical: "/products/purely-serene" },
   openGraph: { images: [{ url: `${I}hero.jpg` }] },
 };
@@ -30,8 +30,8 @@ const soaps = [
 ];
 
 const bottles = [
-  { src: `${I}bottles-20ml-hexagon.jpg`, label: "20 ml Hexagon", alt: "Purely Serene 20 ml hexagon bottles: shampoo, bath gel, moisturizer and conditioner" },
-  { src: `${I}bottles-35ml.jpg`, label: "35 ml", alt: "Purely Serene 35 ml bottles with gold caps: shampoo, bath gel, moisturizer and conditioner" },
+  { src: `${I}bottles-20ml-hexagon.jpg`, label: "20 ml Hexagon", alt: "Purely Serene 20 ml hexagon bottles: shampoo, shower gel, moisturizer and conditioner" },
+  { src: `${I}bottles-35ml.jpg`, label: "35 ml", alt: "Purely Serene 35 ml bottles with gold caps: shampoo, shower gel, moisturizer and conditioner" },
 ];
 
 const dispensers = [
@@ -48,7 +48,7 @@ function RangeHead({ id, title, text, specs, range }) {
         <h2 id={`${id}-title`} className="text-3xl font-semibold tracking-tight md:text-4xl">
           {title}
         </h2>
-        <p className="mt-3 text-lg leading-relaxed text-muted">{text}</p>
+        {text && <p className="mt-3 text-lg leading-relaxed text-muted">{text}</p>}
         {specs && (
           <ul className="mt-4 flex flex-wrap gap-2" aria-label={`${title} sizes`}>
             {specs.map((s) => (
@@ -99,10 +99,9 @@ export default function PurelySerenePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <PageHeader
-        crumbs={[{ label: "Products", href: "/products" }, { label: "Purely Serene" }]}
-        title="Purely Serene"
+        crumbs={[{ label: "Products", href: "/products" }, { label: "Purely Serene Range" }]}
+        title="Purely Serene Range"
         subtitle="Every Detail, Thoughtfully Serene."
-        intro="Our own registered brand of guest amenities: glycerin soaps, guest bottles, 500 ml dispensers and 5 litre refill cans, in one considered look."
       >
         <div className="mt-9 flex flex-wrap gap-3">
           <ButtonLink href={`/contact?product=${encodeURIComponent(PRODUCT)}#enquiry`} icon={ArrowRight}>
@@ -120,7 +119,7 @@ export default function PurelySerenePage() {
           <div className="core relative aspect-[4/3] overflow-hidden sm:aspect-[16/9]">
             <Image
               src={`${I}hero.jpg`}
-              alt="The Purely Serene range: soaps, guest bottles, a 500 ml dispenser and a 5 litre can"
+              alt="The Purely Serene range: soaps, single-use bottles, a 500 ml dispenser and a 5 litre can"
               fill
               priority
               sizes="(min-width: 1320px) 1240px, 100vw"
@@ -135,8 +134,7 @@ export default function PurelySerenePage() {
         <section id="soaps" className="container-x scroll-mt-28" aria-labelledby="soaps-title">
           <RangeHead
             id="soaps"
-            title="Glycerin Soaps"
-            text="Indian Spices and Aloe Vera, a matching pair."
+            title="Soap"
             specs={["15 g", "20 g", "30 g"]}
             range="Purely Serene Glycerin Soaps"
           />
@@ -149,14 +147,14 @@ export default function PurelySerenePage() {
           </ul>
         </section>
 
-        {/* Guest bottles */}
+        {/* Single-Use Bottles */}
         <section id="bottles" className="container-x scroll-mt-28" aria-labelledby="bottles-title">
           <RangeHead
             id="bottles"
-            title="Guest Bottles"
-            text="Shampoo, Bath Gel, Moisturizer and Conditioner."
+            title="Hotel Toiletries"
+            text="Shampoo, shower gel, moisturizer and conditioner."
             specs={["20 ml Hexagon", "35 ml"]}
-            range="Purely Serene Guest Bottles"
+            range="Purely Serene Single-Use Bottles"
           />
           <ul className="grid gap-4 md:grid-cols-2">
             {bottles.map((it, i) => (
@@ -173,17 +171,17 @@ export default function PurelySerenePage() {
             <RangeHead
               id="dispensers"
               title="500 ml Dispensers"
-              text="Shampoo, Shower Gel, Conditioner, Moisturizer and Hand Wash."
+              text="Shampoo, shower gel, conditioner, moisturizer and hand wash."
               range="Purely Serene 500 ml Dispensers"
             />
           </div>
           <div className="mx-auto w-full max-w-[1680px] px-4 sm:px-6 lg:px-10">
-            <ShowcaseSlideshow items={dispensers} label="Purely Serene 500 ml dispensers" />
+            <ShowcaseSlideshow items={dispensers} label="Purely Serene 500 ml Dispensers" />
           </div>
           <div className="container-x mt-6">
             <Link href="/products/anti-theft-dispensers" className="group inline-flex items-center gap-2 text-[15px] font-medium">
-              Wall-mount anti theft dispensers
-              <ArrowUpRight size={18} aria-hidden="true" className="transition-transform duration-500 ease-snap group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              Wall Mounted Anti-Theft Dispensers
+              <ArrowUpRight size={18} aria-hidden="true" className="transition-transform duration-200 ease-snap group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </Link>
           </div>
         </section>
@@ -193,7 +191,7 @@ export default function PurelySerenePage() {
           <RangeHead
             id="cans"
             title="5 Litre Refill Cans"
-            text="Shampoo, Shower Gel, Moisturizer, Conditioner and Hand Wash, for refilling dispensers."
+            text="Shampoo, shower gel, moisturizer, conditioner and hand wash, for refilling dispensers."
             specs={["5 Litre"]}
             range="Purely Serene 5 Litre Refill Cans"
           />
@@ -205,7 +203,7 @@ export default function PurelySerenePage() {
         </section>
       </div>
 
-      <CtaBand title="Get a quote for Purely Serene." product={PRODUCT} />
+      <CtaBand product={PRODUCT} />
     </>
   );
 }
