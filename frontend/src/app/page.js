@@ -24,7 +24,7 @@ export const metadata = {
 const tileOrder = ["hotel-toiletries","amenity-kits", "purely-serene", "anti-theft-dispensers", "housekeeping", "stationery", "tea-coffee", "biotique", "in-room-amenities", "eco-friendly"];
 const rangeTiles = [
   ...categories.map((c) => ({ ...c, href: `/products/${c.slug}` })),
-  { slug: "biotique", name: "Biotique Range", short: "Ayurvedic hotel amenities from a name guests already know.", href: "/products/biotique" },
+  { slug: "biotique", name: "Biotique Range", short: "Bath and dry amenities for hotel rooms, from single-use bottles and soap to dispensers and refill cans.", href: "/products/biotique" },
 ].sort((a, b) => tileOrder.indexOf(a.slug) - tileOrder.indexOf(b.slug));
 
 // Mosaic: 6 columns x 8 rows on desktop, every cell filled.

@@ -35,7 +35,7 @@ export const categories = [
     scenes: "kits", // styled kit scenes slideshow at the top of the page
     name: "Hotel Toiletries",
     short: "Soaps, shampoo, shower gel, conditioner and moisturizer in guest sizes and bulk cans.",
-    title: "Hotel Toiletries: Soaps, Shampoo and Shower Gel",
+    title: "Hotel Toiletries Supplier in India",
     subtitle: "Soap, Shampoo, Shower Gel, Moisturizer, Conditioner",
     intro:
       "From single use products to bulk packaged toiletries for every room category: glycerin soaps, 30 ml bottles and tubes, and bulk cans for refilling. Available with your hotel's name on the label.",
@@ -60,7 +60,7 @@ export const categories = [
     customPage: true, // has its own page at app/products/anti-theft-dispensers
     name: "Anti-Theft Dispensers",
     short: "Lockable wall mounted dispensers for shampoo, shower gel and conditioner, refilled from 5 litre cans.",
-    title: "Wall Mounted Soap and Shampoo Dispensers for Hotels",
+    title: "Wall Mounted Hotel Dispensers",
     subtitle: "Shampoo, Shower Gel, Conditioner, Body Lotion, Hand Wash",
     intro:
       "Wall Mounted Dispensers that stay in the bathroom, refilled from bulk cans instead of replacing small bottles every stay. Available in Purely Serene and Biotique ranges.",
@@ -84,7 +84,7 @@ export const categories = [
     customPage: true, // has its own page at app/products/amenity-kits (kit explorer)
     name: "Guest Amenities",
     short: "Dental, shaving, care and sewing kits, combs, slippers and more, in branded boxes and pouches.",
-    title: "Hotel Amenity Kits: Dental, Shaving and Vanity Kits",
+    title: "Guest Amenity Kits for Hotels",
     h1: "Guest Amenities",
     subtitle: "Dental Kit, Shaving Kit, Comb, Sewing Kit, Shower Cap, Slippers, Laundry Bag",
     intro:
@@ -118,7 +118,7 @@ export const categories = [
     customPage: true, // has its own page at app/products/eco-friendly
     name: "Sustainable & Eco-Friendly Guest Amenities",
     short: "Bamboo, Wheat Starch, Jute and biodegradable packaging.",
-    title: "Sustainable & Eco-Friendly Guest Amenities for Hotels",
+    title: "Eco-Friendly Hotel Amenities",
     h1: "Sustainable & Eco-Friendly Guest Amenities",
     subtitle: "Bamboo, Wheat Starch, Jute & Biodegradable Packaging",
     cover: "/images/tiles/eco-friendly.jpg",
@@ -129,7 +129,7 @@ export const categories = [
     customPage: true, // has its own page at app/products/in-room-amenities
     name: "In-Room Amenities",
     short: "Hangers, kettle trays, leather room accessories, water bottles, mugs and more for the guest room.",
-    title: "In-Room Amenities for Hotels: Hangers, Kettle Trays and More",
+    title: "In-Room Amenities for Hotels",
     subtitle: "Hangers, Kettle Trays & Kettles, Leather Accessories, Water Bottles, Mugs & Glasses",
     intro: "The fixtures and accessories that furnish a guest room, from wardrobe hangers to the tea tray and the leather pieces on the desk.",
     cover: "/images/stationery/leather-products.jpg",
@@ -180,7 +180,7 @@ export const categories = [
     ],
     name: "Hotel Stationery",
     short: "Key card jackets, pads, pens, tags, coasters, menu cards, envelopes and letterheads.",
-    title: "Hotel Stationery Supplier: Key Card Jackets, Pads and Menus",
+    title: "Hotel Stationery & Key Card Jackets",
     h1: "Hotel Stationery",
     subtitle: "Key Card Jacket, Scribbling Pad, Pen, Coaster, Menu Card, Letterhead",
     cover: "/images/tiles/cards/stationery.jpg",
@@ -201,7 +201,7 @@ export const categories = [
     customPage: true, // has its own page at app/products/housekeeping
     name: "Housekeeping Consumables & Equipment",
     short: "Carts, in-room fixtures, paper products, cleaning consumables and kitchen disposables.",
-    title: "Housekeeping Material Supplier for Hotels",
+    title: "Hotel Housekeeping Supplies",
     subtitle: "Carts & Trolleys, In-Room Fixtures, Paper Products, Bins, Cleaning Consumables",
     intro:
       "The back-of-house range that keeps rooms turned and kitchens running, so one supplier covers far more of your purchase list.",
@@ -240,7 +240,7 @@ export const categories = [
     scenes: "tea", // styled tray-and-kettle scenes replace the old showcase slideshow
     name: "Tea & Coffee Tray & Kettle, Tea Supplies",
     short: "Goodwyn tea sachets, coffee, sugar and sugar-free sachets, stirrers, kettles and trays.",
-    title: "Kettle Tray Sets and Tea Supplies for Hotel Rooms",
+    title: "Kettle Tray Sets & Tea Supplies",
     h1: "Kettle Tray Sets & Tea Supplies",
     subtitle: "Kettle, Tray, Tea & Coffee Sachets, Sugar, Stirrers",
     intro: "Everything for the in-room tea and coffee tray, restocked from the same order as your amenities.",
@@ -718,7 +718,7 @@ export const partnerBrands = [
   {
     slug: "biotique",
     name: "Biotique Range",
-    line: "Ayurvedic hotel amenities from a name guests already know.",
+    line: "Bath and dry amenities for hotel rooms, from single-use bottles and soap to dispensers and refill cans.",
     image: "/images/2025/biotique-royal-p.jpg",
     images: ["/images/2025/biotique-royal-p.jpg", "/images/2025/biotique-tray-p.jpg", "/images/biotique-1.jpg"],
     items: [

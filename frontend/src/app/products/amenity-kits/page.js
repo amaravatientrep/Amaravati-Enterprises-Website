@@ -8,6 +8,7 @@ import KitExplorer, { KitSnapshot } from "@/components/KitExplorer";
 import SceneSlideshow from "@/components/SceneSlideshow";
 import { kitScenes, rotate } from "@/lib/scenes";
 import { categories, amenityProducts, amenityPackaging, whatsappLink, SITE_URL } from "@/lib/site";
+import GuideLink from "@/components/GuideLink";
 
 const c = categories.find((x) => x.slug === "amenity-kits");
 const others = categories.filter((x) => x.slug !== c.slug);
@@ -18,7 +19,7 @@ const tileImage = (p) =>
 
 export const metadata = {
   title: c.title,
-  description: `${c.short} Supplied to hotels all over India by Amaravati Enterprises, Hyderabad.`,
+  description: `${c.short} For hotels all over India.`,
   alternates: { canonical: "/products/amenity-kits" },
   openGraph: { images: [{ url: c.images[0] }] },
 };
@@ -105,6 +106,8 @@ export default function AmenityKitsPage() {
           .
         </p>
       </section>
+
+      <GuideLink slug="hotel-amenities-checklist" className="mt-20 md:mt-28" />
 
       <CtaBand product={c.name} />
 

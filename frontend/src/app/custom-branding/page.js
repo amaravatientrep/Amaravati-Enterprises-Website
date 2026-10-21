@@ -6,9 +6,10 @@ import CtaBand from "@/components/CtaBand";
 import BrandingPreview from "@/components/BrandingPreview";
 import SceneSlideshow from "@/components/SceneSlideshow";
 import { kitScenes, rotate } from "@/lib/scenes";
+import GuideLink from "@/components/GuideLink";
 
 export const metadata = {
-  title: "Customised Hotel Toiletries and Branded Amenities",
+  title: "Custom Branded Hotel Toiletries",
   description:
     "Hotel amenities, packaging and stationery printed with your hotel's name and logo. Soaps, bottles, amenity kits, pouches, boxes, key card jackets and more.",
   alternates: { canonical: "/custom-branding" },
@@ -73,6 +74,8 @@ export default function CustomBrandingPage() {
           </ol>
         </div>
       </section>
+
+      <GuideLink slug="custom-branded-hotel-toiletries" className="mt-20 md:mt-28" />
 
       <CtaBand product="Custom Branding" />
     </>

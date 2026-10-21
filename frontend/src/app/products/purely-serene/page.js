@@ -15,7 +15,7 @@ const I = "/images/purely-serene/";
 const PRODUCT = "Purely Serene Range"; // matches the enquiry form's product option
 
 export const metadata = {
-  title: "Purely Serene Range",
+  title: "Purely Serene Range: Hotel Toiletries",
   description:
     "Purely Serene glycerin soaps, 20 ml and 35 ml single-use bottles, 500 ml dispensers and 5 litre refill cans for hotels all over India.",
   alternates: { canonical: "/products/purely-serene" },

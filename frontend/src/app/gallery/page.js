@@ -7,7 +7,7 @@ import gallery from "@/lib/gallery.json";
 import { whatsappLink } from "@/lib/site";
 
 export const metadata = {
-  title: "Gallery: Hotel Amenity Kits, Toiletries, Dispensers and Tray Sets",
+  title: "Hotel Amenities Gallery",
   description:
     "Photos of hotel amenity kits, toiletries, wall mounted dispensers and kettle tray sets supplied to hotels all over India by Amaravati Enterprises, Hyderabad.",
   alternates: { canonical: "/gallery" },

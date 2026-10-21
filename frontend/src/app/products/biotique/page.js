@@ -11,7 +11,7 @@ import { fileSize } from "@/lib/fileSize";
 const brochure = partnerBrands.find((p) => p.slug === "biotique")?.brochure;
 
 export const metadata = {
-  title: "Biotique Hotel Amenities and Toiletries Kits",
+  title: "Biotique Hotel Amenities",
   description:
     "Biotique hotel amenities: Assorted range, Almond Soap, dry amenities, tubes, Biotique Royal and Farm Fresh. Distributed by Amaravati Enterprises.",
   alternates: { canonical: "/products/biotique" },

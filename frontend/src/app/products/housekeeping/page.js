@@ -13,7 +13,7 @@ const hkBrochure = brochures.find((b) => b.file.includes("ae-hk"));
 
 export const metadata = {
   title: c.title,
-  description: `Housekeeping material list for hotels: ${hkItemCount} coded products, from carts, trolleys and dustbins to cleaning consumables, Diversey chemicals and kitchen disposables.`,
+  description: `Hotel housekeeping supplies: ${hkItemCount} coded products, from carts, trolleys and dustbins to cleaning consumables, Diversey chemicals and kitchen disposables.`,
   alternates: { canonical: "/products/housekeeping" },
 };
 

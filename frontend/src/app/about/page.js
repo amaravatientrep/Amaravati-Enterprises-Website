@@ -7,9 +7,9 @@ import Link from "next/link";
 import { stats, contact, areas } from "@/lib/site";
 
 export const metadata = {
-  title: "About Us",
+  title: "About Us: Hotel Supplier in Hyderabad",
   description:
-    "Hyderabad hospitality supplier serving 1000+ hotels across India with guest amenities, branded packaging, stationery and housekeeping supplies.",
+    "Your trusted partner in hospitality supplies: toiletries, guest amenities, stationery, housekeeping products and linen for 1,000+ hotels across India.",
   alternates: { canonical: "/about" },
 };
 
@@ -18,8 +18,8 @@ export default function AboutPage() {
     <>
       <PageHeader ld
         crumbs={[{ label: "About" }]}
-        title="A Hyderabad partner for hotel supplies."
-        intro="For more than ten years we have supplied the things guests touch: soaps, kits, slippers, stationery, and the housekeeping supplies behind them."
+        title="Your Trusted Partner in Hospitality Supplies"
+        intro="At Amaravati Enterprises, we believe exceptional hospitality begins with the little details that make every guest feel welcome. From our roots in Hyderabad, we have grown into a trusted one-stop partner for 1,000+ hotels, resorts, hospitals, serviced apartments and other hospitality businesses across India."
       />
 
       <section className="container-x grid gap-10 md:grid-cols-12">
@@ -32,11 +32,15 @@ export default function AboutPage() {
         </Reveal>
         <Reveal delay={0.1} className="space-y-6 self-center text-lg leading-relaxed md:col-span-7 md:pl-8">
           <p>
-            Amaravati Enterprises works with hotels, resorts, guest houses and institutions all over India. Our clients range from independent properties to brands such as Lemon Tree, Ginger, Sarovar and Fairfield by Marriott.
+            Our range covers hotel toiletries and guest amenities, tea and coffee supplies, stationery, disposables, in-room essentials, housekeeping products and linen, bringing convenience, consistency and quality under one roof.
           </p>
           <p className="text-muted">
-            What hotels value most is simple: one supplier for the whole guest room, consistent quality from order to order, and amenities that carry their own name. Alongside our own range we supply the Biotique Range.
+            Every property has its own identity. That is why we go beyond standard supplies with customised products and personalised branding that help hotels strengthen their identity and elevate the guest experience. A strong vendor network, in-house assembly and packaging, and efficient inventory management keep our service dependable and our deliveries on time.
           </p>
+          <p className="text-muted">
+            We proudly support the Make in India vision, championing quality Indian-made products. We keep adding sustainable alternatives to our range and are growing our presence in international markets.
+          </p>
+          <p className="font-semibold">We don&rsquo;t just supply hospitality essentials. We help hotels create experiences worth remembering.</p>
           <dl className="grid grid-cols-3 gap-6 pt-6">
             {stats.map((s) => (
               <div key={s.label} className="flex flex-col border-t border-line/15 pt-4">

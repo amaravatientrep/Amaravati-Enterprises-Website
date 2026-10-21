@@ -18,9 +18,9 @@ const tiles = [
 ];
 
 export const metadata = {
-  title: "Product Range: Everything a Hotel and a Guest Room Needs",
+  title: "Hotel Supplies Product Range",
   description:
-    "A hotel amenities list for every guest room: toiletries, amenity kits, dispensers, in-room amenities, stationery, kettle trays and housekeeping material, plus the Biotique Range.",
+    "Everything a hotel and a guest room needs: toiletries, amenity kits, dispensers, in-room amenities, stationery, tea trays and housekeeping supplies.",
   alternates: { canonical: "/products" },
 };
 

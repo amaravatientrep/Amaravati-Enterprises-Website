@@ -201,3 +201,13 @@
     display: block;
   }
 }
+
+/* Photo carousels: phones loop over fewer photos than desktops (see PhotoMarquee) */
+.marquee-row {
+  --marquee-dur: var(--dur-sm);
+}
+@media (min-width: 768px) {
+  .marquee-row {
+    --marquee-dur: var(--dur-lg);
+  }
+}

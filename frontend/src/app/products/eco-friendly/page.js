@@ -6,6 +6,7 @@ import CtaBand from "@/components/CtaBand";
 import MiniSlideshow from "@/components/MiniSlideshow";
 import KitExplorer from "@/components/KitExplorer";
 import { categories, ecoPackaging, ecoPackagingNames, ecoKits, whatsappLink, SITE_URL } from "@/lib/site";
+import GuideLink from "@/components/GuideLink";
 
 const c = categories.find((x) => x.slug === "eco-friendly");
 
@@ -90,6 +91,8 @@ export default function EcoFriendlyPage() {
           ))}
         </ul>
       </section>
+
+      <GuideLink slug="eco-friendly-hotel-amenities" className="mt-20 md:mt-28" />
 
       <CtaBand product={c.name} />
     </>

@@ -22,7 +22,7 @@ export const metadata = {
     template: "%s | Amaravati Enterprises",
   },
   description:
-    "Hotel amenities supplier in Hyderabad serving hotels all over India: toiletries, amenity kits, dispensers, stationery and housekeeping material, branded with your hotel's name.",
+    "Hotel amenities supplier serving hotels all over India: toiletries, amenity kits, dispensers, stationery and housekeeping supplies, with your hotel's branding.",
   alternates: { canonical: "/" },
   icons: { icon: "/favicon-32.png", apple: "/apple-touch-icon.png" },
   manifest: "/manifest.json",

@@ -51,6 +51,11 @@ export default function Footer() {
               </Link>
             </li>
             <li>
+              <Link className="block py-3 leading-snug hover:text-white md:inline-block md:py-1.5" href="/guides">
+                Guides
+              </Link>
+            </li>
+            <li>
               <Link className="block py-3 leading-snug hover:text-white md:inline-block md:py-1.5" href="/contact">
                 Contact
               </Link>

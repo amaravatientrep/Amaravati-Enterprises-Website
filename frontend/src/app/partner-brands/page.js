@@ -8,9 +8,9 @@ import { partnerBrands } from "@/lib/site";
 import { fileSize } from "@/lib/fileSize";
 
 export const metadata = {
-  title: "Biotique Hotel Amenities",
+  title: "Partner Brand: Biotique Range",
   description:
-    "Biotique hotel amenities supplied to hotels all over India.",
+    "Biotique hotel amenities: single-use bottles, soaps, dry amenities, 380 ml dispensers and refill cans, supplied to hotels all over India.",
   alternates: { canonical: "/partner-brands" },
 };
 

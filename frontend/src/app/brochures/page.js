@@ -3,7 +3,7 @@ import BrochureGrid from "@/components/BrochureGrid";
 import CtaBand from "@/components/CtaBand";
 
 export const metadata = {
-  title: "Brochures",
+  title: "Hotel Amenities Brochures (PDF)",
   description: "Download Amaravati Enterprises brochures: company range, housekeeping and kitchen, dispenser systems and Biotique hotel amenities.",
   alternates: { canonical: "/brochures" },
 };
