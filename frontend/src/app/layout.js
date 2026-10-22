@@ -17,6 +17,8 @@ export const metadata = {
   metadataBase: new URL(SITE_URL),
   // Preview and local builds are kept out of search results; only the production site is indexed (see robots.js)
   ...(process.env.VERCEL_ENV === "production" ? {} : { robots: { index: false, follow: false } }),
+  // Bing Webmaster Tools ownership check
+  verification: { other: { "msvalidate.01": "64507EAE9D556709F854E361C1D81A3B" } },
   title: {
     default: "Hotel Amenities Supplier in India | Amaravati Enterprises",
     template: "%s | Amaravati Enterprises",
