@@ -1,0 +1,15 @@
+# After each successful Vercel production deploy, tell Bing (IndexNow) the pages have changed.
+name: IndexNow ping
+
+on: deployment_status
+
+jobs:
+  ping:
+    if: github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node frontend/scripts/indexnow.mjs
