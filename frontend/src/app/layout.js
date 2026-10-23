@@ -79,10 +79,21 @@ const jsonLd = {
   areaServed: { "@type": "Country", name: "India" },
 };
 
+// Matches the hidden starting state of <Reveal> (opacity 0, moved down 16px)
+const REVEAL_FALLBACK = '[style*="opacity:0;transform:translateY(16px)"]{opacity:1!important;transform:none!important}';
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en-IN" className={`${GeistSans.variable} ${display.variable}`}>
       <body className="font-sans">
+        {/* Scroll-in sections start hidden and are revealed by JavaScript. If a phone's browser has no
+            JavaScript, or it has not started within 4 s (very old or very slow phones), show them anyway. */}
+        <noscript dangerouslySetInnerHTML={{ __html: `<style>${REVEAL_FALLBACK}</style>` }} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `setTimeout(function(){if(!window.__aeReady){var s=document.createElement("style");s.textContent=${JSON.stringify(REVEAL_FALLBACK)};document.head.appendChild(s)}},4000)`,
+          }}
+        />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <a
           href="#main"

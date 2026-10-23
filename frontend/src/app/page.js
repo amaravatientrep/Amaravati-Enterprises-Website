@@ -115,11 +115,11 @@ export default function Home() {
 
       {/* Statement + numbers, with the product carousel on the right */}
       <section className="container-x mt-20 md:mt-28">
-        <Reveal className="grid gap-12 md:grid-cols-12 md:items-end">
-          <p className="text-3xl font-medium leading-[1.15] tracking-tight md:col-span-7 md:text-[2.75rem]">
+        <Reveal className="grid gap-12 xl:grid-cols-12 xl:items-end">
+          <p className="text-3xl font-medium leading-[1.15] tracking-tight md:text-[2.75rem] xl:col-span-7">
             One-stop shop for all your hospitality needs, from the soap by the basin to the card on the door handle.
           </p>
-          <dl className="grid grid-cols-3 gap-4 sm:gap-6 md:col-span-5">
+          <dl className="grid grid-cols-3 gap-4 sm:gap-6 xl:col-span-5">
             {stats.map((s) => (
               // The label is the term (read once); the number is shown above it
               <div key={s.label} className="flex flex-col border-t border-line/15 pt-4">

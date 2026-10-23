@@ -17,6 +17,8 @@ const kinds = [
 
 export default function WhatsAppSource() {
   useEffect(() => {
+    // JavaScript is running, so scroll-in sections can animate (see the fallback in layout.js)
+    window.__aeReady = true;
     const onClick = (e) => {
       const a = e.target.closest?.("a[href]");
       if (!a) return;

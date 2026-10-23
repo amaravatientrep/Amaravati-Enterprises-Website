@@ -35,7 +35,7 @@ export default function ProductGallery({ groups }) {
           )}
           {g.footnote && (
             <Reveal>
-              <p className="mt-8 text-lg font-medium leading-relaxed md:whitespace-nowrap">{g.footnote}</p>
+              <p className="mt-8 text-lg font-medium leading-relaxed lg:whitespace-nowrap">{g.footnote}</p>
             </Reveal>
           )}
         </section>

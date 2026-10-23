@@ -49,7 +49,7 @@ export default function HeroVideo() {
   }
 
   return (
-    <section className="relative isolate min-h-[100svh] overflow-hidden bg-[#0C0F0E] text-white">
+    <section className="relative isolate min-h-screen supports-[min-height:100svh]:min-h-[100svh] overflow-hidden bg-[#0C0F0E] text-white">
       {/* Media: full-bleed on phones; on desktop it sits right of the headline, its left edge fading into the dark ground (a gradient, since Chrome ignores masks on video) */}
       <div className="absolute inset-0 -z-10 md:left-[26%]">
         <Image src="/videos/hero-desktop-poster.jpg" alt="" fill priority sizes="75vw" className="hidden object-cover md:block" />
@@ -73,7 +73,7 @@ export default function HeroVideo() {
       {/* Readability shade */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#0C0F0E] from-15% via-[#0C0F0E]/65 via-50% to-[#0C0F0E]/25 md:from-0% md:via-50% md:bg-gradient-to-r md:from-[#0C0F0E]/70 md:via-[#0C0F0E]/10 md:to-transparent" />
 
-      <div className="container-x flex min-h-[100svh] flex-col justify-end pb-28 pt-28 md:justify-center md:pb-0">
+      <div className="container-x flex min-h-screen supports-[min-height:100svh]:min-h-[100svh] flex-col justify-end pb-28 pt-28 md:justify-center md:pb-0">
         <div className="max-w-6xl">
           <h1 className="hero-rise font-display text-[clamp(1rem,4.6vw,3.4rem)] font-semibold uppercase leading-[1.25] tracking-[0.02em]">
             <span className="block">Complete Hospitality Solutions</span>
