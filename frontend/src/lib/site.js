@@ -35,7 +35,9 @@ export const categories = [
     scenes: "kits", // styled kit scenes slideshow at the top of the page
     name: "Hotel Toiletries",
     short: "Soaps, shampoo, shower gel, conditioner and moisturizer in guest sizes and bulk cans.",
-    title: "Hotel Toiletries Supplier in India",
+    title: "Hotel Toiletries Manufacturer & Supplier: Soap, Shampoo",
+    h1: "Hotel Toiletries Supplier",
+    description: "Hotel toiletries manufacturer and supplier: soaps, shampoo, shower gel and conditioner in 20 to 30 ml bottles, tubes and 5 litre cans, with your hotel's branding.",
     subtitle: "Soap, Shampoo, Shower Gel, Moisturizer, Conditioner",
     intro:
       "From single use products to bulk packaged toiletries for every room category: glycerin soaps, 30 ml bottles and tubes, and bulk cans for refilling. Available with your hotel's name on the label.",
@@ -60,7 +62,8 @@ export const categories = [
     customPage: true, // has its own page at app/products/anti-theft-dispensers
     name: "Anti-Theft Dispensers",
     short: "Lockable wall mounted dispensers for shampoo, shower gel and conditioner, refilled from 5 litre cans.",
-    title: "Wall Mounted Hotel Dispensers",
+    title: "Wall Mounted Shampoo & Soap Dispensers for Hotels",
+    h1: "Anti-Theft Wall Mounted Dispensers",
     subtitle: "Shampoo, Shower Gel, Conditioner, Body Lotion, Hand Wash",
     intro:
       "Wall Mounted Dispensers that stay in the bathroom, refilled from bulk cans instead of replacing small bottles every stay. Available in Purely Serene and Biotique ranges.",
@@ -84,8 +87,9 @@ export const categories = [
     customPage: true, // has its own page at app/products/amenity-kits (kit explorer)
     name: "Guest Amenities",
     short: "Dental, shaving, care and sewing kits, combs, slippers and more, in branded boxes and pouches.",
-    title: "Guest Amenity Kits for Hotels",
-    h1: "Guest Amenities",
+    title: "Hotel Amenity Kit Manufacturer & Supplier",
+    h1: "Hotel Guest Amenity Kits",
+    description: "Hotel amenity kit and toiletries kit supplier and manufacturer: dental, shaving, care and sewing kits, combs and slippers, packed with your hotel's branding.",
     subtitle: "Dental Kit, Shaving Kit, Comb, Sewing Kit, Shower Cap, Slippers, Laundry Bag",
     intro:
       "Hotel amenity and toiletries kits: the dry amenities guests reach for, in our standard design or packed in boxes and pouches that carry your branding. Kits can be put together per room category.",
@@ -118,7 +122,7 @@ export const categories = [
     customPage: true, // has its own page at app/products/eco-friendly
     name: "Sustainable & Eco-Friendly Guest Amenities",
     short: "Bamboo, Wheat Starch, Jute and biodegradable packaging.",
-    title: "Eco-Friendly Hotel Amenities",
+    title: "Eco-Friendly Hotel Amenities Supplier: Bamboo, Wheat Starch, Jute",
     h1: "Sustainable & Eco-Friendly Guest Amenities",
     subtitle: "Bamboo, Wheat Starch, Jute & Biodegradable Packaging",
     cover: "/images/tiles/eco-friendly.jpg",
@@ -130,6 +134,7 @@ export const categories = [
     name: "In-Room Amenities",
     short: "Hangers, kettle trays, leather room accessories, water bottles, mugs and more for the guest room.",
     title: "In-Room Amenities for Hotels",
+    h1: "In-Room Amenities for Hotels",
     subtitle: "Hangers, Kettle Trays & Kettles, Leather Accessories, Water Bottles, Mugs & Glasses",
     intro: "The fixtures and accessories that furnish a guest room, from wardrobe hangers to the tea tray and the leather pieces on the desk.",
     cover: "/images/stationery/leather-products.jpg",
@@ -180,7 +185,8 @@ export const categories = [
     ],
     name: "Hotel Stationery",
     short: "Key card jackets, pads, pens, tags, coasters, menu cards, envelopes and letterheads.",
-    title: "Hotel Stationery & Key Card Jackets",
+    title: "Hotel Stationery Supplier: Key Card Jackets, Pads, Pens",
+    description: "Hotel stationery supplier: key card jackets, scribbling pads, pens, coasters, menu cards, envelopes and letterheads printed with your hotel's name and logo.",
     h1: "Hotel Stationery",
     subtitle: "Key Card Jacket, Scribbling Pad, Pen, Coaster, Menu Card, Letterhead",
     cover: "/images/tiles/cards/stationery.jpg",
@@ -201,7 +207,8 @@ export const categories = [
     customPage: true, // has its own page at app/products/housekeeping
     name: "Housekeeping Consumables & Equipment",
     short: "Carts, in-room fixtures, paper products, cleaning consumables and kitchen disposables.",
-    title: "Hotel Housekeeping Supplies",
+    title: "Hotel Housekeeping Material & Supplies",
+    h1: "Housekeeping Material: Consumables & Equipment",
     subtitle: "Carts & Trolleys, In-Room Fixtures, Paper Products, Bins, Cleaning Consumables",
     intro:
       "The back-of-house range that keeps rooms turned and kitchens running, so one supplier covers far more of your purchase list.",
@@ -240,8 +247,9 @@ export const categories = [
     scenes: "tea", // styled tray-and-kettle scenes replace the old showcase slideshow
     name: "Tea & Coffee Tray & Kettle, Tea Supplies",
     short: "Goodwyn tea sachets, coffee, sugar and sugar-free sachets, stirrers, kettles and trays.",
-    title: "Kettle Tray Sets & Tea Supplies",
+    title: "Kettle Tray Sets for Hotel Rooms & Tea Supplies",
     h1: "Kettle Tray Sets & Tea Supplies",
+    description: "Kettle tray sets for hotel rooms: trays, kettles, cups, Goodwyn tea sachets, coffee, sugar and sugar-free sachets and stirrers, supplied to hotels all over India.",
     subtitle: "Kettle, Tray, Tea & Coffee Sachets, Sugar, Stirrers",
     intro: "Everything for the in-room tea and coffee tray, restocked from the same order as your amenities.",
     cover: "/images/tiles/cards/tea-coffee.jpg",
@@ -777,26 +785,36 @@ export const brochures = [
   { file: "/catalogues/ae-biotique-2026.pdf", thumb: "/catalogues/thumbs/ae-biotique-2026-cover.jpg", name: "AE Biotique Amenities" },
 ];
 
+// Region pages at /areas/[slug]. States and regions have no `state`; city pages name their state's slug, so the
+// state page lists its cities and each city page links back. Title: "Hotel Amenities Suppliers in <titleName or name>"
+// (the phrasing buyers search). Description: `description`, or a template built from `where` or `name`.
+// House rule: "manufacturer" never sits next to dispensers.
+const cityPoints = (focus) => [
+  focus,
+  "Toiletries, Amenity Kits, stationery and housekeeping material from one supplier",
+  "Custom Branding with your hotel's name and logo",
+  "Quotes on WhatsApp, call or email",
+];
+
 export const areas = [
   {
     slug: "hyderabad",
     name: "Hyderabad",
-    title: "Hotel amenities supplier in Hyderabad",
-    description: "Hotel amenities supplier in Banjara Hills, Hyderabad: toiletries, amenity kits, stationery and housekeeping material, with Custom Branding.",
+    state: "telangana",
+    featured: true,
+    description: "Hotel amenities and housekeeping material suppliers in Banjara Hills, Hyderabad: toiletries, soaps, amenity kits and stationery, with Custom Branding.",
     intro:
       "Our office is in Banjara Hills, so hotels across Hyderabad and Secunderabad deal with a team that is close by and easy to reach.",
     points: [
       "Office in Banjara Hills, Hyderabad",
       "Clients include The Park, Deccan Serai and IIT Hyderabad",
-      "Toiletries, Amenity Kits, stationery and housekeeping from one supplier",
+      "Toiletries, Amenity Kits, stationery and housekeeping material from one supplier",
       "Custom Branding with your hotel's name and logo",
     ],
   },
   {
     slug: "telangana",
     name: "Telangana",
-    title: "Hotel amenities supplier in Telangana",
-    description: "Hotel toiletries, amenity kits, stationery and housekeeping material for hotels and resorts across Telangana, with Custom Branding.",
     intro:
       "We supply hotels, resorts and guest houses across Telangana from Hyderabad, with the full guest-room range and Custom Branding.",
     points: [
@@ -809,8 +827,6 @@ export const areas = [
   {
     slug: "andhra-pradesh",
     name: "Andhra Pradesh",
-    title: "Hotel amenities supplier in Andhra Pradesh",
-    description: "Hotel toiletries, amenity kits, stationery and housekeeping material for hotels and resorts across Andhra Pradesh, from Hyderabad.",
     intro:
       "Hotels and resorts across Andhra Pradesh order their guest amenities, stationery and housekeeping supplies from us in Hyderabad.",
     points: [
@@ -821,10 +837,23 @@ export const areas = [
     ],
   },
   {
+    slug: "karnataka",
+    name: "Karnataka",
+    intro:
+      "We supply hotels, resorts and homestays across Karnataka, from Bangalore business hotels to Mysore, Mangalore and the Coorg resorts, with the full guest-room range and Custom Branding.",
+    points: [
+      "Supplying hotels and resorts across Karnataka",
+      "One supplier for amenities, stationery, housekeeping and tea trays",
+      "Sustainable amenities in bamboo, wheat starch and jute",
+      "Custom Branding with your hotel's name and logo",
+    ],
+  },
+  {
     slug: "bangalore",
     name: "Bangalore",
-    title: "Hotel amenities supplier in Bangalore",
-    description: "Hotel toiletries, amenity kits, stationery and housekeeping material for hotels and resorts in Bangalore (Bengaluru), with Custom Branding.",
+    titleName: "Bangalore (Bengaluru)",
+    state: "karnataka",
+    featured: true,
     intro:
       "We supply hotels, resorts and guest houses in Bangalore from our office in Hyderabad, with the full guest-room range and Custom Branding.",
     points: [
@@ -835,10 +864,46 @@ export const areas = [
     ],
   },
   {
+    slug: "tamil-nadu",
+    name: "Tamil Nadu",
+    intro:
+      "We supply hotels, resorts and guest houses across Tamil Nadu from our office in Hyderabad, with the full guest-room range and Custom Branding.",
+    points: [
+      "Supplying hotels in Chennai, Coimbatore, Madurai and across Tamil Nadu",
+      "One supplier for amenities, stationery, housekeeping and tea trays",
+      "Proposals on WhatsApp, call or email",
+      "Custom Branding with your hotel's name and logo",
+    ],
+  },
+  {
+    slug: "kerala",
+    name: "Kerala",
+    intro:
+      "We supply hotels, resorts and guest houses across Kerala from our office in Hyderabad, with the full guest-room range and Custom Branding.",
+    points: [
+      "Supplying hotels and resorts across Kerala",
+      "One supplier for amenities, stationery, housekeeping and tea trays",
+      "Sustainable amenities in bamboo, wheat starch and jute",
+      "Custom Branding with your hotel's name and logo",
+    ],
+  },
+  {
+    slug: "pondicherry",
+    name: "Pondicherry",
+    titleName: "Pondicherry (Puducherry)",
+    intro:
+      "We supply hotels, resorts and guest houses in Pondicherry from our office in Hyderabad, with the full guest-room range and Custom Branding.",
+    points: [
+      "Supplying hotels and guest houses in Pondicherry",
+      "One supplier for amenities, stationery, housekeeping and tea trays",
+      "Sustainable amenities in bamboo, wheat starch and jute",
+      "Custom Branding with your hotel's name and logo",
+    ],
+  },
+  {
     slug: "goa",
     name: "Goa",
-    title: "Hotel amenities supplier in Goa",
-    description: "Hotel toiletries, amenity kits, stationery and housekeeping material for hotels and resorts in North and South Goa, with Custom Branding.",
+    where: "North and South Goa",
     intro:
       "We supply hotels, resorts and guest houses across Goa from our office in Hyderabad, with the full guest-room range and Custom Branding.",
     points: [
@@ -852,8 +917,7 @@ export const areas = [
   {
     slug: "odisha",
     name: "Odisha",
-    title: "Hotel amenities supplier in Odisha",
-    description: "Hotel toiletries, amenity kits, stationery and housekeeping material for hotels and resorts in Odisha (Orissa), from Bhubaneswar to Puri, with Custom Branding.",
+    where: "Odisha (Orissa), from Bhubaneswar to Puri",
     intro:
       "We supply hotels, resorts and guest houses across Odisha from our office in Hyderabad, with the full guest-room range and Custom Branding.",
     points: [
@@ -864,52 +928,10 @@ export const areas = [
     ],
   },
   {
-    slug: "kerala",
-    name: "Kerala",
-    title: "Hotel amenities supplier in Kerala",
-    description: "Hotel toiletries, amenity kits, stationery and housekeeping material for hotels and resorts in Kerala, with Custom Branding.",
-    intro:
-      "We supply hotels, resorts and guest houses across Kerala from our office in Hyderabad, with the full guest-room range and Custom Branding.",
-    points: [
-      "Supplying hotels and resorts across Kerala",
-      "One supplier for amenities, stationery, housekeeping and tea trays",
-      "Sustainable amenities in bamboo, wheat starch and jute",
-      "Custom Branding with your hotel's name and logo",
-    ],
-  },
-  {
-    slug: "tamil-nadu",
-    name: "Tamil Nadu",
-    title: "Hotel amenities supplier in Tamil Nadu",
-    description: "Hotel toiletries, amenity kits, stationery and housekeeping material for hotels and resorts in Chennai and across Tamil Nadu, with Custom Branding.",
-    intro:
-      "We supply hotels, resorts and guest houses across Tamil Nadu from our office in Hyderabad, with the full guest-room range and Custom Branding.",
-    points: [
-      "Supplying hotels in Chennai, Coimbatore, Madurai and across Tamil Nadu",
-      "One supplier for amenities, stationery, housekeeping and tea trays",
-      "Proposals on WhatsApp, call or email",
-      "Custom Branding with your hotel's name and logo",
-    ],
-  },
-  {
-    slug: "pondicherry",
-    name: "Pondicherry",
-    title: "Hotel amenities supplier in Pondicherry",
-    description: "Hotel toiletries, amenity kits, stationery and housekeeping material for hotels and resorts in Pondicherry (Puducherry), with Custom Branding.",
-    intro:
-      "We supply hotels, resorts and guest houses in Pondicherry from our office in Hyderabad, with the full guest-room range and Custom Branding.",
-    points: [
-      "Supplying hotels and guest houses in Pondicherry",
-      "One supplier for amenities, stationery, housekeeping and tea trays",
-      "Sustainable amenities in bamboo, wheat starch and jute",
-      "Custom Branding with your hotel's name and logo",
-    ],
-  },
-  {
     slug: "maharashtra",
     name: "Maharashtra",
-    title: "Hotel amenities supplier in Maharashtra",
-    description: "Hotel toiletries, amenity kits, stationery and housekeeping material for hotels and resorts in Mumbai, Pune and across Maharashtra, with Custom Branding.",
+    titleName: "Mumbai & Maharashtra",
+    where: "Mumbai, Pune and across Maharashtra",
     intro:
       "We supply hotels, resorts and guest houses across Maharashtra from our office in Hyderabad, with the full guest-room range and Custom Branding.",
     points: [
@@ -919,7 +941,268 @@ export const areas = [
       "Custom Branding with your hotel's name and logo",
     ],
   },
+
+  // Telangana
+  {
+    slug: "warangal",
+    name: "Warangal",
+    state: "telangana",
+    intro: "Hotels, function halls and guest houses in Warangal and Hanamkonda order their guest amenities from us in Hyderabad, with the same range and branding as our city clients.",
+    points: cityPoints("Supplying hotels in Warangal and Hanamkonda"),
+  },
+  {
+    slug: "karimnagar",
+    name: "Karimnagar",
+    state: "telangana",
+    intro: "Business hotels and lodges in Karimnagar stock toiletries, dental and shaving kits and key card jackets from one supplier in Hyderabad.",
+    points: cityPoints("Supplying hotels and lodges in Karimnagar"),
+  },
+  {
+    slug: "nizamabad",
+    name: "Nizamabad",
+    state: "telangana",
+    intro: "Hotels and lodges in Nizamabad get budget-room essentials and branded amenity kits from one supplier in Hyderabad.",
+    points: cityPoints("Supplying hotels and lodges in Nizamabad"),
+  },
+  {
+    slug: "khammam",
+    name: "Khammam",
+    state: "telangana",
+    intro: "Hotels in Khammam and around Bhadrachalam stock soaps, toiletries and amenity kits for pilgrims and business travellers from our office in Hyderabad.",
+    points: cityPoints("Supplying hotels in Khammam and Bhadrachalam"),
+  },
+
+  // Andhra Pradesh
+  {
+    slug: "visakhapatnam",
+    name: "Visakhapatnam",
+    titleName: "Visakhapatnam (Vizag)",
+    state: "andhra-pradesh",
+    intro: "Beach hotels, business hotels and resorts in Vizag order toiletries, amenity kits and housekeeping material from us, branded with the hotel's own name.",
+    points: cityPoints("Supplying hotels and beach resorts in Visakhapatnam"),
+  },
+  {
+    slug: "vijayawada",
+    name: "Vijayawada",
+    state: "andhra-pradesh",
+    intro: "Hotels in Vijayawada and the Amaravati capital region order guest amenities, stationery and tea trays from one supplier in Hyderabad.",
+    points: cityPoints("Supplying hotels in Vijayawada and the Amaravati region"),
+  },
+  {
+    slug: "tirupati",
+    name: "Tirupati",
+    state: "andhra-pradesh",
+    intro: "Pilgrim hotels and lodges in Tirupati turn rooms around every day, so they need dependable stock of soaps, toiletries, dental kits and combs. Wall mounted dispensers cut the daily bottle count.",
+    points: cityPoints("Supplying pilgrim hotels and lodges in Tirupati"),
+  },
+  {
+    slug: "guntur",
+    name: "Guntur",
+    state: "andhra-pradesh",
+    intro: "Hotels and guest houses in Guntur order toiletries, amenity kits and housekeeping material from one supplier in Hyderabad.",
+    points: cityPoints("Supplying hotels and guest houses in Guntur"),
+  },
+  {
+    slug: "nellore",
+    name: "Nellore",
+    state: "andhra-pradesh",
+    intro: "Hotels in Nellore stock guest-room essentials, from soaps and shampoo to dental and shaving kits, with their own name on the pack.",
+    points: cityPoints("Supplying hotels in Nellore"),
+  },
+  {
+    slug: "rajahmundry",
+    name: "Rajahmundry",
+    titleName: "Rajahmundry (Rajamahendravaram)",
+    state: "andhra-pradesh",
+    intro: "Hotels and river-view resorts in Rajahmundry order toiletries, amenity kits and tea trays from our office in Hyderabad.",
+    points: cityPoints("Supplying hotels and resorts in Rajahmundry"),
+  },
+  {
+    slug: "kakinada",
+    name: "Kakinada",
+    state: "andhra-pradesh",
+    intro: "Business hotels in Kakinada stock toiletries, key card jackets and housekeeping material from one supplier.",
+    points: cityPoints("Supplying hotels in Kakinada"),
+  },
+  {
+    slug: "kurnool",
+    name: "Kurnool",
+    state: "andhra-pradesh",
+    intro: "Hotels in Kurnool and pilgrim lodges around Srisailam and Mahanandi order soaps, toiletries and amenity kits from us in Hyderabad.",
+    points: cityPoints("Supplying hotels in Kurnool and Srisailam"),
+  },
+  {
+    slug: "anantapur",
+    name: "Anantapur",
+    titleName: "Anantapur & Puttaparthi",
+    state: "andhra-pradesh",
+    intro: "Hotels in Anantapur and guest houses around Puttaparthi order budget-room essentials and branded amenity kits from one supplier.",
+    points: cityPoints("Supplying hotels in Anantapur and Puttaparthi"),
+  },
+
+  // Karnataka
+  {
+    slug: "mysore",
+    name: "Mysore",
+    titleName: "Mysore (Mysuru)",
+    state: "karnataka",
+    intro: "Heritage hotels and resorts in Mysore order premium toiletries, branded amenity kits and leather room accessories from us.",
+    points: cityPoints("Supplying heritage hotels and resorts in Mysore"),
+  },
+  {
+    slug: "mangalore",
+    name: "Mangalore",
+    titleName: "Mangalore (Mangaluru)",
+    state: "karnataka",
+    intro: "Business hotels and beach resorts in Mangalore and Udupi order toiletries, amenity kits and housekeeping material from one supplier.",
+    points: cityPoints("Supplying hotels in Mangalore and Udupi"),
+  },
+  {
+    slug: "hubli",
+    name: "Hubli",
+    titleName: "Hubli-Dharwad",
+    state: "karnataka",
+    intro: "Hotels in Hubli and Dharwad order guest amenities, stationery and tea trays from our office in Hyderabad.",
+    points: cityPoints("Supplying hotels in Hubli and Dharwad"),
+  },
+  {
+    slug: "coorg",
+    name: "Coorg",
+    titleName: "Coorg (Kodagu)",
+    state: "karnataka",
+    intro: "Plantation resorts and homestays in Coorg often choose eco-friendly amenities: bamboo dental kits, jute slippers and paper packaging, branded with the property's name.",
+    points: cityPoints("Supplying resorts and homestays in Coorg"),
+  },
+  {
+    slug: "belgaum",
+    name: "Belgaum",
+    titleName: "Belgaum (Belagavi)",
+    state: "karnataka",
+    intro: "Hotels in Belgaum stock toiletries, amenity kits and housekeeping material from one supplier.",
+    points: cityPoints("Supplying hotels in Belgaum"),
+  },
+
+  // Tamil Nadu
+  {
+    slug: "chennai",
+    name: "Chennai",
+    state: "tamil-nadu",
+    intro: "Business hotels, serviced apartments and beach resorts in Chennai and along the ECR order toiletries, amenity kits and stationery from us, branded with their own name.",
+    points: cityPoints("Supplying hotels in Chennai and along the ECR"),
+  },
+  {
+    slug: "coimbatore",
+    name: "Coimbatore",
+    state: "tamil-nadu",
+    intro: "Business hotels in Coimbatore order guest amenities, key card jackets and housekeeping material from one supplier.",
+    points: cityPoints("Supplying hotels in Coimbatore"),
+  },
+  {
+    slug: "madurai",
+    name: "Madurai",
+    state: "tamil-nadu",
+    intro: "Temple-town hotels and lodges in Madurai need steady stock of soaps, toiletries and dental kits for a constant flow of pilgrims and tourists.",
+    points: cityPoints("Supplying hotels and lodges in Madurai"),
+  },
+  {
+    slug: "ooty",
+    name: "Ooty",
+    titleName: "Ooty (Udhagamandalam)",
+    state: "tamil-nadu",
+    intro: "Hill resorts and cottages in Ooty and Coonoor order moisturizer, toiletries, amenity kits and kettle tray sets for guest rooms.",
+    points: cityPoints("Supplying resorts and cottages in Ooty and Coonoor"),
+  },
+  {
+    slug: "kodaikanal",
+    name: "Kodaikanal",
+    state: "tamil-nadu",
+    intro: "Hill resorts in Kodaikanal stock toiletries, kettle tray sets and eco-friendly amenity kits from one supplier.",
+    points: cityPoints("Supplying hill resorts in Kodaikanal"),
+  },
+  {
+    slug: "trichy",
+    name: "Trichy",
+    titleName: "Trichy (Tiruchirappalli)",
+    state: "tamil-nadu",
+    intro: "Hotels in Trichy and around Srirangam order soaps, toiletries and amenity kits for pilgrims and business travellers.",
+    points: cityPoints("Supplying hotels in Trichy and Srirangam"),
+  },
+  {
+    slug: "salem",
+    name: "Salem",
+    state: "tamil-nadu",
+    intro: "Hotels in Salem and resorts in Yercaud order guest amenities and housekeeping material from our office in Hyderabad.",
+    points: cityPoints("Supplying hotels in Salem and Yercaud"),
+  },
+  {
+    slug: "kanyakumari",
+    name: "Kanyakumari",
+    state: "tamil-nadu",
+    intro: "Hotels and lodges in Kanyakumari and Rameswaram stock soaps, toiletries and dental kits for a steady flow of tourists and pilgrims.",
+    points: cityPoints("Supplying hotels in Kanyakumari and Rameswaram"),
+  },
+
+  // Kerala
+  {
+    slug: "kochi",
+    name: "Kochi",
+    titleName: "Kochi (Cochin)",
+    state: "kerala",
+    intro: "Business hotels, heritage stays in Fort Kochi and waterfront resorts order toiletries, amenity kits and stationery from us, branded with their own name.",
+    points: cityPoints("Supplying hotels and resorts in Kochi and Fort Kochi"),
+  },
+  {
+    slug: "thiruvananthapuram",
+    name: "Thiruvananthapuram",
+    titleName: "Trivandrum & Kovalam",
+    state: "kerala",
+    intro: "Hotels in Thiruvananthapuram and beach resorts in Kovalam and Varkala order toiletries, amenity kits and housekeeping material from one supplier.",
+    points: cityPoints("Supplying hotels in Trivandrum, Kovalam and Varkala"),
+  },
+  {
+    slug: "kozhikode",
+    name: "Kozhikode",
+    titleName: "Kozhikode (Calicut)",
+    state: "kerala",
+    intro: "Hotels in Kozhikode order guest amenities, key card jackets and tea trays from our office in Hyderabad.",
+    points: cityPoints("Supplying hotels in Kozhikode"),
+  },
+  {
+    slug: "munnar",
+    name: "Munnar",
+    state: "kerala",
+    intro: "Tea-country resorts in Munnar often choose eco-friendly amenities: bamboo and wheat starch kits, jute slippers and paper packaging, with the resort's own name.",
+    points: cityPoints("Supplying resorts in Munnar"),
+  },
+  {
+    slug: "alleppey",
+    name: "Alleppey",
+    titleName: "Alleppey (Alappuzha) & Kumarakom",
+    state: "kerala",
+    intro: "Backwater resorts and houseboats in Alleppey and Kumarakom order toiletries, compact amenity kits and eco-friendly packaging from one supplier.",
+    points: cityPoints("Supplying resorts and houseboats in Alleppey and Kumarakom"),
+  },
+  {
+    slug: "thrissur",
+    name: "Thrissur",
+    state: "kerala",
+    intro: "Hotels in Thrissur and Guruvayur stock soaps, toiletries and dental kits for pilgrims and business travellers.",
+    points: cityPoints("Supplying hotels in Thrissur and Guruvayur"),
+  },
+  {
+    slug: "wayanad",
+    name: "Wayanad",
+    state: "kerala",
+    intro: "Resorts and homestays in Wayanad order eco-friendly amenity kits, toiletries and kettle tray sets for their rooms.",
+    points: cityPoints("Supplying resorts and homestays in Wayanad"),
+  },
 ];
+
+export const areaTitle = (a) => `Hotel Amenities Suppliers in ${a.titleName || a.name}`;
+
+export const areaDescription = (a) =>
+  a.description ||
+  `Hotel amenities supplier and manufacturer for hotels in ${a.where || a.name}: toiletries, soaps and amenity kits with your branding, plus stationery and housekeeping material.`;
 
 export const faqs = [
   {

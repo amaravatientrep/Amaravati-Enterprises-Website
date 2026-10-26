@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { InstagramLogo } from "@phosphor-icons/react/dist/ssr";
 import Logo from "./Logo";
-import { categories, contact, nav } from "@/lib/site";
+import { areas, categories, contact, nav } from "@/lib/site";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -119,6 +119,19 @@ export default function Footer() {
           </a>
           <p className="mt-6 text-[14px] text-white/65">Providing solutions to Hotels all over India.</p>
         </div>
+      </div>
+      {/* Region pages, so buyers (and search engines) reach the one for their state or city */}
+      <div className="container-x pb-10">
+        <h2 className="text-sm font-medium text-white">Areas we supply</h2>
+        <ul className="mt-2 flex flex-wrap gap-x-5 text-[14px] text-white/65">
+          {areas.filter((a) => !a.state || a.featured).map((a) => (
+            <li key={a.slug}>
+              <Link className="inline-block py-2 hover:text-white md:py-1" href={`/areas/${a.slug}`}>
+                {a.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
       <div className="border-t border-white/10">
         <div className="container-x flex flex-col gap-2 py-6 text-[13px] text-white/50 sm:flex-row sm:justify-between">

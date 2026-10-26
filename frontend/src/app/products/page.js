@@ -18,9 +18,9 @@ const tiles = [
 ];
 
 export const metadata = {
-  title: "Hotel Supplies Product Range",
+  title: "Hotel Supplies: Full Range for Rooms & Housekeeping",
   description:
-    "Everything a hotel and a guest room needs: toiletries, amenity kits, dispensers, in-room amenities, stationery, tea trays and housekeeping supplies.",
+    "Hotel supplies for the guest room and housekeeping: toiletries, amenity kits, dispensers, in-room amenities, stationery, kettle trays and housekeeping material.",
   alternates: { canonical: "/products" },
 };
 
@@ -44,7 +44,7 @@ export default function ProductsPage() {
                 <div className="shell">
                   <div className="core relative aspect-[16/10] overflow-hidden">
                     {c.image ? (
-                      <Image src={c.image} alt="" fill priority={i === 0} sizes="(min-width: 768px) 50vw, 100vw" className="object-cover transition-transform duration-700 ease-snap group-hover:scale-[1.03]" />
+                      <Image src={c.image} alt={c.name} fill priority={i === 0} sizes="(min-width: 768px) 50vw, 100vw" className="object-cover transition-transform duration-700 ease-snap group-hover:scale-[1.03]" />
                     ) : (
                       <div className="flex h-full items-end bg-accent p-8 text-accent-ink">
                         <p className="max-w-sm text-2xl font-medium leading-snug tracking-tight">{c.blurb}</p>

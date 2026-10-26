@@ -15,7 +15,7 @@ const tilePhotos = (k) => (k.tile ? [k.tile] : k.parts.flatMap((pt) => pt.option
 
 export const metadata = {
   title: c.title,
-  description: `${c.short} Supplied to hotels all over India by Amaravati Enterprises, Hyderabad.`,
+  description: "Eco-friendly hotel amenities supplier: bamboo and wheat starch kits, jute slippers and loofahs, paper laundry bags and biodegradable packaging for hotels all over India.",
   alternates: { canonical: "/products/eco-friendly" },
   openGraph: { images: [{ url: c.images[0] }] },
 };

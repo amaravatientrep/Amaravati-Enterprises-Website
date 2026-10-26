@@ -7,7 +7,7 @@ import Reveal from "@/components/Reveal";
 import ButtonLink from "@/components/Button";
 import ClientMarquee from "@/components/ClientMarquee";
 import CtaBand from "@/components/CtaBand";
-import { areas, categories, whatsappLink } from "@/lib/site";
+import { areas, areaTitle, areaDescription, categories, whatsappLink } from "@/lib/site";
 
 export function generateStaticParams() {
   return areas.map((a) => ({ slug: a.slug }));
@@ -17,8 +17,8 @@ export function generateMetadata({ params }) {
   const a = areas.find((x) => x.slug === params.slug);
   if (!a) return {};
   return {
-    title: a.title,
-    description: a.description,
+    title: areaTitle(a),
+    description: areaDescription(a),
     alternates: { canonical: `/areas/${a.slug}` },
   };
 }
@@ -26,9 +26,12 @@ export function generateMetadata({ params }) {
 export default function AreaPage({ params }) {
   const a = areas.find((x) => x.slug === params.slug);
   if (!a) notFound();
+  // State pages list their cities; city pages link back to their state and its other cities
+  const parent = a.state ? areas.find((x) => x.slug === a.state) : null;
+  const nearby = parent ? [parent, ...areas.filter((x) => x.state === a.state && x.slug !== a.slug)] : areas.filter((x) => x.state === a.slug);
   return (
     <>
-      <PageHeader ld crumbs={[{ label: a.name }]} title={a.title} intro={a.intro}>
+      <PageHeader ld crumbs={[{ label: a.name }]} title={areaTitle(a)} intro={a.intro}>
         <div className="mt-9 flex flex-wrap gap-3">
           <ButtonLink href="/contact#enquiry" icon={ArrowRight}>
             Get a quote
@@ -78,6 +81,23 @@ export default function AreaPage({ params }) {
           ))}
         </ul>
       </section>
+
+      {nearby.length > 0 && (
+        <section className="container-x mt-24" aria-labelledby="nearby-title">
+          <h2 id="nearby-title" className="text-2xl font-semibold tracking-tight md:text-3xl">
+            {parent ? `Elsewhere in ${parent.name}` : `Cities we supply in ${a.name}`}
+          </h2>
+          <ul className="mt-6 flex flex-wrap gap-2">
+            {nearby.map((n) => (
+              <li key={n.slug}>
+                <Link href={`/areas/${n.slug}`} className="inline-flex rounded-full bg-ink/[0.05] px-4 py-2.5 text-[15px] ring-1 ring-line/10 transition-colors duration-150 hover:bg-ink/[0.08]">
+                  {n === parent ? `All of ${n.name}` : n.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <section className="mt-24" aria-label="Clients">
         <ClientMarquee />

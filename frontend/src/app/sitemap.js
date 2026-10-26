@@ -8,7 +8,6 @@ export default function sitemap() {
     ...categories.map((c) => `/products/${c.slug}`),
     "/products/biotique",
     "/custom-branding",
-    "/partner-brands",
     "/about",
     "/faq",
     "/brochures",

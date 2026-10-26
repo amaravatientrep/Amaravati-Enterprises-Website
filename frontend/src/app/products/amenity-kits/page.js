@@ -19,7 +19,7 @@ const tileImage = (p) =>
 
 export const metadata = {
   title: c.title,
-  description: `${c.short} For hotels all over India.`,
+  description: c.description,
   alternates: { canonical: "/products/amenity-kits" },
   openGraph: { images: [{ url: c.images[0] }] },
 };
@@ -71,7 +71,7 @@ export default function AmenityKitsPage() {
                       <KitSnapshot slug={p.slug} />
                     </div>
                   ) : (
-                    <Image src={tileImage(p)} alt="" fill unoptimized className="object-contain p-3 mix-blend-multiply" />
+                    <Image src={tileImage(p)} alt={`${p.name} for hotels`} fill unoptimized className="object-contain p-3 mix-blend-multiply" />
                   )}
                 </div>
                 <h3 id={`${p.slug}-title`} className="px-1.5 pb-1 pt-2.5 text-[15px] font-semibold leading-tight tracking-tight sm:text-base">

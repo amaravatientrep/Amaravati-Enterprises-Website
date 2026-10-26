@@ -102,6 +102,8 @@ const nextConfig = {
       { source: "/products/housekeeping-kitchen", destination: "/products/housekeeping", permanent: true },
       { source: "/products/packaging-stationery", destination: "/products/stationery", permanent: true },
       { source: "/products/toiletries", destination: "/products/hotel-toiletries", permanent: true },
+      // Same Biotique content as /products/biotique; one page per search term
+      { source: "/partner-brands", destination: "/products/biotique", permanent: true },
       ...oldSiteRedirects,
     ];
   },

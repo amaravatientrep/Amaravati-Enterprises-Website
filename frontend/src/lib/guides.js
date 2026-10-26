@@ -7,10 +7,10 @@
 export const guides = [
   {
     slug: "hotel-amenities-checklist",
-    title: "Hotel Guest Amenities Checklist by Room Category",
-    seoTitle: "Hotel Amenities Checklist by Room Category",
+    title: "Hotel Room Amenities List & Checklist by Room Category",
+    seoTitle: "Hotel Room Amenities List & Checklist by Room Category",
     description:
-      "A room-by-room hotel amenities list for budget, mid-scale and premium rooms: toiletries, guest amenity kits, in-room items and the tea and coffee tray.",
+      "A hotel room amenities list and checklist for budget, mid-scale, 4-star and 5-star rooms: toiletries, guest amenity kits, in-room items and the tea and coffee tray.",
     answer:
       "Every hotel guest room needs four groups of amenities: bathroom toiletries, guest amenity kits, in-room items and a tea and coffee tray. Budget rooms cover the essentials, mid-scale rooms add more kits and branded packaging, and premium rooms add fuller kits, premium toiletry ranges and leather in-room accessories.",
     image: { src: "/images/tiles/guest-amenities.jpg", alt: "Branded guest amenity kits made for The Park, Hyderabad" },
@@ -71,6 +71,22 @@ export const guides = [
         ],
       },
       {
+        h: "4-star and 5-star hotel room amenities list",
+        blocks: [
+          { p: "4-star and 5-star rooms carry everything in the mid-scale list, in fuller kits and more finished packaging. A typical premium room amenities list:" },
+          {
+            list: [
+              "Bathroom: a premium toiletry range (Shampoo, Conditioner, Shower Gel, Moisturizer) in bottles or wall mounted dispensers, plus glycerin or cream soap.",
+              "Kits: Dental Kit, Shaving Kit, Care Kit, Sewing Kit, Shower Cap, Comb, Loofah and Sanitary Disposal Bag, in boxes or pouches with your hotel's name.",
+              "Wardrobe: wooden hangers, Slippers, Laundry Bag and Shoe Shiner.",
+              "Desk and bedside: leather Scribbling Pad Holder, Remote Holder, Menu Card and Box Tissue Holder.",
+              "Tea and coffee: wooden or drawer kettle tray, kettle, cups, sachet holder and premium tea sachets.",
+              "Room fixtures: glass water bottle, iron and iron board, wall mounted hair dryer and anti-skid mat.",
+            ],
+          },
+        ],
+      },
+      {
         h: "Bottles or dispensers?",
         blocks: [
           { p: "Single-use bottles feel personal and suit hotels with frequent changeovers. Wall mounted dispensers stay on the wall and are refilled from bulk cans, so there are no half-used bottles to throw away after each stay. Many hotels use dispensers in standard rooms and bottles in suites." },
@@ -84,22 +100,25 @@ export const guides = [
       },
     ],
     faqs: [
+      { q: "What are the basic amenities in a hotel room?", a: "Soap, Shampoo, Shower Gel, a Dental Kit, a Comb, hangers, a Key Card Jacket and a tea and coffee tray with kettle. Most hotels add a Shower Cap, Shaving Kit and Slippers." },
       { q: "What amenities should a budget hotel provide?", a: "At least soap, shampoo, shower gel, a dental kit, a comb, hangers and a basic tea and coffee tray. Adding a shower cap and slippers lifts the experience at little extra effort." },
       { q: "Can I mix amenities across room categories?", a: "Yes. Most hotels use one look across the property and add kits or premium toiletries in higher room categories." },
       { q: "Can every item carry my hotel's logo?", a: "Bottles, soap, kit boxes, pouches and stationery can all be branded. Share your logo and we prepare the artwork for your approval." },
       { q: "How do I order a full set?", a: "Pick the items in Build your Amenity Kit, or send us your room count and categories on WhatsApp and we will send a proposal for your property." },
     ],
     related: [
-      { href: "/products/hotel-toiletries", label: "Hotel Toiletries" },
-      { href: "/products/amenity-kits", label: "Guest Amenities" },
-      { href: "/products/tea-coffee", label: "Tea & Coffee Tray & Kettle" },
-      { href: "/custom-branding", label: "Custom Branding" },
+      { href: "/products/hotel-toiletries", label: "Hotel toiletries supplier" },
+      { href: "/products/amenity-kits", label: "Hotel guest amenity kits" },
+      { href: "/products/in-room-amenities", label: "In-room amenities for hotels" },
+      { href: "/products/tea-coffee", label: "Kettle tray sets for hotel rooms" },
+      { href: "/products/stationery", label: "Hotel stationery" },
+      { href: "/custom-branding", label: "Custom branded hotel toiletries" },
     ],
   },
   {
     slug: "eco-friendly-hotel-amenities",
-    title: "Eco-Friendly Hotel Amenities in India: Plastic-Free Swaps",
-    seoTitle: "Eco-Friendly Hotel Amenities: Plastic-Free Swaps",
+    title: "Plastic-Free Hotel Amenities: Swaps for Indian Hotels",
+    seoTitle: "Plastic-Free Hotel Amenities: Swaps for Indian Hotels",
     description:
       "How hotels in India can replace plastic guest amenities: bamboo and wheat starch kits, paper pouches, jute slippers, paper laundry bags and wall mounted dispensers.",
     answer:
@@ -172,9 +191,9 @@ export const guides = [
       { q: "Which eco-friendly amenities do you supply?", a: "Bamboo and wheat starch kits, toothpaste and shaving gel in paper pouches, compostable shower caps, biodegradable sanitary bags, natural and jute loofahs, paper and cloth laundry bags, jute slippers, jute bags and wheat starch dispensers." },
     ],
     related: [
-      { href: "/products/eco-friendly", label: "Sustainable & Eco-Friendly Guest Amenities" },
-      { href: "/products/anti-theft-dispensers", label: "Anti-Theft Dispensers" },
-      { href: "/products/amenity-kits", label: "Guest Amenities" },
+      { href: "/products/eco-friendly", label: "Eco-friendly hotel amenities" },
+      { href: "/products/anti-theft-dispensers", label: "Wall mounted dispensers for hotels" },
+      { href: "/products/amenity-kits", label: "Hotel guest amenity kits" },
     ],
     sources: [
       { href: "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2022/jul/doc20227169001.pdf", label: "Government of India (PIB): ban on identified single-use plastic items from 1 July 2022" },
@@ -182,8 +201,8 @@ export const guides = [
   },
   {
     slug: "custom-branded-hotel-toiletries",
-    title: "Custom Branded Hotel Toiletries: How It Works",
-    seoTitle: "Custom Branded Hotel Toiletries: How It Works",
+    title: "Hotel Toiletries with Your Logo: How Branding Works",
+    seoTitle: "Hotel Toiletries with Your Logo: How Branding Works",
     description:
       "How hotels get toiletries, amenity kits and stationery with their own name and logo: what can be branded, what to send, artwork approval and packaging options.",
     answer:

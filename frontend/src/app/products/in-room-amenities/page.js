@@ -35,7 +35,7 @@ export default function InRoomAmenitiesPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <PageHeader
         crumbs={[{ label: "Products", href: "/products" }, { label: c.name }]}
-        title={c.name}
+        title={c.h1 || c.name}
         intro="Search by product name or code, tap the products you need, and send them to us in one enquiry."
       >
         <div className="mt-9 flex flex-wrap gap-3">

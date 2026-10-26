@@ -13,7 +13,7 @@ const hkBrochure = brochures.find((b) => b.file.includes("ae-hk"));
 
 export const metadata = {
   title: c.title,
-  description: `Hotel housekeeping supplies: ${hkItemCount} coded products, from carts, trolleys and dustbins to cleaning consumables, Diversey chemicals and kitchen disposables.`,
+  description: `Hotel housekeeping material supplier: ${hkItemCount} coded products, from janitorial carts, trolleys and dustbins to cleaning consumables, Diversey chemicals and kitchen disposables.`,
   alternates: { canonical: "/products/housekeeping" },
 };
 
@@ -33,7 +33,7 @@ export default function HousekeepingPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <PageHeader
         crumbs={[{ label: "Products", href: "/products" }, { label: c.name }]}
-        title={c.name}
+        title={c.h1 || c.name}
         intro="Search by product name or code, tap the products you need, and send them to us in one enquiry."
       >
         <div className="mt-9 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">

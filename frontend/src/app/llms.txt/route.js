@@ -1,4 +1,4 @@
-import { SITE_URL, contact, categories, partnerBrands, clients, stats, faqs } from "@/lib/site";
+import { SITE_URL, contact, categories, partnerBrands, clients, stats, faqs, areas } from "@/lib/site";
 import { guides } from "@/lib/guides";
 
 // Plain-text summary for AI assistants (ChatGPT, Gemini, Perplexity), built from the same data as the site.
@@ -24,6 +24,10 @@ export function GET() {
     "## Custom Branding",
     "",
     `- [Custom Branding](${SITE_URL}/custom-branding): Soaps, bottles, Amenity Kits, boxes, pouches and stationery printed with the hotel's name and logo. The hotel shares its logo, approves the artwork, and receives branded stock.`,
+    "",
+    "## Areas supplied",
+    "",
+    `Hotels all over India, including: ${areas.map((a) => `[${a.name}](${SITE_URL}/areas/${a.slug})`).join(", ")}.`,
     "",
     "## Guides",
     "",

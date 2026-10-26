@@ -194,8 +194,8 @@ export default function HousekeepingCatalogue({ sections: source = hkSections, p
                       >
                         <span className="relative block aspect-square bg-white">
                           {it.img && (
-                            // Small pre-compressed webp files: served as-is, which keeps 300 srcset lists out of the HTML. The product name is the button text, so alt stays empty.
-                            <Image src={it.img} alt="" width={240} height={240} unoptimized loading="lazy" className="absolute inset-0 h-full w-full object-contain p-2 transition-transform duration-200 ease-snap group-hover:scale-[1.04]" />
+                            // Small pre-compressed webp files: served as-is, which keeps 300 srcset lists out of the HTML. The alt repeats the product name so the photo can be found in image search.
+                            <Image src={it.img} alt={it.name} width={240} height={240} unoptimized loading="lazy" className="absolute inset-0 h-full w-full object-contain p-2 transition-transform duration-200 ease-snap group-hover:scale-[1.04]" />
                           )}
                           <span
                             className={clsx(

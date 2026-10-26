@@ -24,7 +24,7 @@ export function generateMetadata({ params }) {
   if (!c) return {};
   return {
     title: c.title,
-    description: `${c.short} Supplied to hotels all over India by Amaravati Enterprises, Hyderabad.`,
+    description: c.description || `${c.short} Supplied to hotels all over India by Amaravati Enterprises, Hyderabad.`,
     alternates: { canonical: `/products/${c.slug}` },
     openGraph: c.images[0] ? { images: [{ url: c.images[0] }] } : undefined,
   };

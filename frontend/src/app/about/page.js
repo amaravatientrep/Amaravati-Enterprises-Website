@@ -102,7 +102,7 @@ export default function AboutPage() {
         </h2>
         <p className="mt-3 max-w-2xl text-muted">From our office in Hyderabad to hotels all over India, including:</p>
         <ul className="mt-6 flex flex-wrap gap-2">
-          {areas.map((a) => (
+          {areas.filter((a) => !a.state || a.featured).map((a) => (
             <li key={a.slug}>
               <Link href={`/areas/${a.slug}`} className="inline-flex rounded-full bg-ink/[0.05] px-4 py-2.5 text-[15px] ring-1 ring-line/10 transition-colors duration-150 hover:bg-ink/[0.08]">
                 {a.name}

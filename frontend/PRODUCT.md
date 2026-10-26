@@ -24,7 +24,9 @@ Amaravati Enterprises is a Hyderabad supplier of hotel guest amenities with cust
 
 A nearby, one-stop hotel-amenity partner for hotels all over India: the full guest-room range (soaps, toiletries, amenity kits, printed packaging) with the hotel's own name and branding on it, backed by a real roster of hotel clients and two partner brands, Biotique (hotel toiletries) and Diversey (housekeeping/cleaning).
 
-Owner instruction: do NOT emphasise manufacturing. Some products are made in-house but capacity is limited; never lead with "manufacturer", "factory" or "made in our unit". At most a quiet mention on the About page. Lead with range, custom branding, local supply, and clients.
+Owner instruction: do NOT emphasise manufacturing in body copy. Some products are made in-house but capacity is limited; never lead with "factory" or "made in our unit". Lead with range, custom branding, local supply, and clients.
+
+Owner update 2026-10-26 (SEO): "manufacturer" may be used as a search keyword in page titles, meta descriptions and the home headline (e.g. "Hotel Amenities Manufacturer & Supplier"), but never next to dispensers, Biotique, Diversey or housekeeping equipment.
 
 ## Operating Context
 

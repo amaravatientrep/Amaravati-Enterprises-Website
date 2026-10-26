@@ -76,8 +76,9 @@ export default function HeroVideo() {
       <div className="container-x flex min-h-screen supports-[min-height:100svh]:min-h-[100svh] flex-col justify-end pb-28 pt-28 md:justify-center md:pb-0">
         <div className="max-w-6xl">
           <h1 className="hero-rise font-display text-[clamp(1rem,4.6vw,3.4rem)] font-semibold uppercase leading-[1.25] tracking-[0.02em]">
-            <span className="block">Complete Hospitality Solutions</span>
-            <span className="block">for Modern Hospitality</span>
+            <span className="block">Hotel Amenities</span>
+            <span className="block">Manufacturer &amp; Supplier</span>
+            <span className="block">for Hotels All Over India</span>
           </h1>
           <div className="hero-rise [animation-delay:150ms]">
             <p className="mt-7 max-w-[34rem] text-lg leading-relaxed text-white/85 md:text-xl">

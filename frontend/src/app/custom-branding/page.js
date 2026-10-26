@@ -9,9 +9,9 @@ import { kitScenes, rotate } from "@/lib/scenes";
 import GuideLink from "@/components/GuideLink";
 
 export const metadata = {
-  title: "Custom Branded Hotel Toiletries",
+  title: "Custom & Personalised Hotel Toiletries with Your Logo",
   description:
-    "Hotel amenities, packaging and stationery printed with your hotel's name and logo. Soaps, bottles, amenity kits, pouches, boxes, key card jackets and more.",
+    "Custom and personalised hotel toiletries with your hotel's name and logo: soaps, bottles, amenity kits, pouches, boxes, key card jackets and more. Try your logo.",
   alternates: { canonical: "/custom-branding" },
 };
 
@@ -20,7 +20,7 @@ export default function CustomBrandingPage() {
     <>
       <PageHeader ld
         crumbs={[{ label: "Custom Branding" }]}
-        title="Amenities that carry your hotel's name."
+        title="Custom hotel toiletries that carry your hotel's name."
         intro="Guests notice the little things. When every soap, dental kit and key card jacket carries your brand, every detail reinforces your hotel’s identity and creates a more memorable guest experience."
       >
         <div className="mt-9 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">

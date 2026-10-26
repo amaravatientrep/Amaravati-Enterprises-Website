@@ -14,7 +14,7 @@ const c = categories.find((x) => x.slug === "anti-theft-dispensers");
 export const metadata = {
   title: c.title,
   description:
-    "Lockable 380 ml and 500 ml dispensers, wall mounted bottle systems, soap and sanitizer, SS and automatic dispensers for hotels, plus prefilled ranges.",
+    "Wall mounted shampoo and soap dispensers for hotels: lockable 380 ml and 500 ml bottles, soap and sanitizer, SS and automatic dispensers, refilled from 5 litre cans.",
   alternates: { canonical: "/products/anti-theft-dispensers" },
   openGraph: { images: [{ url: "/images/dispensers/photo-1.jpg" }] },
 };
@@ -87,7 +87,7 @@ export default function DispensersPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <PageHeader
         crumbs={[{ label: "Products", href: "/products" }, { label: c.name }]}
-        title={c.name}
+        title={c.h1 || c.name}
         subtitle="Lockable Dispensers & Wall Mounted Bottle Systems."
         intro="Dispensers stay on the wall and are refilled from bulk cans, so you stop replacing small bottles every stay."
       >

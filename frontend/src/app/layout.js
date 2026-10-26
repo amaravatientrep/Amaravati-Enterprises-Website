@@ -20,11 +20,11 @@ export const metadata = {
   // Bing Webmaster Tools ownership check
   verification: { other: { "msvalidate.01": "64507EAE9D556709F854E361C1D81A3B" } },
   title: {
-    default: "Hotel Amenities Supplier in India | Amaravati Enterprises",
+    default: "Hotel Amenities Manufacturer & Supplier in India | Amaravati Enterprises",
     template: "%s | Amaravati Enterprises",
   },
   description:
-    "Hotel amenities supplier serving hotels all over India: toiletries, amenity kits, dispensers, stationery and housekeeping supplies, with your hotel's branding.",
+    "Hotel amenities manufacturer and supplier for hotels across India: toiletries, soaps, amenity kits and stationery with your branding, plus dispensers and housekeeping material.",
   alternates: { canonical: "/" },
   icons: { icon: "/favicon-32.png", apple: "/apple-touch-icon.png" },
   manifest: "/manifest.json",
@@ -51,7 +51,7 @@ const jsonLd = {
   "@id": `${SITE_URL}/#business`,
   name: "Amaravati Enterprises",
   description:
-    "Hyderabad supplier of hotel amenities to hotels all over India: toiletries, amenity kits, dispensers, in-room amenities, stationery and housekeeping material, with custom hotel branding. Partner brand Biotique Range.",
+    "Hyderabad manufacturer and supplier of hotel amenities to hotels all over India: toiletries, soaps, amenity kits and stationery with custom hotel branding, plus dispenser systems, in-room amenities and housekeeping material. Partner brand Biotique Range.",
   url: SITE_URL,
   sameAs: [contact.googleProfile, contact.instagram],
   telephone: "+91-94946-00101",
