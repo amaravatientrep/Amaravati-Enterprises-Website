@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect } from "react";
+import { track } from "@vercel/analytics";
 import { toast } from "./Toaster";
 
 // Conversion tracking for every contact link on the site, by page:
 // - WhatsApp: the pre-filled message gets a last line naming the page it was sent from, and the tap is counted;
 // - phone calls, emails, brochure downloads and "Get a quote" taps are counted too.
-// Counts go to visitor statistics only if the visitor accepted them in the cookie banner.
+// Counts are sent as Vercel Analytics custom events (shown in the Vercel dashboard on paid plans only).
 const kinds = [
   ["whatsapp_click", (h) => h.includes("wa.me/")],
   ["phone_click", (h) => h.startsWith("tel:")],
@@ -37,7 +38,7 @@ export default function WhatsAppSource() {
         } catch {}
       }
       if (kind === "brochure_download") toast("Opening the brochure…");
-      window.posthog?.capture?.(kind, { page: location.pathname, page_title: page, link: kind === "brochure_download" ? href : undefined });
+      track(kind, { page: location.pathname, page_title: page, ...(kind === "brochure_download" && { link: href }) });
     };
     // Capture phase, so the WhatsApp link is updated before the browser follows it
     document.addEventListener("click", onClick, true);

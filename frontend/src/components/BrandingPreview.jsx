@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import { track } from "@vercel/analytics";
 import { UploadSimple, DownloadSimple, ArrowRight, X, WhatsappLogo, Eyedropper, Palette } from "@phosphor-icons/react";
 import clsx from "clsx";
 import ButtonLink from "./Button";
@@ -221,7 +222,7 @@ export default function BrandingPreview() {
     if (navigator.canShare?.({ files: [file] })) {
       try {
         await navigator.share({ files: [file] });
-        window.posthog?.capture?.("branding_preview_saved_to_photos");
+        track("branding_preview_saved_to_photos");
         return;
       } catch (e) {
         if (e?.name === "AbortError") return;
@@ -241,7 +242,7 @@ export default function BrandingPreview() {
       saveBlob(blob);
       toast("Preview saved to your downloads.");
     }
-    window.posthog?.capture?.("branding_preview_downloaded");
+    track("branding_preview_downloaded");
   }
 
   // Send the design to us on WhatsApp. Computers: the image downloads and our chat opens with a message.
@@ -265,7 +266,7 @@ export default function BrandingPreview() {
     const link = whatsappLink(whatsappMessage());
     if (chat) chat.location.href = link;
     else window.location.href = link;
-    window.posthog?.capture?.("branding_preview_whatsapp");
+    track("branding_preview_whatsapp");
   }
 
   const hotel = name.trim() || "my hotel";
@@ -533,7 +534,7 @@ export default function BrandingPreview() {
                   href={whatsappLink(whatsappMessage())}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => window.posthog?.capture?.("branding_preview_whatsapp")}
+                  onClick={() => track("branding_preview_whatsapp")}
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-3.5 text-[15px] font-medium text-[#0B2A17] active:scale-[0.98]"
                 >
                   <WhatsappLogo size={18} weight="fill" aria-hidden="true" /> 2. Open WhatsApp and attach it

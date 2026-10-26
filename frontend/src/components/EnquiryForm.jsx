@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { track } from "@vercel/analytics";
 import { useSearchParams } from "next/navigation";
 import { CheckCircle, WhatsappLogo, ArrowRight, WarningCircle } from "@phosphor-icons/react";
 import clsx from "clsx";
@@ -97,7 +98,7 @@ export default function EnquiryForm() {
       const json = await res.json();
       if (!json.success) throw new Error(json.message);
       setStatus("sent");
-      window.posthog?.capture?.("enquiry_submitted", { products: data.products.join(", ") });
+      track("enquiry_submitted", { products: data.products.join(", ") });
     } catch {
       setStatus("failed");
     }

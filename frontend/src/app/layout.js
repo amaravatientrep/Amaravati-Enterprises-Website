@@ -1,4 +1,3 @@
-import Script from "next/script";
 import { GeistSans } from "geist/font/sans";
 import { Cinzel } from "next/font/google";
 
@@ -9,8 +8,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import WhatsAppSource from "@/components/WhatsAppSource";
-import CookieConsent from "@/components/CookieConsent";
 import Toaster from "@/components/Toaster";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SITE_URL, contact, categories } from "@/lib/site";
 
 export const metadata = {
@@ -106,20 +106,11 @@ export default function RootLayout({ children }) {
         <Footer />
         <WhatsAppFloat />
         <WhatsAppSource />
-        <CookieConsent />
         <Toaster />
-        <Script id="posthog-init" strategy="lazyOnload">
-          {`
-            !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once unregister identify alias set_config reset get_distinct_id opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing startSessionRecording stopSessionRecording".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-            // Visitor statistics start only after the visitor accepts them in the cookie banner (stored as "ae-consent").
-            // Then they wait for the first scroll, tap or key (or 8 s), so they never slow the page load on phones.
-            // Session recording runs on desktop only; phones are too slow for the recorder.
-            window.__aeAnalytics=function(){if(window.__aeAnalyticsOn)return;window.__aeAnalyticsOn=true;var done=false,ev=["pointerdown","keydown","scroll","touchstart"];function go(){if(done)return;done=true;ev.forEach(function(n){removeEventListener(n,go)});
-              posthog.init("phc_xAvL2Iq4tFmANRE7kzbKwaSqp1HJjN7x48s3vr0CMjs",{api_host:"https://us.i.posthog.com",person_profiles:"identified_only",disable_session_recording:!matchMedia("(min-width: 768px)").matches});}
-              ev.forEach(function(n){addEventListener(n,go,{once:true,passive:true})});setTimeout(go,8000);};
-            try{if(localStorage.getItem("ae-consent")==="granted")window.__aeAnalytics()}catch(e){}
-          `}
-        </Script>
+        {/* Visitor statistics: Vercel Web Analytics. Cookieless and anonymous, so no consent banner is needed. */}
+        <Analytics />
+        {/* Real visitors' load times (Core Web Vitals), also anonymous and cookieless */}
+        <SpeedInsights />
       </body>
     </html>
   );
