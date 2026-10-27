@@ -63,7 +63,9 @@ export default function AmenityKitsPage() {
         <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
           {amenityProducts.map((p) => (
             <li key={p.slug} className="shell">
-              <article className="core flex aspect-square flex-col p-2.5 sm:p-3" aria-labelledby={`${p.slug}-title`}>
+              {/* Each tile opens the product's own page */}
+              <Link href={`/products/${c.slug}/${p.slug}`} className="group block h-full">
+              <article className="core flex aspect-square flex-col p-2.5 sm:p-3 transition-colors group-hover:bg-ink/[0.03]" aria-labelledby={`${p.slug}-title`}>
                 {/* White well: the photos are shot on white, so they sit cleanly in light and dark mode */}
                 <div className="relative min-h-0 flex-1 overflow-hidden rounded-2xl bg-white">
                   {p.carton ? (
@@ -78,6 +80,7 @@ export default function AmenityKitsPage() {
                   {p.name}
                 </h3>
               </article>
+              </Link>
             </li>
           ))}
           <li className="shell col-span-2 sm:col-span-3 lg:col-span-4">

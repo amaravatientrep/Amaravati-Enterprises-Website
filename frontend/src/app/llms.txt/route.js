@@ -1,5 +1,6 @@
 import { SITE_URL, contact, categories, partnerBrands, clients, stats, faqs, areas } from "@/lib/site";
 import { guides } from "@/lib/guides";
+import { amenityPages } from "@/lib/amenityPages";
 
 // Plain-text summary for AI assistants (ChatGPT, Gemini, Perplexity), built from the same data as the site.
 export const dynamic = "force-static";
@@ -15,6 +16,10 @@ export function GET() {
     "## Product range",
     "",
     ...categories.map((c) => `- [${c.name}](${SITE_URL}/products/${c.slug}): ${c.short}`),
+    "",
+    "## Guest amenities, one page each",
+    "",
+    ...Object.entries(amenityPages).map(([slug, s]) => `- [${s.h1}](${SITE_URL}/products/amenity-kits/${slug}): ${s.description}`),
     "",
     "## Brands",
     "",

@@ -1,11 +1,13 @@
 import { SITE_URL, categories, areas } from "@/lib/site";
 import { guides } from "@/lib/guides";
+import { amenityPages } from "@/lib/amenityPages";
 
 export default function sitemap() {
   const paths = [
     "",
     "/products",
     ...categories.map((c) => `/products/${c.slug}`),
+    ...Object.keys(amenityPages).map((slug) => `/products/amenity-kits/${slug}`),
     "/products/biotique",
     "/custom-branding",
     "/about",

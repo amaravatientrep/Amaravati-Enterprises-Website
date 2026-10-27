@@ -497,9 +497,10 @@ export default function KitExplorer({ product, products = amenityProducts, packa
       <h2 id="explorer-title" className="text-3xl font-semibold tracking-tight md:text-4xl">
         {title}
       </h2>
-      <p className="mt-3 max-w-2xl text-muted">Pick a product. Tap the options you want, then send them to us in one enquiry.</p>
+      <p className="mt-3 max-w-2xl text-muted">{products.length > 1 ? "Pick a product. " : ""}Tap the options you want, then send them to us in one enquiry.</p>
 
-      <div ref={chipsRef} role="group" aria-label="Choose an amenity" className="-mx-4 mt-6 flex gap-2 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden">
+      {/* A single-product page (/products/amenity-kits/dental-kit) needs no product chips */}
+      <div ref={chipsRef} style={products.length < 2 ? { display: "none" } : undefined} role="group" aria-label="Choose an amenity" className="-mx-4 mt-6 flex gap-2 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden">
         {products.map((x) => (
           <button
             key={x.slug}
