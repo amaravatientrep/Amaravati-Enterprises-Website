@@ -116,7 +116,7 @@ export default function RootLayout({ children }) {
         {GA_ID && (
           <Script id="ga-init" strategy="lazyOnload">
             {`
-              // Google Analytics starts only after the visitor accepts it in the cookie banner (stored as "ae-consent").
+              // Google Analytics starts only after the visitor accepts it in the cookie banner (stored as "ae-consent-ga").
               // Then it waits for the first scroll, tap or key (or 8 s), so it never slows the page load on phones.
               window.__aeAnalytics=function(){window["ga-disable-${GA_ID}"]=false;if(window.__aeAnalyticsOn)return;window.__aeAnalyticsOn=true;var done=false,ev=["pointerdown","keydown","scroll","touchstart"];function go(){if(done)return;done=true;ev.forEach(function(n){removeEventListener(n,go)});
                 window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag("js",new Date());gtag("config","${GA_ID}");
@@ -124,7 +124,7 @@ export default function RootLayout({ children }) {
                 ev.forEach(function(n){addEventListener(n,go,{once:true,passive:true})});setTimeout(go,8000);};
               // A later "Decline" stops further counting and clears the Analytics cookies.
               window.__aeAnalyticsOff=function(){window["ga-disable-${GA_ID}"]=true;document.cookie.split("; ").forEach(function(c){var n=c.split("=")[0];if(n==="_ga"||n.indexOf("_ga_")===0){document.cookie=n+"=; Max-Age=0; path=/; domain=."+location.hostname.replace(/^www\\./,"");document.cookie=n+"=; Max-Age=0; path=/"}})};
-              try{if(localStorage.getItem("ae-consent")==="granted")window.__aeAnalytics()}catch(e){}
+              try{if(localStorage.getItem("ae-consent-ga")==="granted")window.__aeAnalytics()}catch(e){}
             `}
           </Script>
         )}

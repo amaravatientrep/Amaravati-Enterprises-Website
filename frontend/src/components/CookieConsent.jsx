@@ -5,7 +5,8 @@ import Link from "next/link";
 import clsx from "clsx";
 import { X } from "@phosphor-icons/react";
 
-const KEY = "ae-consent"; // "granted" | "denied"
+// "granted" | "denied". New name for Google Analytics: choices made under the old PostHog banner ("ae-consent") must not carry over.
+const KEY = "ae-consent-ga";
 
 function read() {
   try {
