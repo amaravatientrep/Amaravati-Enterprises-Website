@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { InstagramLogo } from "@phosphor-icons/react/dist/ssr";
 import Logo from "./Logo";
+import { CookieSettingsLink } from "./CookieConsent";
 import { areas, categories, contact, nav } from "@/lib/site";
 
 export default function Footer() {
@@ -139,6 +140,7 @@ export default function Footer() {
           <Link href="/privacy" className="underline decoration-white/30 underline-offset-4 hover:text-white">
             Privacy Notice
           </Link>
+          <CookieSettingsLink className="text-left underline decoration-white/30 underline-offset-4 hover:text-white" />
         </div>
       </div>
     </footer>

@@ -15,6 +15,7 @@ const sections = [
       "When you send an enquiry: your name, phone number, hotel name, email, city, the products you pick and your message. The form sends these to our email inbox through Web3Forms.",
       "When you tap a WhatsApp button: the message opens in your own WhatsApp, and you choose whether to send it. The message names the page you sent it from.",
       "Anonymous visitor statistics: which pages are visited, the type of device and the country, counted with Vercel Web Analytics, and how quickly pages load, measured with Vercel Speed Insights, so we can improve the site. Neither uses cookies or identifies you.",
+      "Google Analytics, only if you accept it in the cookie banner: the pages you visit, the links you tap, how you found us, your device and approximate location. It uses cookies, and Google processes this data for us. You can change your choice at any time under Cookie settings at the bottom of every page.",
       "The logo preview tool works on your device. Your logo is not uploaded unless you choose to send it to us.",
     ],
   },

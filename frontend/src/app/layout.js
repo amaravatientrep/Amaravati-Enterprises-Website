@@ -1,3 +1,4 @@
+import Script from "next/script";
 import { GeistSans } from "geist/font/sans";
 import { Cinzel } from "next/font/google";
 
@@ -8,6 +9,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import WhatsAppSource from "@/components/WhatsAppSource";
+import CookieConsent from "@/components/CookieConsent";
 import Toaster from "@/components/Toaster";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -82,6 +84,9 @@ const jsonLd = {
 // Matches the hidden starting state of <Reveal> (opacity 0, moved down 16px)
 const REVEAL_FALLBACK = '[style*="opacity:0;transform:translateY(16px)"]{opacity:1!important;transform:none!important}';
 
+// Google Analytics 4 web stream "AE Web". Counts only the production site, so previews and local builds stay out of the figures.
+const GA_ID = process.env.VERCEL_ENV === "production" ? "G-N77XQ075X3" : "";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en-IN" className={`${GeistSans.variable} ${display.variable}`}>
@@ -106,8 +111,24 @@ export default function RootLayout({ children }) {
         <Footer />
         <WhatsAppFloat />
         <WhatsAppSource />
+        <CookieConsent />
         <Toaster />
-        {/* Visitor statistics: Vercel Web Analytics. Cookieless and anonymous, so no consent banner is needed. */}
+        {GA_ID && (
+          <Script id="ga-init" strategy="lazyOnload">
+            {`
+              // Google Analytics starts only after the visitor accepts it in the cookie banner (stored as "ae-consent").
+              // Then it waits for the first scroll, tap or key (or 8 s), so it never slows the page load on phones.
+              window.__aeAnalytics=function(){window["ga-disable-${GA_ID}"]=false;if(window.__aeAnalyticsOn)return;window.__aeAnalyticsOn=true;var done=false,ev=["pointerdown","keydown","scroll","touchstart"];function go(){if(done)return;done=true;ev.forEach(function(n){removeEventListener(n,go)});
+                window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag("js",new Date());gtag("config","${GA_ID}");
+                var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=${GA_ID}";document.head.appendChild(s);}
+                ev.forEach(function(n){addEventListener(n,go,{once:true,passive:true})});setTimeout(go,8000);};
+              // A later "Decline" stops further counting and clears the Analytics cookies.
+              window.__aeAnalyticsOff=function(){window["ga-disable-${GA_ID}"]=true;document.cookie.split("; ").forEach(function(c){var n=c.split("=")[0];if(n==="_ga"||n.indexOf("_ga_")===0){document.cookie=n+"=; Max-Age=0; path=/; domain=."+location.hostname.replace(/^www\\./,"");document.cookie=n+"=; Max-Age=0; path=/"}})};
+              try{if(localStorage.getItem("ae-consent")==="granted")window.__aeAnalytics()}catch(e){}
+            `}
+          </Script>
+        )}
+        {/* Page counts: Vercel Web Analytics. Cookieless and anonymous, so it runs whatever is chosen in the cookie banner. */}
         <Analytics />
         {/* Real visitors' load times (Core Web Vitals), also anonymous and cookieless */}
         <SpeedInsights />
