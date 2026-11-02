@@ -1,5 +1,5 @@
 import { SITE_URL, contact, categories, partnerBrands, clients, stats, faqs, areas } from "@/lib/site";
-import { guides } from "@/lib/guides";
+import { guides, checklists } from "@/lib/guides";
 import { amenityPages } from "@/lib/amenityPages";
 
 // Plain-text summary for AI assistants (ChatGPT, Gemini, Perplexity), built from the same data as the site.
@@ -37,6 +37,10 @@ export function GET() {
     "## Guides",
     "",
     ...guides.map((g) => `- [${g.title}](${SITE_URL}/guides/${g.slug}): ${g.answer}`),
+    "",
+    "## Free checklists (PDF)",
+    "",
+    ...Object.values(checklists).map((c) => `- [${c.title}](${SITE_URL}${c.href}): ${c.blurb}`),
     "",
     "## Clients include",
     "",

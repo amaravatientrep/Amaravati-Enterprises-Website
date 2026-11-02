@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import Link from "next/link";
 import { ArrowRight, WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
 import PageHeader from "@/components/PageHeader";
 import ButtonLink from "@/components/Button";
@@ -46,6 +47,12 @@ export default function InRoomAmenitiesPage() {
             WhatsApp us
           </ButtonLink>
         </div>
+        <p className="mt-5 text-[15px] text-muted">
+          Planning a room?{" "}
+          <Link href="/guides/hotel-amenities-checklist" className="font-medium text-ink underline decoration-line/30 underline-offset-4 hover:decoration-accent">
+            Hotel amenities list and room checklist
+          </Link>
+        </p>
       </PageHeader>
 
       <div className="container-x">

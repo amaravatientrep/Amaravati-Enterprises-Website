@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import Link from "next/link";
 import { ArrowRight, WhatsappLogo, DownloadSimple } from "@phosphor-icons/react/dist/ssr";
 import PageHeader from "@/components/PageHeader";
 import ButtonLink from "@/components/Button";
@@ -49,6 +50,12 @@ export default function HousekeepingPage() {
             </ButtonLink>
           )}
         </div>
+        <p className="mt-5 text-[15px] text-muted">
+          Making a list for your store?{" "}
+          <Link href="/guides/housekeeping-items-list" className="font-medium text-ink underline decoration-line/30 underline-offset-4 hover:decoration-accent">
+            Housekeeping items list with pictures and uses
+          </Link>
+        </p>
       </PageHeader>
 
       <div className="container-x">

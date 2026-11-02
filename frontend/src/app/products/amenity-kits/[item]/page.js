@@ -138,6 +138,11 @@ export default function AmenityItemPage({ params }) {
               </span>
             </p>
           )}
+          <p className="text-[15px]">
+            <Link href="/guides/hotel-amenities-checklist" className="font-medium underline decoration-line/30 underline-offset-4 hover:decoration-accent">
+              See the full hotel amenities list by room category
+            </Link>
+          </p>
           {s.links?.map((l) => (
             <p key={l.href} className="text-[15px]">
               <Link href={l.href} className="font-medium underline decoration-line/30 underline-offset-4 hover:decoration-accent">

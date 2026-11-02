@@ -1,20 +1,148 @@
 // Buyer guides: long-form answers to the questions hotels ask (Google and AI search).
-// Each guide: slug, title (H1), seoTitle, description, answer (the short direct answer shown first), image,
-// sections [{ h, blocks }], faqs [{ q, a }], related [{ href, label }].
-// Block types: { p }, { list: [] }, { table: { head: [], rows: [[]] } }, { image: { src, alt, caption } }.
+// Each guide: slug, title (H1), seoTitle, description, answer (the short direct answer shown first), image (position: optional crop focus),
+// published / updated (ISO dates), checklist (key into checklists, the free PDF), sections [{ h, blocks }],
+// faqs [{ q, a }], related [{ href, label }].
+// Block types: { p }, { h3 }, { list: [] } (items are text or { label, href, text }), { table: { head: [], rows: [[]] } },
+// { image: { src, alt, caption } }, { grid: [{ name, img, href, text, code }] } (product photos), { download: key }.
 // House rules: no prices, MOQs or lead times; no manufacturing claims; real photos only.
+
+import { amenityProducts } from "./site";
+import { amenityPages } from "./amenityPages";
+import { hkSections } from "./housekeeping";
+
+// Anchor id for a section heading, used by the "On this page" list.
+export const sectionId = (h) => h.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+// Free checklist PDFs in /public/checklists, generated from this file by scripts/build-checklists.mjs.
+export const checklists = {
+  amenities: {
+    href: "/checklists/hotel-room-amenities-checklist.pdf",
+    title: "Hotel Room Amenities Checklist",
+    blurb: "The full list by room category with tick boxes and a column for quantities per room.",
+    pages: 2,
+  },
+  housekeeping: {
+    href: "/checklists/housekeeping-items-list-with-pictures.pdf",
+    title: "Housekeeping Items List with Pictures",
+    blurb: "All seven housekeeping groups with photos, catalogue codes and uses, plus the R1 to R9 table and a cart checklist.",
+    pages: 5,
+  },
+};
+
+// A guest amenity as a photo card: its box photo (or first variety photo) and a link to its own page.
+const amenity = (slug, text) => {
+  const p = amenityProducts.find((x) => x.slug === slug);
+  // The item itself (first variety, or what is inside the kit) tells a reader more than the closed box.
+  const img = Object.values(p.parts?.[0]?.images || {})[0] || Object.values(p.contentImages || {})[0] || p.kitImage || p.carton?.closed || p.examples?.[0]?.src;
+  return { name: amenityPages[slug]?.h1 || p.name, img, href: `/products/amenity-kits/${slug}`, text, alt: `${amenityPages[slug]?.h1 || p.name} for hotel guest rooms` };
+};
+const amenityLink = (slug, text) => ({ label: amenityProducts.find((x) => x.slug === slug).name, href: `/products/amenity-kits/${slug}`, text });
+
+// A housekeeping catalogue item as a photo card, by its catalogue code (or its name, for Diversey items without one).
+// In-room items open the In-Room Amenities page.
+const hkItems = new Map();
+for (const sec of hkSections)
+  for (const it of sec.items) {
+    const key = it.code || it.name;
+    if (!hkItems.has(key)) hkItems.set(key, { ...it, href: sec.id === "in-room" ? "/products/in-room-amenities" : `/products/housekeeping#${sec.id}` });
+  }
+const hk = (key, text) => {
+  const it = hkItems.get(key);
+  return { name: it.name, code: it.code, img: it.img, href: it.href, text, alt: it.code ? `${it.name} (${it.code}), hotel housekeeping item` : `Diversey ${it.name} for hotels` };
+};
 
 export const guides = [
   {
     slug: "hotel-amenities-checklist",
-    title: "Hotel Room Amenities List & Checklist by Room Category",
-    seoTitle: "Hotel Room Amenities List & Checklist by Room Category",
+    title: "Hotel Amenities List & Room Amenities Checklist",
+    seoTitle: "Hotel Amenities List & Room Checklist (Free PDF)",
     description:
-      "A hotel room amenities list and checklist for budget, mid-scale, 4-star and 5-star rooms: toiletries, guest amenity kits, in-room items and the tea and coffee tray.",
+      "The complete hotel amenities list for Indian hotels: basic, guest and 4-star/5-star room amenities with photos, what housekeeping restocks, and a free printable checklist PDF.",
     answer:
-      "Every hotel guest room needs four groups of amenities: bathroom toiletries, guest amenity kits, in-room items and a tea and coffee tray. Budget rooms cover the essentials, mid-scale rooms add more kits and branded packaging, and premium rooms add fuller kits, premium toiletry ranges and leather in-room accessories.",
+      "A hotel amenities list has five groups: bathroom toiletries, guest amenity kits, wardrobe and room items, the tea and coffee tray, and stationery. Budget rooms cover the basics, mid-scale rooms add more kits and branded packaging, and 4-star and 5-star rooms add premium toiletries, fuller kits and leather in-room accessories.",
     image: { src: "/images/tiles/guest-amenities.jpg", alt: "Branded guest amenity kits made for The Park, Hyderabad" },
+    published: "2026-10-21",
+    updated: "2026-11-02",
+    checklist: "amenities",
     sections: [
+      {
+        h: "Hotel amenities list",
+        blocks: [
+          { p: "Every item a hotel guest room needs, grouped the way housekeeping stocks them. Tap an item to see its options and packaging." },
+          { h3: "Bathroom toiletries" },
+          {
+            list: [
+              amenityLink("soap", "cream or glycerin, 15 g to 50 g"),
+              { label: "Shampoo, Shower Gel, Conditioner and Moisturizer", href: "/products/hotel-toiletries", text: "20 ml, 25 ml or 30 ml bottles, tubes, or 5 litre cans" },
+              { label: "Wall mounted dispensers", href: "/products/anti-theft-dispensers", text: "lockable, refilled from bulk cans" },
+              { label: "Hand Wash", href: "/products/anti-theft-dispensers", text: "at the wash basin, in a wall mounted dispenser" },
+            ],
+          },
+          { h3: "Guest amenity kits" },
+          {
+            list: [
+              amenityLink("dental-kit", "toothbrush and toothpaste"),
+              amenityLink("shaving-kit", "razor and shaving gel"),
+              amenityLink("comb"),
+              amenityLink("shower-cap"),
+              amenityLink("care-kit", "ear buds, band aid and emery board"),
+              amenityLink("sewing-kit", "needles, buttons, hooks and thread"),
+              amenityLink("disposal-sanitary-bag"),
+              amenityLink("loofah", "natural or jute"),
+              amenityLink("shoe-shiner"),
+            ],
+          },
+          { h3: "Wardrobe and room" },
+          {
+            list: [
+              amenityLink("slippers", "non woven, terry, polar, honeycomb or jute"),
+              amenityLink("laundry-bag", "non woven, cloth or paper"),
+              { label: "Hangers", href: "/products/in-room-amenities", text: "wooden, clip, coat and anti-theft" },
+              { label: "WC band, glass cover, DND card and match box", href: "/products/amenity-kits/other-amenities" },
+            ],
+          },
+          { h3: "Tea and coffee tray" },
+          {
+            list: [
+              { label: "Kettle and kettle tray", href: "/products/tea-coffee", text: "plastic, drawer or wooden tray" },
+              { label: "Tea, coffee, sugar and sugar-free sachets", href: "/products/tea-coffee", text: "with stirrers" },
+              { label: "Cups, glasses and sachet holder", href: "/products/in-room-amenities" },
+            ],
+          },
+          { h3: "Stationery" },
+          {
+            list: [
+              { label: "Key Card Jacket, Scribbling Pad, Pen and Pencil", href: "/products/stationery" },
+              { label: "Coaster, Menu Card, Bottle Tag and Luggage Tag", href: "/products/stationery" },
+              { label: "Leather Scribbling Pad Holder, Remote Holder and Box Tissue Holder", href: "/products/stationery" },
+            ],
+          },
+          { h3: "Room fixtures" },
+          {
+            list: [
+              { label: "Glass water bottle and water glasses", href: "/products/in-room-amenities" },
+              { label: "Dry iron and iron board", href: "/products/in-room-amenities" },
+              { label: "Wall mounted hair dryer and anti-skid mat", href: "/products/in-room-amenities" },
+            ],
+          },
+        ],
+      },
+      {
+        h: "Basic amenities in a hotel room",
+        blocks: [
+          { p: "If you are setting up a budget or standard room, start with this short list. Every room category needs it." },
+          {
+            list: [
+              "Soap, Shampoo and Shower Gel",
+              "Dental Kit and Comb",
+              "Hangers and a Laundry Bag",
+              "A kettle tray with tea, coffee and sugar sachets",
+              "Key Card Jacket, Scribbling Pad and Pen",
+            ],
+          },
+          { p: "Adding a Shower Cap, Shaving Kit and Slippers is the easiest way to lift a standard room." },
+        ],
+      },
       {
         h: "The checklist at a glance",
         blocks: [
@@ -31,6 +159,31 @@ export const guides = [
               ],
             },
           },
+          { download: "amenities" },
+        ],
+      },
+      {
+        h: "Guest amenities list",
+        blocks: [
+          { p: "Guest amenities are the complimentary items placed in the room for the guest to use and keep. These are the ones hotels order most, each packed in a box or pouch that can carry your hotel's name." },
+          {
+            grid: [
+              amenity("dental-kit", "Toothbrush and toothpaste"),
+              amenity("shaving-kit", "Razor and shaving gel"),
+              amenity("comb", "Plastic, bamboo or wheat starch"),
+              amenity("shower-cap", "Standard or compostable"),
+              amenity("soap", "Cream or glycerin"),
+              amenity("care-kit", "Ear buds, band aid, emery board"),
+              amenity("sewing-kit", "Needles, buttons, hooks, thread"),
+              amenity("disposal-sanitary-bag", "Biodegradable bag"),
+              amenity("shoe-shiner", "For the wardrobe"),
+              amenity("loofah", "Natural or jute"),
+              amenity("laundry-bag", "Non woven, cloth or paper"),
+              amenity("slippers", "Closed or open toe"),
+              amenity("room-kit", "Your items in one pack"),
+              amenity("other-amenities", "WC band, glass cover, match box"),
+            ],
+          },
         ],
       },
       {
@@ -39,9 +192,10 @@ export const guides = [
           { p: "Toiletries are what guests notice first. Choose between single-use bottles and wall mounted dispensers, and pick a soap size that suits the room." },
           {
             list: [
-              "Soap: cream or glycerin, wrapped or boxed, in sizes from 15 g to 50 g.",
-              "Liquids: Shampoo, Shower Gel, Conditioner and Moisturizer in 20 ml, 25 ml or 30 ml bottles, or in tubes.",
-              "Dispensers: lockable wall mounted dispensers refilled from 5 litre cans, popular with hotels moving away from small bottles.",
+              { label: "Soap", href: "/products/amenity-kits/soap", text: "cream or glycerin, wrapped or boxed, in sizes from 15 g to 50 g." },
+              { label: "Liquids", href: "/products/hotel-toiletries", text: "Shampoo, Shower Gel, Conditioner and Moisturizer in 20 ml, 25 ml or 30 ml bottles, or in tubes." },
+              { label: "Dispensers", href: "/products/anti-theft-dispensers", text: "lockable wall mounted dispensers refilled from 5 litre cans, popular with hotels moving away from small bottles." },
+              { label: "Premium ranges", href: "/products/biotique", text: "Biotique, our partner brand, and Purely Serene, our own brand, for higher room categories." },
             ],
           },
           { image: { src: "/images/showcase/scene-02.webp", alt: "Clarion Hotel amenities on a marble vanity", caption: "Branded toiletries and kits for Clarion." } },
@@ -53,11 +207,11 @@ export const guides = [
           { p: "Kits are small, but guests rely on them. Pack each one in a paper board box, kraft board box or paper pouch with your hotel's name." },
           {
             list: [
-              "Dental Kit: a toothbrush (white, translucent, bamboo or wheat starch) with toothpaste.",
-              "Shaving Kit: a razor with shaving gel.",
-              "Comb, Shower Cap and Sewing Kit.",
-              "Care Kit: ear buds, band aid and emery board.",
-              "Sanitary Disposal Bag, Shoe Shiner, Loofah, Laundry Bag and Slippers.",
+              amenityLink("dental-kit", "a toothbrush (white, translucent, bamboo or wheat starch) with toothpaste."),
+              amenityLink("shaving-kit", "a razor with shaving gel."),
+              { label: "Comb, Shower Cap and Sewing Kit", href: "/products/amenity-kits/comb" },
+              amenityLink("care-kit", "ear buds, band aid and emery board."),
+              { label: "Sanitary Disposal Bag, Shoe Shiner, Loofah, Laundry Bag and Slippers", href: "/products/amenity-kits" },
             ],
           },
         ],
@@ -66,24 +220,94 @@ export const guides = [
         h: "Tea and coffee tray",
         blocks: [
           { p: "A well-stocked tray is one of the first things a guest uses. Restock it from the same order as your amenities." },
-          { list: ["Kettle and tray (plastic, drawer or wooden)", "Tea sachets, coffee sachets, sugar and sugar-free sachets", "Cups, glasses, coasters and glass covers"] },
+          {
+            list: [
+              { label: "Kettle and tray", href: "/products/tea-coffee", text: "plastic, drawer or wooden" },
+              { label: "Tea sachets, coffee sachets, sugar and sugar-free sachets", href: "/products/tea-coffee" },
+              { label: "Cups, glasses, coasters and glass covers", href: "/products/in-room-amenities" },
+            ],
+          },
           { image: { src: "/images/tiles/tea-coffee.jpg", alt: "Kettle tray set with cups and tea sachets in a hotel room", caption: "A kettle tray set ready for the room." } },
+        ],
+      },
+      {
+        h: "Room amenities housekeeping restocks",
+        blocks: [
+          { p: "Room amenities fall into two groups for housekeeping: what is replaced or topped up after every stay, and what stays in the room and is only checked." },
+          { h3: "Replaced or topped up after every stay" },
+          {
+            list: [
+              "Soap and liquid toiletries (or dispenser levels checked and refilled)",
+              "Dental Kit, Shaving Kit, Comb, Shower Cap and other kits that were opened",
+              "Tea, coffee, sugar and sugar-free sachets, and stirrers",
+              "Slippers, Laundry Bag and Sanitary Disposal Bag",
+              "Scribbling Pad, Pen, WC band and glass covers",
+            ],
+          },
+          { h3: "Stays in the room and is checked" },
+          {
+            list: [
+              "Hangers, kettle, kettle tray and sachet holder",
+              "Cups, glasses and glass water bottle",
+              "Hair dryer, iron and iron board",
+              "Leather desk and bedside accessories",
+              "Wall mounted dispensers",
+            ],
+          },
+          { list: [{ label: "Housekeeping Items List for Hotels", href: "/guides/housekeeping-items-list", text: "the tools, chemicals and supplies housekeeping uses to clean the room." }] },
         ],
       },
       {
         h: "4-star and 5-star hotel room amenities list",
         blocks: [
-          { p: "4-star and 5-star rooms carry everything in the mid-scale list, in fuller kits and more finished packaging. A typical premium room amenities list:" },
+          { p: "4-star and 5-star rooms carry everything in the mid-scale list, in fuller kits and more finished packaging." },
+          { h3: "4-star hotel room amenities" },
           {
             list: [
-              "Bathroom: a premium toiletry range (Shampoo, Conditioner, Shower Gel, Moisturizer) in bottles or wall mounted dispensers, plus glycerin or cream soap.",
-              "Kits: Dental Kit, Shaving Kit, Care Kit, Sewing Kit, Shower Cap, Comb, Loofah and Sanitary Disposal Bag, in boxes or pouches with your hotel's name.",
-              "Wardrobe: wooden hangers, Slippers, Laundry Bag and Shoe Shiner.",
-              "Desk and bedside: leather Scribbling Pad Holder, Remote Holder, Menu Card and Box Tissue Holder.",
-              "Tea and coffee: wooden or drawer kettle tray, kettle, cups, sachet holder and premium tea sachets.",
-              "Room fixtures: glass water bottle, iron and iron board, wall mounted hair dryer and anti-skid mat.",
+              "Bathroom: Shampoo, Conditioner, Shower Gel and Moisturizer in bottles or wall mounted dispensers, plus glycerin or cream soap.",
+              "Kits: Dental Kit, Shaving Kit, Sewing Kit, Shower Cap and Comb, in boxes or pouches with your hotel's name.",
+              "Wardrobe: wooden hangers, Slippers and Laundry Bag.",
+              "Desk: leather Scribbling Pad Holder, Menu Card and Key Card Jacket.",
+              "Tea and coffee: kettle, drawer or wooden kettle tray, cups and sachets.",
+              "Room fixtures: iron and iron board, wall mounted hair dryer.",
             ],
           },
+          { h3: "5-star hotel room amenities" },
+          {
+            list: [
+              "Bathroom: a premium toiletry range such as Biotique or Purely Serene, in bottles or wall mounted dispensers.",
+              "Kits: everything in the 4-star list, plus Care Kit, Loofah, Shoe Shiner and Sanitary Disposal Bag.",
+              "Desk and bedside: leather Remote Holder and Box Tissue Holder.",
+              "Tea and coffee: wooden kettle tray with sachet holder and premium tea sachets.",
+              "Room fixtures: glass water bottle and anti-skid mat.",
+              "Every box, pouch and bottle carrying your hotel's identity.",
+            ],
+          },
+        ],
+      },
+      {
+        h: "Hotel amenity ideas guests notice",
+        blocks: [
+          { p: "Small touches that make a room feel looked after, all from the standard range:" },
+          {
+            list: [
+              { label: "Kits with your hotel's name", href: "/custom-branding", text: "the same look on every box, pouch and bottle." },
+              { label: "Plastic-free kits", href: "/products/eco-friendly", text: "bamboo and wheat starch brushes and combs in kraft paper pouches." },
+              { label: "A Care Kit and Sewing Kit", href: "/products/amenity-kits/care-kit", text: "small, and guests on longer stays use them." },
+              { label: "Jute or terry slippers", href: "/products/amenity-kits/slippers", text: "instead of basic non woven ones." },
+              { label: "A glass water bottle", href: "/products/in-room-amenities", text: "in place of plastic bottles in the room." },
+              { label: "A wooden kettle tray with sachet holder", href: "/products/tea-coffee", text: "a neater tea and coffee corner." },
+              { label: "Leather desk accessories", href: "/products/stationery", text: "scribbling pad holder, remote holder and box tissue holder." },
+              { label: "Premium toiletries", href: "/products/purely-serene", text: "Purely Serene or Biotique in suites and premium rooms." },
+              { label: "Wall mounted dispensers", href: "/products/anti-theft-dispensers", text: "a tidier bathroom and no half-used bottles." },
+            ],
+          },
+        ],
+      },
+      {
+        h: "Hotel amenities vs hotel facilities",
+        blocks: [
+          { p: "Hotel facilities are part of the building and its services: Wi-Fi, air conditioning, TV, lifts, parking, the restaurant, the pool or the gym. Hotel room amenities are the items in the room that the guest uses during the stay and that housekeeping restocks: toiletries, kits, slippers, the tea and coffee tray and stationery. This list covers room amenities." },
         ],
       },
       {
@@ -96,23 +320,273 @@ export const guides = [
         h: "Make the set your own",
         blocks: [
           { p: "Bottles, soap, kit boxes, pouches and stationery can all carry your hotel's name and logo. Share your logo, approve the artwork, and receive branded stock at your property." },
+          { list: [{ label: "Custom Branding", href: "/custom-branding", text: "upload your logo and see it on the range." }] },
+        ],
+      },
+      {
+        h: "Download the hotel room amenities checklist",
+        blocks: [
+          { p: "Print it, tick what each room category gets, and fill in the quantity per room. Send it to us on WhatsApp and we will prepare a proposal for your property." },
+          { download: "amenities" },
         ],
       },
     ],
     faqs: [
+      { q: "What is included in a hotel amenities list?", a: "Bathroom toiletries (soap, shampoo, shower gel, conditioner, moisturizer), guest amenity kits (dental, shaving, comb, shower cap, sewing and care kits), wardrobe items (hangers, slippers, laundry bag), the tea and coffee tray, stationery and room fixtures such as a hair dryer and iron." },
       { q: "What are the basic amenities in a hotel room?", a: "Soap, Shampoo, Shower Gel, a Dental Kit, a Comb, hangers, a Key Card Jacket and a tea and coffee tray with kettle. Most hotels add a Shower Cap, Shaving Kit and Slippers." },
+      { q: "What are guest amenities in a hotel?", a: "Complimentary items placed in the room for the guest to use and keep: toiletries, dental and shaving kits, combs, shower caps, sewing and care kits, slippers and tea and coffee sachets." },
+      { q: "What amenities does a 4-star hotel room have?", a: "A full toiletry set with conditioner and moisturizer, dental, shaving and sewing kits, shower cap, comb, slippers, wooden hangers, a laundry bag, leather desk stationery, a kettle tray with cups and sachets, and an iron and hair dryer." },
+      { q: "What amenities does a 5-star hotel room have?", a: "Everything a 4-star room has, with a premium toiletry range, a care kit, loofah and shoe shiner, leather bedside accessories, a wooden kettle tray with sachet holder, a glass water bottle, and the hotel's identity on every item." },
+      { q: "What is the difference between hotel amenities and hotel facilities?", a: "Facilities are part of the building and its services, such as Wi-Fi, parking, the restaurant or the pool. Room amenities are the items in the room that the guest uses and housekeeping restocks." },
+      { q: "Which room amenities does housekeeping replace after every stay?", a: "Toiletries, opened kits, tea, coffee and sugar sachets, slippers, laundry bags, sanitary bags, scribbling pads and pens. Hangers, kettles, trays and fixtures stay in the room and are checked." },
       { q: "What amenities should a budget hotel provide?", a: "At least soap, shampoo, shower gel, a dental kit, a comb, hangers and a basic tea and coffee tray. Adding a shower cap and slippers lifts the experience at little extra effort." },
+      { q: "Is there a printable hotel amenities checklist?", a: "Yes. Download the free Hotel Room Amenities Checklist PDF on this page: no sign-up, with tick boxes by room category and a column for quantities per room." },
       { q: "Can I mix amenities across room categories?", a: "Yes. Most hotels use one look across the property and add kits or premium toiletries in higher room categories." },
       { q: "Can every item carry my hotel's logo?", a: "Bottles, soap, kit boxes, pouches and stationery can all be branded. Share your logo and we prepare the artwork for your approval." },
       { q: "How do I order a full set?", a: "Pick the items in Build your Amenity Kit, or send us your room count and categories on WhatsApp and we will send a proposal for your property." },
     ],
     related: [
+      { href: "/guides/housekeeping-items-list", label: "Housekeeping items list" },
       { href: "/products/hotel-toiletries", label: "Hotel toiletries supplier" },
       { href: "/products/amenity-kits", label: "Hotel guest amenity kits" },
       { href: "/products/in-room-amenities", label: "In-room amenities for hotels" },
       { href: "/products/tea-coffee", label: "Kettle tray sets for hotel rooms" },
       { href: "/products/stationery", label: "Hotel stationery" },
       { href: "/custom-branding", label: "Custom branded hotel toiletries" },
+    ],
+  },
+  {
+    slug: "housekeeping-items-list",
+    title: "Housekeeping Items List for Hotels",
+    seoTitle: "Housekeeping Items List for Hotels (with Pictures & PDF)",
+    description:
+      "Hotel housekeeping items list with pictures: cleaning tools, R1–R9 chemicals, cloths, carts, bins, gloves and washroom supplies, with their uses and a free PDF.",
+    answer:
+      "A hotel housekeeping items list has seven groups: cleaning tools, cleaning chemicals, cloths and dusters, carts and trolleys, bins and liners, gloves and safety items, and washroom and paper supplies. Room attendants also carry the guest-room amenities they restock after every stay.",
+    image: { src: "/images/tiles/housekeeping.jpg", alt: "Housekeeping cart with cleaning supplies in a hotel corridor", position: "50% 30%" },
+    published: "2026-11-02",
+    updated: "2026-11-02",
+    checklist: "housekeeping",
+    sections: [
+      {
+        h: "Housekeeping items list at a glance",
+        blocks: [
+          { p: "The seven groups every hotel housekeeping store needs, what is in each, and what it is used for." },
+          {
+            table: {
+              head: ["Group", "Main items", "Used for"],
+              rows: [
+                ["Cleaning tools", "Mops, brooms, brushes, wipers, squeegees, dust pans", "Floors, bathrooms, glass and high corners"],
+                ["Cleaning chemicals", "TASKI R1 to R9, SUMA and Crew ranges, phenyle, bleaching powder", "Bathrooms, floors, glass, furniture and kitchens"],
+                ["Cloths and dusters", "Microfibre, glass, dusting and mop cloths, scrubbers, sponges", "Dusting, wiping and scrubbing"],
+                ["Carts and trolleys", "Janitorial carts, laundry carts, wringer trolleys", "Moving supplies between rooms and floors"],
+                ["Bins and liners", "Room bins, pedal bins, wheel dustbins, garbage bags, liners", "Rooms, corridors, kitchens and back of house"],
+                ["Gloves and safety", "Rubber, nitrile, latex and cotton gloves, caution boards, cones", "Staff safety and wet floor warnings"],
+                ["Washroom and paper supplies", "Hand wash, toilet rolls, napkins, tissue, dispensers, hand dryers, air fresheners", "Guest and public washrooms"],
+              ],
+            },
+          },
+        ],
+      },
+      {
+        h: "Cleaning tools",
+        blocks: [
+          { p: "Mops and brooms for floors, brushes for bathrooms and corners, and wipers and squeegees for wet floors and glass." },
+          {
+            grid: [
+              hk("H-129", "Floors in rooms and corridors"),
+              hk("H-130", "Wet and dry mopping"),
+              hk("H-132", "Dust control on hard floors"),
+              hk("H-194", "Sweeping indoor floors"),
+              hk("H-170", "Toilet cleaning"),
+              hk("H-142", "Bathroom floors and tiles"),
+              hk("H-145", "Ceilings and high corners"),
+              hk("H-140", "Pushing water off floors"),
+              hk("H-179", "Glass and mirrors"),
+              hk("H-181", "Reaching high glass"),
+              hk("H-155", "Lobby and corridor sweeping"),
+              hk("H-151", "Carrying chemicals room to room"),
+            ],
+          },
+        ],
+      },
+      {
+        h: "Cleaning chemicals: R1 to R9 explained",
+        blocks: [
+          { p: "In hotel housekeeping, R1 to R9 are the codes of the TASKI room-care range from Diversey, our partner brand for cleaning chemicals. Each code is a cleaner for one job, so staff can pick the right bottle quickly." },
+          {
+            table: {
+              head: ["Code", "Product", "Where it is used"],
+              rows: [
+                ["TASKI R1", "Bathroom Cleaner", "Daily cleaning of bathroom surfaces"],
+                ["TASKI R2", "Hard Surface Cleaner, Concentrate", "Hard surfaces such as tables, doors and walls"],
+                ["TASKI R3", "Glass Cleaner", "Glass, mirrors and windows"],
+                ["TASKI R4", "Furniture Maintainer", "Wooden furniture"],
+                ["TASKI R5", "Air Freshener", "Rooms and corridors"],
+                ["TASKI R6", "Toilet Bowl Cleaner", "Toilet bowls"],
+                ["TASKI R7", "Floor Cleaner, Concentrate", "Floors"],
+                ["TASKI R9", "Bathroom Cleaner, Concentrate", "Bathrooms"],
+              ],
+            },
+          },
+          { p: "Concentrates are diluted before use: follow the dilution on the label. For kitchens, the SUMA range covers stainless steel polish, all purpose cleaning, descaling and oven and grill cleaning. The Crew range offers ready-to-use room, bathroom, glass and floor cleaners." },
+          { h3: "Everyday cleaning consumables" },
+          { list: ["Phenyle", "Bleaching Powder", "Soap Oil", "Liquid Chlorine", "Acid", "Caustic Soda", "Naphthalene Balls", "Urinal Cubes"] },
+        ],
+      },
+      {
+        h: "Cloths, dusters and scrubbers",
+        blocks: [
+          {
+            grid: [
+              hk("H-116", "Dusting and wiping without streaks"),
+              hk("H-117", "Glass and mirrors"),
+              hk("H-119", "General dusting"),
+              hk("H-115", "Wiping surfaces"),
+              hk("H-118", "Floor mopping"),
+              hk("H-147", "Dusting fragile surfaces"),
+              hk("H-109", "Scrubbing sinks and tiles"),
+              hk("H-113", "Washing and wiping"),
+            ],
+          },
+        ],
+      },
+      {
+        h: "Housekeeping carts and trolleys",
+        blocks: [
+          { p: "Carts keep a room attendant's supplies in one place; laundry carts and wringer trolleys move linen and water between floors." },
+          {
+            grid: [
+              hk("CT-101", "Room attendant's supplies"),
+              hk("CT-104", "Cleaning with mop bucket"),
+              hk("CT-106", "Collecting used linen"),
+              hk("CT-108", "Heavy laundry loads"),
+              hk("CT-115", "Mopping large floors"),
+              hk("CT-109", "Moving supplies"),
+            ],
+          },
+        ],
+      },
+      {
+        h: "Bins and liners",
+        blocks: [
+          {
+            grid: [
+              hk("D-3", "Bathrooms and rooms"),
+              hk("D-5", "Lobbies and corridors"),
+              hk("D-11", "Guest rooms"),
+              hk("D-1", "Back of house waste"),
+              hk("H-102", "Lining large bins"),
+              hk("H-103", "Lining room bins"),
+            ],
+          },
+        ],
+      },
+      {
+        h: "Gloves and safety",
+        blocks: [
+          {
+            grid: [
+              hk("H-157", "Cleaning with chemicals"),
+              hk("H-162", "Bathroom and toilet cleaning"),
+              hk("H-158", "Dry work and handling linen"),
+              hk("H-150", "Wet floor warning"),
+              hk("F-114", "Blocking off areas"),
+              hk("H-163", "Hair cover for staff"),
+            ],
+          },
+        ],
+      },
+      {
+        h: "Washroom and paper supplies",
+        blocks: [
+          { p: "For guest bathrooms, public washrooms and back-of-house areas." },
+          {
+            grid: [
+              hk("P-208", "Guest and public washrooms"),
+              hk("P-101", "Hand towels in washrooms"),
+              hk("P-105", "Paper roll in washrooms"),
+              hk("P-204", "Rooms and reception"),
+              hk("Soft Care Hand Wash", "Diversey hand wash for wash basins"),
+              hk("Softcare Blossom Hand Wash", "Scented hand wash for guest washrooms"),
+              hk("F-123", "Liquid soap at wash basins"),
+              hk("F-116", "Drying hands in washrooms"),
+              hk("H-189", "Urinals"),
+              hk("F-110", "Lobby and corridor fragrance"),
+            ],
+          },
+        ],
+      },
+      {
+        h: "What goes on a housekeeping cart",
+        blocks: [
+          { p: "A well-stocked cart saves trips back to the store. A typical room attendant's cart carries:" },
+          { h3: "Cleaning" },
+          {
+            list: [
+              "Bathroom, glass, toilet bowl and floor cleaners (TASKI R1, R3, R6 and R7) in labelled spray bottles",
+              "Microfibre and glass cloths, a dusting cloth and a scrubber",
+              "A WC brush, a hand wiper and a caddy basket",
+              "Rubber or nitrile gloves and a caution board",
+              "Garbage bags and bin liners",
+            ],
+          },
+          { h3: "Guest room restock" },
+          {
+            list: [
+              { label: "Toiletries and guest amenity kits", href: "/guides/hotel-amenities-checklist#room-amenities-housekeeping-restocks", text: "soap, liquids, dental kits, combs, shower caps and the other kits." },
+              "Tea, coffee and sugar sachets",
+              "Slippers, laundry bags and sanitary bags",
+              "Scribbling pads, pens and WC bands",
+              "Toilet rolls, box tissue and hand wash refills",
+            ],
+          },
+        ],
+      },
+      {
+        h: "Housekeeping material list with pictures",
+        blocks: [
+          { p: "Every item on this page is from our housekeeping catalogue. See all of them with photos and codes, section by section:" },
+          { list: hkSections.map((sec) => ({ label: sec.title, href: sec.id === "in-room" ? "/products/in-room-amenities" : `/products/housekeeping#${sec.id}`, text: `${sec.items.length} items` })) },
+          { list: [{ label: "Housekeeping Tools & Kitchen Consumables catalogue (PDF)", href: "/brochures" }] },
+        ],
+      },
+      {
+        h: "Housekeeping items for hospitals, offices and institutions",
+        blocks: [
+          { p: "Hospitals, offices and institutions use the same groups, with extra attention to waste handling and hygiene:" },
+          {
+            list: [
+              { label: "Hazardous Waste Bin", href: "/products/housekeeping#plastic-dustbins", text: "for segregating waste." },
+              { label: "Nitrile and latex gloves", href: "/products/housekeeping#consumables" },
+              { label: "Disinfectant floor cleaner, hand wash and hand sanitizer", href: "/products/housekeeping#diversey-crew-sumabrite" },
+              { label: "Patient Admission Kit", href: "/products/amenity-kits/patient-admission-kit", text: "for hospital admissions." },
+            ],
+          },
+        ],
+      },
+      {
+        h: "Download the housekeeping items list",
+        blocks: [
+          { p: "Print it for your store or training room, tick what you need, and send it to us on WhatsApp for a proposal." },
+          { download: "housekeeping" },
+        ],
+      },
+    ],
+    faqs: [
+      { q: "What are housekeeping items in a hotel?", a: "The tools, chemicals and supplies used to clean rooms and public areas: mops, brooms and brushes; cleaning chemicals; cloths and dusters; housekeeping carts; bins and liners; gloves; and washroom and paper supplies." },
+      { q: "What is R1 to R9 in housekeeping?", a: "They are the codes of the TASKI cleaning range from Diversey: R1 bathroom cleaner, R2 hard surface cleaner, R3 glass cleaner, R4 furniture maintainer, R5 air freshener, R6 toilet bowl cleaner, R7 floor cleaner and R9 concentrated bathroom cleaner." },
+      { q: "What should be on a housekeeping cart?", a: "Bathroom, glass, toilet and floor cleaners in spray bottles, cloths and a scrubber, a WC brush, gloves, garbage bags and liners, and the guest-room amenities to restock: toiletries, kits, sachets, slippers, laundry bags, stationery and toilet rolls." },
+      { q: "What is the difference between housekeeping material and room amenities?", a: "Housekeeping material is what staff use to clean: tools, chemicals, cloths and bins. Room amenities are what the guest uses and housekeeping restocks: toiletries, kits, slippers, tea and coffee sachets and stationery." },
+      { q: "Is there a housekeeping items list with pictures as a PDF?", a: "Yes. Download the free Housekeeping Items List with Pictures on this page: no sign-up, with photos, catalogue codes and uses." },
+      { q: "Do you supply hospitals, offices and institutions?", a: "Yes. We supply to Hotels, Resorts, Hospitals, Institutions and Guest Houses all over India." },
+    ],
+    related: [
+      { href: "/products/housekeeping", label: "Housekeeping material and supplies" },
+      { href: "/guides/hotel-amenities-checklist", label: "Hotel amenities list" },
+      { href: "/products/in-room-amenities", label: "In-room amenities for hotels" },
+      { href: "/products/anti-theft-dispensers", label: "Wall mounted dispensers" },
+      { href: "/brochures", label: "Brochures" },
     ],
   },
   {

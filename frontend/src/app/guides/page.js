@@ -7,7 +7,7 @@ import { guides } from "@/lib/guides";
 
 export const metadata = {
   title: "Guides for Hotels",
-  description: "Practical guides for hotels: an amenities checklist by room category, plastic-free amenity swaps, and how custom branded toiletries work.",
+  description: "Practical guides for hotels: the hotel amenities list and room checklist, a housekeeping items list with pictures, plastic-free amenity swaps, and how custom branded toiletries work.",
   alternates: { canonical: "/guides" },
 };
 

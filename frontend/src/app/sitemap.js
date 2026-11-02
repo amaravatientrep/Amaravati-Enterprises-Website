@@ -1,5 +1,5 @@
 import { SITE_URL, categories, areas } from "@/lib/site";
-import { guides } from "@/lib/guides";
+import { guides, checklists } from "@/lib/guides";
 import { amenityPages } from "@/lib/amenityPages";
 
 export default function sitemap() {
@@ -18,6 +18,7 @@ export default function sitemap() {
     "/privacy",
     "/guides",
     ...guides.map((g) => `/guides/${g.slug}`),
+    ...Object.values(checklists).map((c) => c.href), // the free checklist PDFs, so "list pdf" searches can find them
     ...areas.map((a) => `/areas/${a.slug}`),
   ];
   // lastModified is the build date: every deploy republishes all pages. Home and product pages are marked as the
