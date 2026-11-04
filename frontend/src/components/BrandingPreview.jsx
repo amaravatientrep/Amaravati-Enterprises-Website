@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import { track } from "@vercel/analytics";
-import { UploadSimple, DownloadSimple, ArrowRight, X, WhatsappLogo, Eyedropper, Palette } from "@phosphor-icons/react";
+import { UploadSimple, DownloadSimple, ArrowRight, X, WhatsappLogo, Eyedropper, Palette, EnvelopeSimple, CheckCircle } from "@phosphor-icons/react";
 import clsx from "clsx";
 import ButtonLink from "./Button";
 import { ProductScene, VIEWS } from "./BrandingMockups";
@@ -147,8 +147,8 @@ export default function BrandingPreview() {
     return readFile(blob);
   }
 
-  // Render the current scene to a watermarked 1600 x 1200 PNG. Resolves to a Blob, or null on failure.
-  async function renderPng() {
+  // Render the current scene to a watermarked 1600 x 1200 image (PNG by default). Resolves to a Blob, or null on failure.
+  async function renderPng(type = "image/png", quality) {
     const el = sceneRef.current;
     if (!el) return null;
     let markup = new XMLSerializer().serializeToString(el);
@@ -192,7 +192,7 @@ export default function BrandingPreview() {
       } catch {
         // If the logo cannot load, still save the preview.
       }
-      c.toBlob((blob) => resolve(blob), "image/png");
+      c.toBlob((blob) => resolve(blob), type, quality);
     };
     img.onerror = () => {
       setError("The preview could not be saved in this browser. Please take a screenshot instead.");
@@ -267,6 +267,57 @@ export default function BrandingPreview() {
     if (chat) chat.location.href = link;
     else window.location.href = link;
     track("branding_preview_whatsapp");
+  }
+
+  // Email the logo and design to the sales inbox (only when the visitor taps the button and sends the form).
+  const [mail, setMail] = useState(null); // null | { name, phone, email, hotel, status: idle|sending|sent|failed, error }
+  const [botcheck, setBotcheck] = useState(false); // hidden spam trap
+  const openMail = () => setMail({ name: "", phone: "", email: "", hotel: name.trim(), status: "idle", error: "" });
+  const setMailField = (k) => (e) => setMail((m) => ({ ...m, [k]: e.target.value }));
+
+  // Vercel accepts at most 4.5 MB per request: big raster logos are scaled down before sending.
+  async function logoForEmail() {
+    if (!file) return null;
+    if (file.size <= 3 * 1024 * 1024 || !source?.canvas) return file;
+    const src = source.canvas;
+    const k = Math.min(1, 2000 / Math.max(src.width, src.height));
+    const c = document.createElement("canvas");
+    c.width = Math.round(src.width * k);
+    c.height = Math.round(src.height * k);
+    c.getContext("2d").drawImage(src, 0, 0, c.width, c.height);
+    const blob = await new Promise((r) => c.toBlob(r, "image/png"));
+    return blob ? new File([blob], file.name.replace(/\.[^.]+$/, "") + ".png", { type: "image/png" }) : file;
+  }
+
+  async function sendEmail(ev) {
+    ev.preventDefault();
+    const m = mail;
+    let err = "";
+    if (!m.name.trim()) err = "Please enter your name.";
+    else if (!m.hotel.trim()) err = "Please enter your hotel or business name.";
+    else if (!/^[+\d][\d\s-]{8,}$/.test(m.phone.trim())) err = "Please enter a phone number we can call or WhatsApp.";
+    else if (m.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m.email.trim())) err = "Please check the email address, or leave it empty.";
+    if (err) return setMail({ ...m, error: err });
+    setMail({ ...m, status: "sending", error: "" });
+    try {
+      const fd = new FormData();
+      fd.append("name", m.name);
+      fd.append("phone", m.phone);
+      fd.append("hotel", m.hotel);
+      fd.append("email", m.email);
+      if (botcheck) fd.append("botcheck", "1");
+      const logoFile = await logoForEmail();
+      if (logoFile) fd.append("logo", logoFile);
+      const preview = await renderPng("image/jpeg", 0.85);
+      if (preview) fd.append("preview", new File([preview], "branding-preview.jpg", { type: "image/jpeg" }));
+      const res = await fetch("/api/branding-email", { method: "POST", body: fd });
+      const json = await res.json().catch(() => ({}));
+      if (!json.ok) throw new Error(json.error || "failed");
+      setMail((x) => ({ ...x, status: "sent" }));
+      track("branding_preview_emailed");
+    } catch {
+      setMail((x) => ({ ...x, status: "failed", error: "" }));
+    }
   }
 
   const hotel = name.trim() || "my hotel";
@@ -496,6 +547,13 @@ export default function BrandingPreview() {
             >
               <WhatsappLogo size={20} weight="fill" aria-hidden="true" /> Send this design to us on WhatsApp
             </button>
+            <button
+              type="button"
+              onClick={openMail}
+              className="inline-flex items-center justify-center gap-2.5 rounded-full bg-ink/[0.05] px-6 py-3.5 text-[15px] font-medium ring-1 ring-line/10 transition-transform duration-200 ease-snap hover:bg-ink/[0.08] active:scale-[0.98]"
+            >
+              <EnvelopeSimple size={20} aria-hidden="true" /> Email this design to us
+            </button>
             <a
               href={whatsappLink(`Hi, I tried the branding preview on your website. I'd like branded amenities for ${hotel}. I'll attach my logo here.`)}
               target="_blank"
@@ -507,6 +565,76 @@ export default function BrandingPreview() {
           </div>
         </div>
       </div>
+
+      {/* Email dialog: sends the logo and the design to our inbox */}
+      {mail && (
+        <div className="fixed inset-0 z-[60] flex items-end justify-center bg-black/70 p-3 backdrop-blur-sm sm:items-center" role="dialog" aria-modal="true" aria-labelledby={uid + "-mail-title"}>
+          <div className="max-h-[92dvh] w-full max-w-md overflow-y-auto rounded-[1.75rem] bg-surface p-5 text-ink shadow-2xl ring-1 ring-line/10">
+            <div className="mb-4 flex items-center justify-between">
+              <p id={uid + "-mail-title"} className="text-[17px] font-semibold">Email this design to us</p>
+              <button type="button" onClick={() => setMail(null)} aria-label="Close" className="flex h-11 w-11 items-center justify-center rounded-full bg-ink/[0.06]">
+                <X size={16} />
+              </button>
+            </div>
+            {mail.status === "sent" ? (
+              <div className="flex flex-col items-start gap-3 py-2" role="status">
+                <CheckCircle size={40} weight="light" className="text-accent" aria-hidden="true" />
+                <p className="text-lg font-semibold">Thank you, {mail.name.split(" ")[0]}.</p>
+                <p className="text-muted">Your {file ? "logo and " : ""}design reached our team. We will call or WhatsApp you on the number you shared.</p>
+              </div>
+            ) : (
+              <form onSubmit={sendEmail} noValidate className="grid gap-4">
+                <p className="text-[14px] text-muted">We will send {file ? "your logo and " : ""}this design to our team, with the details below, so we can prepare artwork and a quote.</p>
+                {[
+                  { k: "name", label: "Your name", auto: "name" },
+                  { k: "phone", label: "Phone or WhatsApp", auto: "tel", type: "tel" },
+                  { k: "hotel", label: "Hotel or business", auto: "organization" },
+                  { k: "email", label: "Email", auto: "email", type: "email", optional: true },
+                ].map((f) => (
+                  <div key={f.k}>
+                    <label htmlFor={uid + "-mail-" + f.k} className="mb-1.5 block text-sm font-medium">
+                      {f.label} {f.optional && <span className="font-normal text-muted">(optional)</span>}
+                    </label>
+                    <input
+                      id={uid + "-mail-" + f.k}
+                      type={f.type || "text"}
+                      autoComplete={f.auto}
+                      value={mail[f.k]}
+                      onChange={setMailField(f.k)}
+                      className="w-full rounded-field bg-bg px-4 py-3 text-[16px] text-ink ring-1 ring-line/15 focus:outline-none focus:ring-2 focus:ring-accent"
+                    />
+                  </div>
+                ))}
+                <input type="checkbox" name="botcheck" checked={botcheck} onChange={(e) => setBotcheck(e.target.checked)} tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
+                {mail.error && (
+                  <p className="text-[14px] text-[#B42318] dark:text-[#FDA29B]" role="alert">
+                    {mail.error}
+                  </p>
+                )}
+                {mail.status === "failed" && (
+                  <p className="rounded-field bg-[#B42318]/10 px-4 py-3 text-[14px] text-[#B42318] dark:text-[#FDA29B]" role="alert">
+                    The email could not be sent just now. Please use &ldquo;Send this design to us on WhatsApp&rdquo; instead.
+                  </p>
+                )}
+                <button
+                  type="submit"
+                  disabled={mail.status === "sending"}
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-[15px] font-medium text-accent-ink transition-transform duration-200 ease-snap active:scale-[0.98] disabled:opacity-70"
+                >
+                  <EnvelopeSimple size={18} aria-hidden="true" /> {mail.status === "sending" ? "Sending..." : "Send"}
+                </button>
+                <p className="text-[12px] text-muted">
+                  Sent only when you press Send. See our{" "}
+                  <a href="/privacy" className="underline">
+                    Privacy Notice
+                  </a>
+                  .
+                </p>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Phone save sheet: the finished design, saved to Photos via the phone's own share sheet or long-press */}
       {sheet && (
