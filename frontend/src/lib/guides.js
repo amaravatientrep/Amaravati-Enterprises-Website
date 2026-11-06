@@ -57,7 +57,7 @@ export const guides = [
     title: "Hotel Amenities List & Room Amenities Checklist",
     seoTitle: "Hotel Amenities List & Room Checklist (Free PDF)",
     description:
-      "The complete hotel amenities list for Indian hotels: basic, guest and 4-star/5-star room amenities with photos, what housekeeping restocks, and a free printable checklist PDF.",
+      "Hotel amenities list for Indian hotels: basic to 5-star room amenities with photos, what housekeeping restocks, and a free printable checklist PDF.",
     answer:
       "A hotel amenities list has five groups: bathroom toiletries, guest amenity kits, wardrobe and room items, the tea and coffee tray, and stationery. Budget rooms cover the basics, mid-scale rooms add more kits and branded packaging, and 4-star and 5-star rooms add premium toiletries, fuller kits and leather in-room accessories.",
     image: { src: "/images/tiles/guest-amenities.jpg", alt: "Branded guest amenity kits made for The Park, Hyderabad" },
@@ -594,15 +594,32 @@ export const guides = [
     title: "Plastic-Free Hotel Amenities: Swaps for Indian Hotels",
     seoTitle: "Plastic-Free Hotel Amenities: Swaps for Indian Hotels",
     description:
-      "How hotels in India can replace plastic guest amenities: bamboo and wheat starch kits, paper pouches, jute slippers, paper laundry bags and wall mounted dispensers.",
+      "How Indian hotels can replace plastic guest amenities: bamboo and wheat starch kits, paper pouches, jute slippers, paper laundry bags and dispensers.",
     answer:
       "Most plastic guest amenities have a ready replacement: bamboo or wheat starch toothbrushes, razors and combs; toothpaste and shaving gel in paper pouches; kraft or butter paper packaging; paper or cloth laundry bags; jute slippers; and wall mounted dispensers refilled from bulk cans instead of small bottles.",
     image: { src: "/images/tiles/eco-friendly.jpg", alt: "Eco-friendly hotel amenities in kraft pouches and boxes on a bathroom counter" },
+    updated: "2026-11-06",
     sections: [
       {
         h: "Why hotels are switching",
         blocks: [
           { p: "Since 1 July 2022, India has banned the manufacture, sale and use of a list of single-use plastic items. Guests and hotel groups also increasingly expect less plastic in the room. Switching the guest amenities is one of the most visible changes a hotel can make." },
+          { p: "Guests notice it in the first minute: the dental kit, the comb and the bottles by the basin are the things they pick up. A room with bamboo, paper and refillable dispensers looks considered, and the same items carry your hotel's name just as well as plastic ones do." },
+        ],
+      },
+      {
+        h: "What the 2022 ban means for a hotel",
+        blocks: [
+          { p: "The ban names specific items rather than all plastic. Several of them turn up in hotels, so they are worth checking first:" },
+          {
+            list: [
+              "Ear buds with plastic sticks, which often sit in the care kit.",
+              "Plastic stirrers on the tea and coffee tray: wooden stirrers replace them.",
+              "Plastic cutlery, plates, cups and glasses in room service and banquets.",
+              "Plastic film wrapped around sweet boxes and gift packs.",
+            ],
+          },
+          { p: "Toothbrushes, combs, razors and shower caps are not on the list, but they are the plastic items a guest handles most, which is why most hotels switch them too." },
         ],
       },
       {
@@ -642,6 +659,35 @@ export const guides = [
         h: "Dispensers instead of small bottles",
         blocks: [
           { p: "Wall mounted dispensers stay in the bathroom and are refilled from bulk cans, so the room no longer goes through small bottles every stay. Lockable designs keep them on the wall, and wheat starch dispenser bottles reduce plastic further." },
+          { p: "Housekeeping tops up shampoo, shower gel, conditioner and moisturizer from 5 litre cans during the room clean. The bottle stays, so a dispenser with your hotel's label on it keeps carrying your identity for months." },
+        ],
+      },
+      {
+        h: "Beyond the bathroom",
+        blocks: [
+          { p: "The same thinking applies to the rest of the room and the back of house:" },
+          {
+            list: [
+              "Tea and coffee tray: wooden stirrers in place of plastic ones.",
+              "Wardrobe: paper or cloth laundry bags, and jute slippers in place of non-woven pairs.",
+              "Room service and banquets: bagasse meal trays in place of plastic trays.",
+              "Shopping and gift bags: jute bags that guests can reuse.",
+            ],
+          },
+        ],
+      },
+      {
+        h: "How to check a plastic-free claim",
+        blocks: [
+          { p: "Ask two questions about every item: what is the item itself made of, and what is it packed in? A bamboo brush is only half the change if it arrives in a plastic sleeve, and a paper pouch does not help if the comb inside is plastic." },
+          {
+            list: [
+              "Ask what each item and its packaging are made of, item by item.",
+              "Check that the eco version can carry your hotel's name, so the switch does not cost you your branding.",
+              "Ask to see photos of the actual product, not a mood board.",
+              "Make sure the same items can be restocked steadily, so rooms do not drift back to plastic when stock runs out.",
+            ],
+          },
         ],
       },
       {
@@ -662,6 +708,7 @@ export const guides = [
       { q: "Are bamboo toothbrushes suitable for hotels?", a: "Yes. Bamboo and wheat starch brushes are used the same way as plastic ones and come packed in paper pouches or boxes that can carry your hotel's name." },
       { q: "Do eco-friendly kits look less premium?", a: "No. Kraft and butter paper packaging look natural and premium, and every pouch and box can be branded." },
       { q: "Can I switch only part of my amenities?", a: "Yes. Many hotels start with the dental kit, comb and packaging, then move to dispensers." },
+      { q: "Does India's single-use plastic ban cover hotel toiletries?", a: "The ban from 1 July 2022 lists specific items. For hotels the relevant ones are ear buds with plastic sticks, plastic stirrers, and plastic cutlery, plates and cups. Toothbrushes, combs and shower caps are not on the list, but most hotels replace them too because guests handle them every stay." },
       { q: "Which eco-friendly amenities do you supply?", a: "Bamboo and wheat starch kits, toothpaste and shaving gel in paper pouches, compostable shower caps, biodegradable sanitary bags, natural and jute loofahs, paper and cloth laundry bags, jute slippers, jute bags and wheat starch dispensers." },
     ],
     related: [
@@ -682,7 +729,15 @@ export const guides = [
     answer:
       "Hotels can put their own name and logo on bottles, soap, amenity kit boxes and pouches, and stationery. You share your logo, approve the artwork prepared for each product, and receive branded stock at your property.",
     image: { src: "/images/2026/car-the-park.jpg", alt: "Branded amenities made for The Park, Hyderabad" },
+    updated: "2026-11-06",
     sections: [
+      {
+        h: "Why hotels brand their amenities",
+        blocks: [
+          { p: "The soap, the dental kit and the key card jacket are the parts of your brand a guest actually holds. When they carry your name, the room feels like yours rather than a supplier's, and the kit a guest takes home keeps your name in front of them after check-out." },
+          { p: "Branding also keeps a group consistent: every property can share one look, or each can carry its own name in the same design." },
+        ],
+      },
       {
         h: "What can carry your hotel's identity",
         blocks: [
@@ -707,7 +762,22 @@ export const guides = [
               "Receive branded stock: once approved, your branded amenities are delivered to your property.",
             ],
           },
-          { p: "Want to see it first? Upload your logo to the free preview tool and see it on the whole range in seconds." },
+          { p: "Want to see it first? Upload your logo to the free preview tool and see it on the whole range in seconds. Pick a label colour, then download the preview to share with your team, or press “Email this design to us” to send it straight to our team with your logo." },
+        ],
+      },
+      {
+        h: "Where to start",
+        blocks: [
+          { p: "If you are branding for the first time, start with the items that appear in every room and that guests pick up:" },
+          {
+            list: [
+              "Soap and bottle labels: on the basin every stay.",
+              "Dental Kit and Shaving Kit: the kits guests use most.",
+              "Key Card Jacket: the first branded item a guest receives, at check-in.",
+              "Scribbling Pad and DND card: on view for the whole stay.",
+            ],
+          },
+          { p: "Kits for your top room categories can then move to a more premium box, such as textured card or paper board with matte lamination, while standard rooms keep a simpler pouch in the same design." },
         ],
       },
       {
@@ -723,6 +793,21 @@ export const guides = [
         ],
       },
       {
+        h: "Logo tips for small items",
+        blocks: [
+          { p: "A comb handle or a soap wrap is much smaller than a letterhead, so a logo that works on a sign can get lost on a kit. A few things help it print clearly:" },
+          {
+            list: [
+              "Send a version on a transparent background, so it sits cleanly on any label colour.",
+              "Include a one-colour version if you have one: it reads well on small items and on kraft paper.",
+              "If your logo has a long tagline or fine detail, send a simpler mark or just the hotel name for the smallest items.",
+              "Send light and dark versions if your brand uses both, for white and coloured labels.",
+            ],
+          },
+          { p: "If you are not sure which file to use, send what you have. We will tell you if it needs a cleaner version before preparing the artwork." },
+        ],
+      },
+      {
         h: "Packaging options",
         blocks: [
           { p: "Every box and pouch can carry your hotel's identity. Choose from paper board boxes, kraft board boxes, paper board boxes with matte lamination, textured card boxes, and biodegradable butter paper or kraft paper pouches." },
@@ -733,6 +818,8 @@ export const guides = [
     faqs: [
       { q: "Can I see my logo on the products before ordering?", a: "Yes. Upload your logo to the preview tool on our Custom Branding page, or send it on WhatsApp and we will prepare the artwork for your approval." },
       { q: "What logo file should I send?", a: "A vector file (SVG, PDF or AI) gives the sharpest print. A high-resolution PNG also works." },
+      { q: "Can each property in our group have its own name?", a: "Yes. A group can share one design across properties, with each hotel's own name, or use one name everywhere." },
+      { q: "Can I brand only some rooms or items?", a: "Yes. Many hotels start with soap, bottle labels, the dental kit and key card jackets, then brand more items and room categories later." },
       { q: "Can I brand eco-friendly amenities?", a: "Yes. Kraft paper pouches, butter paper pouches and kraft board boxes can all carry your hotel's name and logo." },
       { q: "Where do you supply?", a: "We supply to Hotels, Resorts, Hospitals, Institutions and Guest Houses all over India." },
     ],
