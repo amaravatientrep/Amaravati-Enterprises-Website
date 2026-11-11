@@ -10,6 +10,7 @@ export default function sitemap() {
     ...Object.keys(amenityPages).map((slug) => `/products/amenity-kits/${slug}`),
     "/products/biotique",
     "/custom-branding",
+    "/one-stop-shop",
     "/about",
     "/faq",
     "/brochures",
