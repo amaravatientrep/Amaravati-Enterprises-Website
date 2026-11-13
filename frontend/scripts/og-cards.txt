@@ -1,0 +1,15 @@
+dental-kit /images/amenities/dental/carton-closed.webp
+shaving-kit /images/amenities/shaving/carton-closed.webp
+comb /images/amenities/comb/carton-closed.webp
+shower-cap /images/amenities/shower-cap/carton-closed.webp
+soap /images/amenities/soap/carton-closed.webp
+care-kit /images/amenities/care-kit/carton-closed.webp
+sewing-kit /images/amenities/sewing-kit/carton-closed.webp
+disposal-sanitary-bag /images/amenities/disposal-sanitary-bag/carton-closed.webp
+shoe-shiner /images/amenities/shoe-shiner/carton-closed.webp
+patient-admission-kit /images/amenities/patient-admission-kit/patient-leaf-kit.webp
+laundry-bag /images/amenities/laundry-bag/laundry-white.webp
+slippers /images/amenities/slippers/slipper-non-woven.webp
+loofah /images/amenities/loofah/loofah-natural.webp
+room-kit /images/amenities/room-kit/room-paper-board.webp
+other-amenities /images/amenities/other-amenities/other-wc-band.webp

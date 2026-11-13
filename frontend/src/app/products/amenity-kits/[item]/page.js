@@ -14,6 +14,8 @@ import { amenityPages } from "@/lib/amenityPages";
 // been made in for clients, and its questions. Facts come from amenityProducts; search copy from amenityPages.
 const c = categories.find((x) => x.slug === "amenity-kits");
 const items = amenityProducts.filter((p) => amenityPages[p.slug]);
+// Products that have a preview card in public/images/og/amenities
+const OG_CARDS = new Set(["dental-kit", "shaving-kit", "comb", "shower-cap", "soap", "care-kit", "sewing-kit", "disposal-sanitary-bag", "shoe-shiner", "patient-admission-kit", "laundry-bag", "slippers", "loofah", "room-kit", "other-amenities"]);
 
 export function generateStaticParams() {
   return items.map((p) => ({ item: p.slug }));
@@ -23,12 +25,14 @@ export function generateMetadata({ params }) {
   const p = items.find((x) => x.slug === params.item);
   if (!p) return {};
   const s = amenityPages[p.slug];
-  const image = p.carton?.closed || p.examples?.[0]?.src || p.kitImage;
+  // Link-preview card (WhatsApp, LinkedIn): a 1200 x 630 JPEG per product, since WhatsApp often skips WebP images.
+  // Made from the product photo by scripts/build-og-cards.cjs; a product without a card falls back to the site default.
+  const image = OG_CARDS.has(p.slug) ? `/images/og/amenities/${p.slug}.jpg` : "/images/og-default.jpg";
   return {
     title: s.title,
     description: s.description,
     alternates: { canonical: `/products/amenity-kits/${p.slug}` },
-    openGraph: image ? { images: [{ url: image }] } : undefined,
+    openGraph: { title: s.title, description: s.description, url: `/products/amenity-kits/${p.slug}`, images: [{ url: image, width: 1200, height: 630, alt: s.h1 }] },
   };
 }
 
