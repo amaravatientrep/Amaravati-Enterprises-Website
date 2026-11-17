@@ -22,11 +22,11 @@ export const metadata = {
   // Bing Webmaster Tools ownership check
   verification: { other: { "msvalidate.01": "64507EAE9D556709F854E361C1D81A3B" } },
   title: {
-    default: "Hotel Amenities Manufacturer & Supplier in India | Amaravati Enterprises",
+    default: "Hotel Amenities Supplier in Hyderabad & South India | Amaravati Enterprises",
     template: "%s | Amaravati Enterprises",
   },
   description:
-    "Hotel amenities manufacturer and supplier for hotels across India: toiletries, soaps, amenity kits and stationery with your branding, plus dispensers and housekeeping material.",
+    "Hotel amenities supplier in Hyderabad for hotels across South India: toiletries, soaps and amenity kits with Custom Branding, plus housekeeping material. Quotes on WhatsApp.",
   alternates: { canonical: "/" },
   icons: { icon: "/favicon-32.png", apple: "/apple-touch-icon.png" },
   manifest: "/manifest.json",

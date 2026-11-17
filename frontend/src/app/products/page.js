@@ -30,6 +30,7 @@ export default function ProductsPage() {
       <PageHeader ld
         crumbs={[{ label: "Products" }]}
         title="Product Range: Everything a hotel and a guest room needs."
+        intro="We supply hotels, resorts and guest houses across South India from our office in Hyderabad: bathroom toiletries, guest amenity kits, dispensers, in-room amenities, stationery, kettle trays and housekeeping material. Most items can carry your hotel's name and logo, so one supplier covers the whole guest room and the housekeeping store."
       />
 
       <section className="container-x">

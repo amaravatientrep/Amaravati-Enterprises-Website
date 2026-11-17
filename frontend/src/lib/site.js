@@ -802,7 +802,7 @@ export const areas = [
     name: "Hyderabad",
     state: "telangana",
     featured: true,
-    description: "Hotel amenities and housekeeping material suppliers in Banjara Hills, Hyderabad: toiletries, soaps, amenity kits and stationery, with Custom Branding.",
+    description: "Hotel amenities supplier in Banjara Hills, Hyderabad, for The Park and Deccan Serai: toiletries, amenity kits and housekeeping material. Quote on WhatsApp.",
     intro:
       "Our office is in Banjara Hills, so hotels across Hyderabad and Secunderabad deal with a team that is close by and easy to reach.",
     points: [
@@ -826,6 +826,7 @@ export const areas = [
   },
   {
     slug: "andhra-pradesh",
+    description: "Hotel amenities supplier for Andhra Pradesh hotels: branded toiletries and amenity kits for every room category, plus the Biotique Range. Quotes on WhatsApp.",
     name: "Andhra Pradesh",
     intro:
       "Hotels and resorts across Andhra Pradesh order their guest amenities, stationery and housekeeping supplies from us in Hyderabad.",
@@ -850,6 +851,7 @@ export const areas = [
   },
   {
     slug: "bangalore",
+    description: "Hotel amenities supplier for Bangalore hotels and resorts: toiletries, amenity kits and housekeeping material with your logo. Quotes on WhatsApp.",
     name: "Bangalore",
     titleName: "Bangalore (Bengaluru)",
     state: "karnataka",
@@ -877,6 +879,7 @@ export const areas = [
   },
   {
     slug: "kerala",
+    description: "Hotel amenities supplier for Kerala hotels and resorts: toiletries, amenity kits and bamboo or jute eco amenities with your logo. Quotes on WhatsApp.",
     name: "Kerala",
     intro:
       "We supply hotels, resorts and guest houses across Kerala from our office in Hyderabad, with the full guest-room range and Custom Branding.",
@@ -902,6 +905,7 @@ export const areas = [
   },
   {
     slug: "goa",
+    description: "Hotel amenities supplier to Goa hotels such as The Evren, Rosetum and Ginger: toiletries, amenity kits and eco amenities with your logo. Quotes on WhatsApp.",
     name: "Goa",
     where: "North and South Goa",
     intro:
@@ -929,6 +933,7 @@ export const areas = [
   },
   {
     slug: "maharashtra",
+    description: "Hotel amenities supplier for hotels in Mumbai, Pune and across Maharashtra: toiletries, amenity kits and stationery with your logo. Quotes on WhatsApp.",
     name: "Maharashtra",
     titleName: "Mumbai & Maharashtra",
     where: "Mumbai, Pune and across Maharashtra",
@@ -975,6 +980,7 @@ export const areas = [
   // Andhra Pradesh
   {
     slug: "visakhapatnam",
+    description: "Hotel amenities supplier for Vizag beach resorts and business hotels: toiletries, amenity kits and housekeeping material with your logo. Quotes on WhatsApp.",
     name: "Visakhapatnam",
     titleName: "Visakhapatnam (Vizag)",
     state: "andhra-pradesh",
@@ -1085,6 +1091,7 @@ export const areas = [
   // Tamil Nadu
   {
     slug: "chennai",
+    description: "Hotel amenities supplier for Chennai business hotels and ECR resorts: toiletries, amenity kits and stationery with your logo. Quotes on WhatsApp.",
     name: "Chennai",
     state: "tamil-nadu",
     intro: "Business hotels, serviced apartments and beach resorts in Chennai and along the ECR order toiletries, amenity kits and stationery from us, branded with their own name.",
@@ -1145,6 +1152,7 @@ export const areas = [
   // Kerala
   {
     slug: "kochi",
+    description: "Hotel amenities supplier for Kochi hotels, Fort Kochi heritage stays and waterfront resorts: toiletries and amenity kits with your logo. Quotes on WhatsApp.",
     name: "Kochi",
     titleName: "Kochi (Cochin)",
     state: "kerala",
@@ -1153,6 +1161,7 @@ export const areas = [
   },
   {
     slug: "thiruvananthapuram",
+    description: "Hotel amenities supplier for Trivandrum hotels and Kovalam and Varkala resorts: toiletries, amenity kits and housekeeping material. Quotes on WhatsApp.",
     name: "Thiruvananthapuram",
     titleName: "Trivandrum & Kovalam",
     state: "kerala",

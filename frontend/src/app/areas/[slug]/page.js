@@ -60,6 +60,13 @@ export default function AreaPage({ params }) {
               </li>
             ))}
           </ul>
+          <p className="mt-8 max-w-[60ch] text-[15px] leading-relaxed text-muted">
+            Amaravati Enterprises is a{" "}
+            <Link href="/" className="font-medium text-ink underline decoration-accent/40 underline-offset-4 hover:decoration-accent">
+              hotel amenities supplier
+            </Link>{" "}
+            based in Banjara Hills, Hyderabad, serving hotels across South India.
+          </p>
         </Reveal>
       </section>
 

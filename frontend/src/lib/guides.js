@@ -90,6 +90,8 @@ export const guides = [
               amenityLink("disposal-sanitary-bag"),
               amenityLink("loofah", "natural or jute"),
               amenityLink("shoe-shiner"),
+              amenityLink("room-kit", "your chosen kits packed together, one per room"),
+              amenityLink("patient-admission-kit", "for hospitals, packed with the hospital's name"),
             ],
           },
           { h3: "Wardrobe and room" },

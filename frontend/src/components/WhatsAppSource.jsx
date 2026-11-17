@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { track } from "@vercel/analytics";
+import { trackEvent } from "@/lib/track";
 import { toast } from "./Toaster";
 
 // Conversion tracking for every contact link on the site, by page:
@@ -38,7 +38,7 @@ export default function WhatsAppSource() {
         } catch {}
       }
       if (kind === "brochure_download") toast("Opening the brochure…");
-      track(kind, { page: location.pathname, page_title: page, ...(kind === "brochure_download" && { link: href }) });
+      trackEvent(kind, { page: location.pathname, page_title: page, ...(kind === "brochure_download" && { link: href }) });
     };
     // Capture phase, so the WhatsApp link is updated before the browser follows it
     document.addEventListener("click", onClick, true);

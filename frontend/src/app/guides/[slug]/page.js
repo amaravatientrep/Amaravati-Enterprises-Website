@@ -174,6 +174,17 @@ export default function GuidePage({ params }) {
           <p className="text-[13px] font-semibold uppercase tracking-wide text-accent">In short</p>
           <p className="mt-2 text-lg leading-relaxed">{g.answer}</p>
         </div>
+        {/* The free PDF, offered straight away: many searchers come for the printable list */}
+        {pdf && fileSize(pdf.href) && (
+          <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2">
+            <ButtonLink href={pdf.href} external icon={DownloadSimple}>
+              Download the free PDF
+            </ButtonLink>
+            <span className="text-[14px] text-muted">
+              {pdf.title}: {pdf.pages} pages, {fileSize(pdf.href)}, no sign-up
+            </span>
+          </div>
+        )}
         {g.updated && (
           <p className="mt-4 text-[14px] text-muted">
             Updated <time dateTime={g.updated}>{dateLabel(g.updated)}</time>
